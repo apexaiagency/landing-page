@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-inter: "Inter", system-ui, sans-serif;
+  --font-jetbrains-mono: "JetBrains Mono", monospace;
+  --ease-move: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-bg text-fg antialiased;
+    font-feature-settings: "cv11", "ss01";
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Amber focus ring on every interactive element (WCAG 2.4.7). */
+  :where(a, button, input, select, textarea, [tabindex]):focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2;
+    --tw-ring-offset-color: #0a0a0b;
+    border-radius: 6px;
+  }
+
+  ::selection {
+    background: rgba(245, 158, 11, 0.28);
+    color: #fff;
+  }
+
+  /* Tighter display tracking — Linear/Vercel heading feel with Inter. */
+  .font-display {
+    letter-spacing: -0.021em;
+  }
+}
+
+@layer components {
+  /* First-view staggered reveal. Applied by the Reveal client component once per mount. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  .reveal[data-shown="true"] {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      opacity var(--dur, 500ms) ease,
+      transform var(--dur, 500ms) var(--ease-move);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+}
+
+/* Respect prefers-reduced-motion: no smooth scroll, no motion, reveal shows instantly. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
