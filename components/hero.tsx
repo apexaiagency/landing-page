@@ -10,7 +10,11 @@ export function Hero({ site }: { site: Site }) {
   return (
     <section
       aria-labelledby="hero-heading"
-      className="relative mx-auto grid max-w-column gap-12 px-6 pb-20 pt-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:items-center lg:gap-16 lg:pb-28 lg:pt-24"
+      className={
+        hero.artifact
+          ? "relative mx-auto grid max-w-column gap-12 px-6 pb-20 pt-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:items-center lg:gap-16 lg:pb-28 lg:pt-24"
+          : "relative mx-auto max-w-column px-6 pb-20 pt-16 lg:pb-28 lg:pt-24"
+      }
     >
       {/* Subtle top glow — single, faint, non-decorative-of-amber (uses neutral light). */}
       <div
@@ -18,7 +22,7 @@ export function Hero({ site }: { site: Site }) {
         className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-64 bg-[radial-gradient(60%_100%_at_50%_0%,rgba(245,158,11,0.05),transparent_70%)]"
       />
 
-      <div>
+      <div className={hero.artifact ? undefined : "max-w-2xl"}>
         <Reveal as="p" delay={0} className="mb-5 inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-fg-2">
           {hero.eyebrow}
         </Reveal>
@@ -63,10 +67,12 @@ export function Hero({ site }: { site: Site }) {
         )}
       </div>
 
-      <Reveal delay={160} duration={600} className="lg:pl-4">
-        <ControlPlaneArtifact artifact={hero.artifact} />
-        <p className="mt-3 px-1 text-xs leading-relaxed text-fg-3">{hero.artifact.caption}</p>
-      </Reveal>
+      {hero.artifact && (
+        <Reveal delay={160} duration={600} className="lg:pl-4">
+          <ControlPlaneArtifact artifact={hero.artifact} />
+          <p className="mt-3 px-1 text-xs leading-relaxed text-fg-3">{hero.artifact.caption}</p>
+        </Reveal>
+      )}
     </section>
   );
 }

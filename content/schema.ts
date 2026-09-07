@@ -81,25 +81,32 @@ const HeroSchema = z.object({
     fact: FactSchema,
     caption: z.string().min(1),
   }),
-  artifact: z.object({
-    title: z.string().min(1),
-    subtitle: z.string().min(1),
-    columns: z.object({
-      client: z.string(),
-      region: z.string(),
-      seats: z.string(),
-      spend: z.string(),
-      status: z.string(),
-    }),
-    tenants: z.array(TenantRowSchema).min(1),
-    /** Aggregate footer row for the artifact. */
-    summary: z.object({
-      tenantsLabel: z.string(),
-      seatsLabel: z.string(),
-      spendLabel: z.string(),
-    }),
-    caption: z.string().min(1),
-  }),
+  /**
+   * The interactive control-plane mockup. Optional — it depicts an "all tenants, one
+   * screen" MSP view that doesn't exist yet (the MSP capability shipped is backend-only).
+   * Leave unset until that frontend view ships; re-add once it's a real screen.
+   */
+  artifact: z
+    .object({
+      title: z.string().min(1),
+      subtitle: z.string().min(1),
+      columns: z.object({
+        client: z.string(),
+        region: z.string(),
+        seats: z.string(),
+        spend: z.string(),
+        status: z.string(),
+      }),
+      tenants: z.array(TenantRowSchema).min(1),
+      /** Aggregate footer row for the artifact. */
+      summary: z.object({
+        tenantsLabel: z.string(),
+        seatsLabel: z.string(),
+        spendLabel: z.string(),
+      }),
+      caption: z.string().min(1),
+    })
+    .optional(),
 });
 
 const FormFieldSchema = z.object({

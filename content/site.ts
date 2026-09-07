@@ -54,80 +54,9 @@ export const site: Site = {
       },
       caption: "from click to a usable desktop",
     },
-    artifact: {
-      title: "Control plane",
-      subtitle: "All clients · one pane of glass",
-      columns: {
-        client: "Client tenant",
-        region: "Region",
-        seats: "Seats",
-        spend: "Spend / mo",
-        status: "Status",
-      },
-      tenants: [
-        {
-          client: "Meridian Health Group",
-          region: "us-west-2",
-          seats: 48,
-          spend: "$6,240",
-          status: "active",
-          statusLabel: "Active",
-          detail: "48 desktops running · isolated AWS account · SSE-KMS volumes",
-        },
-        {
-          client: "Lakeside Legal LLP",
-          region: "us-east-1",
-          seats: 22,
-          spend: "$2,860",
-          status: "active",
-          statusLabel: "Active",
-          detail: "22 desktops running · dedicated directory · per-tenant billing",
-        },
-        {
-          client: "Cascade Logistics",
-          region: "ca-central-1",
-          seats: 15,
-          spend: "$1,950",
-          status: "provisioning",
-          statusLabel: "Provisioning",
-          detail: "9 of 15 desktops building · new tenant stood up 6 min ago",
-        },
-        {
-          client: "Northwind Retail",
-          region: "us-west-2",
-          seats: 60,
-          spend: "$7,800",
-          status: "active",
-          statusLabel: "Active",
-          detail: "60 desktops running · auto-stop off-hours · largest tenant",
-        },
-        {
-          client: "Delta Design Studio",
-          region: "eu-west-2",
-          seats: 8,
-          spend: "$1,240",
-          status: "stopped",
-          statusLabel: "Idle · auto-stopped",
-          detail: "8 desktops auto-stopped overnight · billed on run-time",
-        },
-        {
-          client: "Harbor Point Dental",
-          region: "us-west-2",
-          seats: 12,
-          spend: "$1,560",
-          status: "error",
-          statusLabel: "Needs attention",
-          detail: "1 desktop failed a health check · flagged for your team",
-        },
-      ],
-      summary: {
-        tenantsLabel: "6 client tenants",
-        seatsLabel: "165 seats",
-        spendLabel: "$21,650 / mo",
-      },
-      caption:
-        "A representative control-plane view. Every client tenant is an isolated AWS account — separate identity, separate billing, separate blast radius.",
-    },
+    // artifact intentionally omitted: the "all tenants, one screen" MSP view it depicts
+    // doesn't exist yet (the MSP capability shipped this week is backend-only — an API to
+    // switch client accounts, no frontend fleet view). Re-add once that screen is real.
   },
 
   form: {
@@ -234,16 +163,9 @@ export const site: Site = {
           "A blast radius that stops at one tenant",
         ],
       },
-      {
-        key: "fleet",
-        title: "Fleet management across every client",
-        body: "One view of every desktop you run, for every client. See status and act without logging into anything downstream.",
-        points: [
-          "All tenants, all seats, one pane of glass",
-          "Live status: running, idle, needs attention",
-          "Act on a fleet without per-account logins",
-        ],
-      },
+      // "fleet" capability intentionally omitted: the MSP account-switching API shipped
+      // this week, but there's no frontend screen yet showing all tenants/seats in one
+      // view — that's the next roadmap item, not a shipped capability. Re-add once real.
       {
         key: "provisioning",
         title: "Provisioning without the runbook",
@@ -256,12 +178,12 @@ export const site: Site = {
       },
       {
         key: "billing",
-        title: "Per-client billing, already split",
-        body: "Spend is attributed per tenant as it happens. The margin work that ate a week a month is just there when it's time to invoice.",
+        title: "Per-client spend, visible in real time",
+        body: "See exactly what each client's fleet is costing as it runs — not at the end of the month, and not by digging through a raw AWS bill.",
         points: [
-          "Spend attributed per client automatically",
-          "Wholesale rate in, your rate out",
-          "Invoice-ready without the spreadsheet",
+          "Cost visibility scoped to each client account",
+          "Live spend, not a monthly surprise",
+          "No spreadsheet to reconcile after the fact",
         ],
       },
     ],

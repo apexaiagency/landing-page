@@ -87,7 +87,7 @@ function BillingUI() {
   return (
     <div className="rounded-card border border-line bg-surface p-5">
       <div className="mb-4 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.14em] text-fg-3">
-        <span>Per client, already split</span>
+        <span>Per client, live</span>
         <span>This month</span>
       </div>
       <div className="space-y-1">
@@ -106,9 +106,9 @@ function BillingUI() {
       </div>
       <div className="mt-3 flex items-center justify-between border-t border-line-soft pt-3 text-sm">
         <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-fg-3">
-          Wholesale in · your rate out
+          Updated as spend happens
         </span>
-        <span className="font-mono tabular-nums font-medium text-accent">Invoice-ready</span>
+        <span className="font-mono tabular-nums font-medium text-accent">Live</span>
       </div>
     </div>
   );

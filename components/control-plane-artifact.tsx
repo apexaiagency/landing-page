@@ -22,7 +22,7 @@ const STATUS_DOT: Record<string, string> = {
  * no load time (all data is inline, no fetch). Fully keyboard-navigable; degrades to a
  * static, readable panel with no JS.
  */
-export function ControlPlaneArtifact({ artifact }: { artifact: Site["hero"]["artifact"] }) {
+export function ControlPlaneArtifact({ artifact }: { artifact: NonNullable<Site["hero"]["artifact"]> }) {
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
   const engagedRef = useState({ fired: false })[0];
   const detailId = useId();
