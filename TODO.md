@@ -1,4 +1,4 @@
-# TODO — offsiteLABS landing page
+# TODO — Offsite Labs landing page
 
 Every unknown is listed here with the section it affects and the honest fallback that
 ships until it's answered. **Filling any of these is a one-line edit in `content/site.ts`
@@ -54,7 +54,7 @@ complete without them. Flip `enabled:true` in `content/site.ts` once the answer 
 | # | Blocker | Why it blocks | Owner |
 |---|---------|---------------|-------|
 | B1 | **No wholesale rate card.** | Every serious partner conversation ends at what it costs them and what they make on it. The second CTA is switched off because of this — one CTA ships until the document exists. | Product/commercial |
-| B2 | **Name is inconsistent in the live product.** | offsiteLABS, Off-Site Desktops and the old domain all appear in live product strings. Both source documents list this as an open question. Nothing customer-facing should ship until it is settled everywhere, not just here. | Platform |
+| B2 | **Name is inconsistent in the live product.** | The live product still carries `offsiteLABS`, `Off-Site Desktops` and the old domain in customer-visible strings. The name is now **Offsite Labs** — two words, title case. Both source documents list this as an open question. Nothing customer-facing should ship until it is settled everywhere, not just here. | Platform |
 | B3 | **No screenshots of the real product.** | The hero has no product image and `og.png` does not exist. A hero image must show what the product actually shows — the previous one showed regions that did not exist at the time. | Marketing |
 | B4 | **Mail not live on `offsitelabs.io`.** | `partners@offsitelabs.io` is on the page and in the footer. | Platform |
 | B5 | **Frontend deploy is manual.** | Merging this PR puts nothing in front of anyone. See `DEPLOY.md`. | Platform |

@@ -20,7 +20,7 @@ import type { Site } from "./schema";
  */
 export const site: Site = {
   meta: {
-    title: "offsiteLABS — every client in their own cloud account",
+    title: "Offsite Labs — every client in their own cloud account",
     description:
       "Cloud desktops where every customer gets their own cloud account, network and encryption key. Environments build themselves in about twenty to forty minutes with no engineer involved. Built for managed service providers, and for businesses who want work computers without hardware.",
     url: "https://www.offsitelabs.io",
@@ -35,7 +35,7 @@ export const site: Site = {
   },
 
   brand: {
-    name: "offsiteLABS",
+    name: "Offsite Labs",
     /**
      * Replaces the previous channel-only line. That line said we sell only through
      * providers and never direct — which is false: self-service registration is open
@@ -67,7 +67,7 @@ export const site: Site = {
     eyebrow: "Cloud desktops for managed service providers",
     headline: "Every client in their own cloud account.",
     subhead:
-      "offsiteLABS runs Windows desktops in the cloud, and gives every one of your clients their own separate cloud account, network, encryption key and directory. The whole environment builds itself, with nobody in the room.",
+      "Offsite Labs runs Windows desktops in the cloud, and gives every one of your clients their own separate cloud account, network, encryption key and directory. The whole environment builds itself, with nobody in the room.",
     provisioningTime: {
       /**
        * Twenty to forty minutes for a BRAND NEW client, from a small number of runs.
@@ -505,6 +505,6 @@ export const site: Site = {
         links: [{ label: "partners@offsitelabs.io", href: "mailto:partners@offsitelabs.io" }],
       },
     ],
-    legalLine: "offsiteLABS. Windows desktops in the cloud, one customer at a time.",
+    legalLine: "Offsite Labs. Windows desktops in the cloud, one customer at a time.",
   },
 };
