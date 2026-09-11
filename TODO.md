@@ -14,7 +14,7 @@ needs a component edit, flag it.
 | 1 | Hero | ~~Provisioning time~~ **FILLED** — 20–40 min for a **brand-new** client, unattended | Hero shows the number | Still open: the **warm** path (adding a desktop to an existing client) has never been measured. Do not quote one until it is |
 | 2 | Meta/SEO | ~~Canonical production domain~~ **FILLED** — `https://www.offsitelabs.io` (purchased 8 Sep, 3-year term) | Canonical/OG/sitemap point at the real domain | `content/site.ts → meta.url` — done |
 | 3 | Footer | **Real contact address** — mailbox must exist on the new domain before launch | `partners@offsitelabs.io` — reachable only once Microsoft mail is cut over | `content/site.ts → footer.contactEmail` |
-| 4 | OG image | **Social share image** at `/public/og.png` (1200×630) | Referenced but file not yet added | drop `public/og.png` |
+| 4 | OG image | **Social share image** at `/public/og.png` (1200×630) | Referenced in metadata but the file does not exist — link previews fall back to nothing | drop `public/og.png`. Build it from `public/logo-on-light.png` or the 2026 banner artwork; it must not show a product screen we don't have |
 | 5 | Form → sign-up | **Platform sign-up handoff URL** so nobody re-types | Success state shows copy but no handoff button until set | `.env → NEXT_PUBLIC_SIGNUP_HANDOFF_URL` |
 | 6 | Form persistence | **Supabase project URL + service role key + `pilot_leads` table** | Form submits and shows success; record is a dev no-op until configured | `.env → SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` (SQL below) |
 | 7 | Notifications | **Resend** email on each lead: `RESEND_API_KEY`, `LEAD_NOTIFY_EMAIL` (your inbox — a custom address, TBC), `LEAD_FROM_EMAIL` (verified sender) | Skipped silently until set; lead still stored | `.env` (see `DEPLOY.md §3`) |
@@ -55,6 +55,7 @@ complete without them. Flip `enabled:true` in `content/site.ts` once the answer 
 |---|---------|---------------|-------|
 | B1 | **No wholesale rate card.** | Every serious partner conversation ends at what it costs them and what they make on it. The second CTA is switched off because of this — one CTA ships until the document exists. | Product/commercial |
 | B2 | **Name is inconsistent in the live product.** | The live product still carries `offsiteLABS`, `Off-Site Desktops` and the old domain in customer-visible strings. The name is now **Offsite Labs** — two words, title case. Both source documents list this as an open question. Nothing customer-facing should ship until it is settled everywhere, not just here. | Platform |
+| B3 | **Logo is raster only.** | `public/logo-on-dark.png` is a 1500×500 PNG. It renders fine at header size, but a vector (SVG) lockup would stay crisp at every size and would let the mark be recoloured for a light surface without a second file. Ask whoever produced the artwork for the SVG. | Marketing |
 | B3 | **No screenshots of the real product.** | The hero has no product image and `og.png` does not exist. A hero image must show what the product actually shows — the previous one showed regions that did not exist at the time. | Marketing |
 | B4 | **Mail not live on `offsitelabs.io`.** | `partners@offsitelabs.io` is on the page and in the footer. | Platform |
 | B5 | **Frontend deploy is manual.** | Merging this PR puts nothing in front of anyone. See `DEPLOY.md`. | Platform |
@@ -67,6 +68,25 @@ complete without them. Flip `enabled:true` in `content/site.ts` once the answer 
   screens ship**, not when the design is approved. Both depict a view that does not exist today.
 - `proof` — when a customer has agreed **in writing** to be named. No illustrative customers.
 - `security` stub — superseded by the `trust` section; delete it or repurpose it.
+
+### Brand assets in the repo
+
+| File | Use |
+|------|-----|
+| `public/logo-on-dark.png` | The horizontal lockup, white wordmark. What the header and footer render. The mark **is** the O of Offsite — never separate or re-space them. |
+| `public/logo-on-light.png` | Same lockup with a black wordmark, for any light surface (OG card, PDF, email). Not used on the site, which is dark-only. |
+| `public/mark.png` | The mark alone, square, cropped from the same artwork. |
+| `app/icon.png` | Favicon, 256×256, generated from `mark.png` via Next's file convention. |
+
+Brand amber sampled from the artwork is **#f09b0d**. The site's accent token is **#f59e0b** — a hair
+apart and deliberately not reconciled: the token drives interactive state, the logo is a fixed asset.
+If they ever must match, change the token, not the logo.
+
+One thing to decide: the 2026 banner artwork carries the line *"Your next computer is Offsite. From
+browser to workstation in four clicks."* It is a good line and it is not on this page. "Four clicks"
+is not a claim either source document supports — adding a client is an API call today, not a click —
+so it would need checking before it ships anywhere customer-facing.
+
 
 ### Decision needed from Oke
 
