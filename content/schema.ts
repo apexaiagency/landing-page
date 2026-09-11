@@ -300,6 +300,31 @@ const FounderSchema = z.object({
   body: z.array(z.string().min(1)).min(1),
 });
 
+/**
+ * Who it is for — the two audiences side by side. Both are live in the product today:
+ * self-service registration is open, and the provider motion is the primary one.
+ * Neither column may promise the other's capabilities, and the honest limits of each
+ * (the provider screens, the directory cost floor on small direct accounts) belong in
+ * the column they apply to rather than in a footnote nobody reads.
+ */
+const AudiencesSchema = z.object({
+  enabled: z.boolean(),
+  eyebrow: z.string().min(1),
+  heading: z.string().min(1),
+  intro: z.string().optional(),
+  columns: z
+    .array(
+      z.object({
+        label: z.string().min(1),
+        who: z.string().min(1),
+        gains: z.array(z.string().min(1)).min(1),
+        /** The honest limit for this audience. Rendered, not hidden. */
+        note: z.string().optional(),
+      })
+    )
+    .length(2),
+});
+
 const FaqItemSchema = z.object({
   question: z.string().min(1),
   answer: z.string().min(1),
@@ -333,6 +358,7 @@ export const SiteSchema = z.object({
   form: FormSchema,
   problem: ProblemSchema,
   controlPlane: ControlPlaneSchema,
+  audiences: AudiencesSchema,
   howItWorks: HowItWorksSchema,
   today: TodaySchema,
   useCases: UseCasesSchema,

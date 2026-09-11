@@ -20,16 +20,17 @@ import type { Site } from "./schema";
  */
 export const site: Site = {
   meta: {
-    title: "Offsite Labs — every client in their own cloud account",
+    title: "Offsite Labs — Windows desktops in the cloud, one customer at a time",
     description:
-      "Cloud desktops where every customer gets their own cloud account, network and encryption key. Environments build themselves in about twenty to forty minutes with no engineer involved. Built for managed service providers, and for businesses who want work computers without hardware.",
+      "Cloud desktops where every customer gets their own cloud account, network and encryption key. Environments build themselves in about twenty to forty minutes with no engineer involved. For businesses who want work computers without buying hardware, and for the providers who run desktops on their behalf.",
     url: "https://www.offsitelabs.io",
     ogImage: "/og.png",
     keywords: [
+      "cloud desktops for business",
+      "Windows desktop as a service",
       "cloud desktops for MSPs",
-      "per-client cloud account isolation",
-      "managed cloud desktop platform",
-      "MSP desktop provisioning",
+      "per-customer cloud account isolation",
+      "remote work computers without hardware",
       "Canadian data residency cloud desktops",
     ],
   },
@@ -37,18 +38,17 @@ export const site: Site = {
   brand: {
     name: "Offsite Labs",
     /**
-     * Replaces the previous channel-only line. That line said we sell only through
-     * providers and never direct — which is false: self-service registration is open
-     * in the product, and any provider can disprove it in thirty seconds (marketing
-     * doc §8, "three strings to fix before launch").
+     * The hero's trust line, and it has to hold for both audiences — a business buying
+     * for itself and a provider buying for its clients are reading the same sentence.
+     * So it states the architecture, which is true either way.
      *
-     * What ships instead is the half of the client-protection commitment that has
-     * actually been decided. The third commitment in marketing doc §7 — direct price
-     * set at or above the partner price — is marked Needs Confirmation and is
-     * deliberately NOT on this page until it is settled and in a partner agreement.
+     * The partner-protection commitment that used to sit here is provider-only and has
+     * moved to the providers column in `audiences`. What is NOT anywhere on this page:
+     * the old channel-only claim (false — self-service registration is open), and the
+     * marketing doc §7 commitment about direct pricing, which is Needs Confirmation.
      */
     channelLine:
-      "We never approach a partner's clients. A client registered to you is contractually off limits to us.",
+      "Your own cloud account, your own network, your own encryption key. Nothing shared with anyone else, because there is nothing to share.",
   },
 
   ctas: {
@@ -64,10 +64,10 @@ export const site: Site = {
 
   hero: {
     enabled: true,
-    eyebrow: "Cloud desktops for managed service providers",
-    headline: "Every client in their own cloud account.",
+    eyebrow: "Windows desktops in the cloud",
+    headline: "A work computer that lives in the cloud, not on a desk.",
     subhead:
-      "Offsite Labs runs Windows desktops in the cloud, and gives every one of your clients their own separate cloud account, network, encryption key and directory. The whole environment builds itself, with nobody in the room.",
+      "Full Windows machines your people reach from a browser, with no hardware to buy and no server to run. Every customer gets their own separate cloud account underneath — and the whole environment builds itself, with nobody in the room.",
     provisioningTime: {
       /**
        * Twenty to forty minutes for a BRAND NEW client, from a small number of runs.
@@ -76,7 +76,7 @@ export const site: Site = {
        * one), and it is not the headline claim. Sell it as unattended, not as fast.
        */
       fact: { known: true, value: "20–40 min", fallback: "" },
-      caption: "unattended, from one action to a working desktop for a brand-new client",
+      caption: "unattended, from one action to a working desktop for a brand-new customer",
     },
     /**
      * Artifact still omitted. A hero image has to show what the product actually
@@ -110,7 +110,7 @@ export const site: Site = {
         type: "number",
         placeholder: "e.g. 25",
         required: true,
-        helper: "Rough is fine — across every client, if you run desktops for others.",
+        helper: "Rough is fine. Across every client, if you run desktops for others.",
       },
       {
         name: "currentPlatform",
@@ -129,7 +129,7 @@ export const site: Site = {
     pilot: {
       heading: "Book a walkthrough",
       blurb:
-        "We'll show you a client environment being built from nothing — the account, the network, the encryption key, the directory, the first desktop — and you can ask what happens when any of it goes wrong.",
+        "We'll show you an environment being built from nothing — the account, the network, the encryption key, the directory, the first desktop — and you can ask what happens when any of it goes wrong.",
       submitLabel: "Book a walkthrough",
       successHeading: "Got it.",
       successBody:
@@ -156,24 +156,24 @@ export const site: Site = {
   problem: {
     enabled: true,
     eyebrow: "The problem",
-    heading: "Safe or scalable. Nearly everyone picks scalable and stops talking about it.",
+    heading: "The hard part was never the desktop.",
     intro:
-      "Cloud desktops are not hard to buy. They are hard to deliver properly to more than one customer — and you have already made this trade-off once.",
+      "Cloud desktops are not hard to buy. Getting one that is genuinely yours, without an engineer to build it, is where this gets difficult.",
     blocks: [
       {
-        marker: "one shared account",
-        title: "Separation that lives in software",
-        body: "Put every client in one cloud account and keep them apart with rules in code. It is quick to build and permanently risky. One bug, one misconfiguration or one mistaken click puts one client's data in front of another — and you find out from the client, not from a report.",
+        marker: "shared by default",
+        title: "You are usually in somebody else's account",
+        body: "Almost every provider in this market puts all of their customers in one cloud account and keeps them apart with rules in software. It is quick to build and permanently risky: one bug, one misconfiguration or one mistaken click, and the separation is gone. Nobody finds out from a report.",
       },
       {
-        marker: "hours per client",
-        title: "Separation that doesn't scale",
-        body: "Give every client their own account and the separation is genuinely real. It also takes an engineer who knows AWS several hours per client, every time. That is why almost nobody does it by hand past the first few.",
+        marker: "hours of engineering",
+        title: "The safe version needs an engineer",
+        body: "Giving every customer their own account makes the separation real. It also takes someone who knows AWS several hours to build, every single time. That is precisely why almost nobody does it — not because it is a bad idea, but because it does not scale by hand.",
       },
       {
-        marker: "one number",
-        title: "A bill you take apart yourself",
-        body: "Shared infrastructure arrives as one figure with no per-client split. Part of every month goes to working out who owes what, in a spreadsheet, by hand.",
+        marker: "bought, shipped, replaced",
+        title: "Or you are still buying laptops",
+        body: "The alternative is hardware: ordering it, imaging it, shipping it, securing it, and recovering it from people who leave. A new hire two time zones away starts Monday and the laptop does not.",
       },
     ],
   },
@@ -183,17 +183,17 @@ export const site: Site = {
     eyebrow: "The solution",
     heading: "We took the safe option and automated it.",
     intro:
-      "The separation between two of your clients is an account boundary, not a rule in our software. A software rule is only as good as the code that enforces it. An account boundary holds even when the code is wrong.",
-    ctaLine: "See it built from nothing, end to end.",
+      "The separation between any two customers is an account boundary, not a rule in our software. A software rule is only as good as the code that enforces it. An account boundary holds even when the code is wrong.",
+    ctaLine: "See an environment built from nothing, end to end.",
     capabilities: [
       {
         key: "isolation",
         title: "Isolation you can point at",
-        body: "Every client is a separate cloud account with its own directory, network and encryption key. There is no shared network and no cross-connection between them — which removes the category of mistake where a permission or a query returns the wrong client's data, because there is no shared place for that mistake to happen.",
+        body: "Every customer is a separate cloud account with its own directory, network and encryption key. There is no shared network and no cross-connection between them — which removes the category of mistake where a permission or a query returns the wrong data, because there is no shared place for that mistake to happen.",
         points: [
           "Own account, own directory, own network, own encryption key",
-          "Volumes encrypted with that client's key, not optionally",
-          "Our own platform cannot reach two clients in one request",
+          "Volumes encrypted with your key, not optionally",
+          "Our own platform cannot reach two customers in one request",
         ],
       },
       /**
@@ -206,22 +206,67 @@ export const site: Site = {
       {
         key: "provisioning",
         title: "Onboarding without an engineer",
-        body: "The whole environment builds itself, in order, with retries: the cloud account, the network, the encryption key, the directory, then the first desktop. Nobody watches it. Onboarding a client stops being a project and becomes something a service desk person starts and walks away from.",
+        body: "The whole environment builds itself, in order, with retries: the cloud account, the network, the encryption key, the directory, then the first desktop. Nobody watches it. Getting started stops being a project and becomes something you start and walk away from.",
         points: [
-          "A brand-new client environment from one action",
+          "A brand-new environment from one action",
           "About 20–40 minutes, unattended",
-          "Later desktops for that client skip the build entirely",
+          "Later desktops skip the build entirely",
         ],
       },
       {
         key: "billing",
-        title: "Costs already separate",
-        body: "Because every client is already in their own account, spend is already split. The platform shows a live estimate per desktop, per client, and across every client you manage — while the month is running, rather than after it.",
+        title: "You can see what it costs while it runs",
+        body: "The platform shows a live estimate per desktop and per customer while the month is running, rather than after it. And because every customer is already in their own account, a provider's spend comes out already split per client — a consequence of the architecture rather than a spreadsheet exercise.",
         points: [
-          "Per-desktop and per-client spend, live",
-          "A split that falls out of the architecture, not a spreadsheet",
+          "Per-desktop spend, live",
+          "Per-client split for providers, without the reconciliation",
           "An estimate of the current month — not an invoice",
         ],
+      },
+    ],
+  },
+
+  /**
+   * Both audiences are live in the product today — this is not aspirational. The
+   * provider motion is the primary one per marketing doc §1, which is why it sits
+   * second here: the reader who needs convincing that this is not MSP-only software
+   * reaches the businesses column first.
+   *
+   * Each column carries its own honest limit. The directory cost floor and the missing
+   * provider screens are both real, and both belong next to the audience they affect.
+   */
+  audiences: {
+    enabled: true,
+    eyebrow: "Who it is for",
+    heading: "Whether the desktops are for your staff or your clients'.",
+    intro:
+      "Same platform, same architecture, bought two different ways. Both are open in the product today.",
+    columns: [
+      {
+        label: "Businesses buying for themselves",
+        who: "Companies with roughly three to thirty desktop users, no IT department or a very small one.",
+        gains: [
+          "No hardware to buy, ship, secure or recover",
+          "A new hire works on Monday, wherever they are",
+          "Staff added and removed by email address",
+          "Access ends everywhere the day someone leaves",
+          "Nobody in the company has to be the desktop administrator",
+          "Your own cloud account, not a shared one — the same architecture a provider gets",
+        ],
+        note: "Each account carries a fixed monthly directory cost regardless of how many desktops run on it. That makes this a poor fit for a single person with one desktop, and a good one from about three desktops up.",
+      },
+      {
+        label: "Providers running desktops for clients",
+        who: "Companies delivering IT to other businesses, often already reselling someone's cloud desktop and unhappy about it.",
+        gains: [
+          "Each client separated at the account level, not by a filter",
+          "Onboarding a client without booking an engineer",
+          "A bill already split, because the accounts are already split",
+          "Anyone on your service desk can run it — the product never says account, network or instance",
+          "An answer to \"how do you keep our data separate\" that is architecture, not policy",
+          "We never approach your clients. A client registered to you is contractually off limits to us.",
+        ],
+        note: "The provider screens — adding a client, switching between clients, the cost rollup — work through the API today and have no interface yet. Until they ship we work alongside you for setup, which is fine for a first partner and does not scale past a handful.",
       },
     ],
   },
@@ -232,9 +277,9 @@ export const site: Site = {
     heading: "Four steps, and you are only present for two of them.",
     steps: [
       {
-        title: "Add a client",
-        body: "One client, one record. Everything that follows for them is built inside their own boundary.",
-        caveat: "Today this is an API call. The screen for it is being built.",
+        title: "Create the account",
+        body: "One customer, one record — whether that customer is your own company or a client you run desktops for. Everything that follows is built inside its own boundary.",
+        caveat: "A business registers itself in the product today. A provider adding a client does it through the API — that screen is being built.",
       },
       {
         title: "Create their first desktop",
@@ -246,7 +291,7 @@ export const site: Site = {
       },
       {
         title: "Add people and more desktops",
-        body: "Invite by email address. The person sets their own password — no administrator, and nobody here, ever sees it. Later desktops join the environment that now exists.",
+        body: "Invite by email address. The person sets their own password — no administrator, and nobody here, ever sees it. Later desktops join the environment that already exists, so they arrive far quicker than the first.",
       },
     ],
   },
@@ -262,8 +307,8 @@ export const site: Site = {
         title: "Separation",
         items: [
           {
-            title: "A separate cloud account for every client",
-            body: "One client's data cannot reach another, because there is no shared place for it to go.",
+            title: "A separate cloud account for every customer",
+            body: "One customer's data cannot reach another, because there is no shared place for it to go. That holds whether the customer is your company or your client's.",
           },
           {
             title: "Passwords the platform sets but never sees",
@@ -280,7 +325,7 @@ export const site: Site = {
         items: [
           {
             title: "No cloud vocabulary anywhere",
-            body: "The product never says account, network, instance or image — it says computers, people and categories. Anyone on your service desk can run the daily work.",
+            body: "The product never says account, network, instance or image — it says computers, people and categories. Running it does not require the one person who knows AWS, because there is nothing in it that needs them.",
           },
           {
             title: "Windows desktops in three sizes",
@@ -305,11 +350,11 @@ export const site: Site = {
         items: [
           {
             title: "It checks itself every six hours",
-            body: "The platform compares its records against what is actually running, removes what is stranded, and can rebuild a broken desktop while keeping the user's data drive. Problems get fixed before they become tickets.",
+            body: "The platform compares its records against what is actually running, removes what is stranded, and can rebuild a broken desktop while keeping the user's data drive. Problems get fixed before anyone has to report them.",
           },
           {
             title: "Nothing left billing quietly",
-            body: "The same check finds cloud resources with no matching record and removes them. When a client leaves, teardown is complete — nothing lingers unless someone chose to keep it, and the cost of keeping it is shown at the moment they choose.",
+            body: "The same check finds cloud resources with no matching record and removes them. When an account closes, teardown is complete — nothing lingers unless someone chose to keep it, and the cost of keeping it is shown at the moment they choose.",
           },
           {
             title: "Careful removal",
@@ -322,11 +367,11 @@ export const site: Site = {
         items: [
           {
             title: "Four locations, including Canada",
-            body: "Virginia, Ohio, Oregon or central Canada, chosen when the client's first desktop is created. Canadian data residency is a deal most of this segment cannot win. The choice is locked once made, with no migration path.",
+            body: "Virginia, Ohio, Oregon or central Canada, chosen when the first desktop is created. Canadian data residency is something most of this market cannot offer at all. The choice is locked once made, with no migration path.",
           },
           {
             title: "A fixed outbound address, on request",
-            body: "All of a client's desktops can share one stable internet address, for vendors that require one on an allowlist. We set it up at onboarding, it must be chosen before the first desktop exists, and it is paid.",
+            body: "All of an account's desktops can share one stable internet address, for vendors that require one on an allowlist. We set it up at onboarding, it must be chosen before the first desktop exists, and it is paid.",
           },
           {
             title: "Internet access on every desktop",
@@ -342,7 +387,7 @@ export const site: Site = {
   useCases: {
     enabled: true,
     eyebrow: "Who uses it",
-    heading: "Two ways this gets bought.",
+    heading: "What that looks like in practice.",
     cases: [
       {
         audience: "A provider onboards a new client",
@@ -460,6 +505,16 @@ export const site: Site = {
           "Here is what is true. Every client has their own cloud account, network, encryption key and directory. Volumes are encrypted with that client's key and that is not optional. There are no long-lived credentials anywhere in the platform, because creating them is denied by policy in every client account. Every internal request into a client account is tagged with which client it is for and the account rejects anything untagged, so our own platform cannot touch two clients in one request. Our control plane can only deploy our approved templates — it cannot run arbitrary commands. Here is what is not true yet: there is no multi-factor authentication, we hold no certifications, there has been no third-party audit and no penetration test, there is no audit log you can read, and there is no published service level agreement.",
       },
       {
+        question: "Do I need to be an IT company to use this?",
+        answer:
+          "No. Roughly half of what the product is built for is a business buying desktops for its own staff, and self-service registration is open. The product never uses cloud vocabulary — no accounts, no networks, no instances, just computers, people and categories — which is the whole reason it does not need someone who knows AWS to run it. The one honest caveat is size: each account carries a fixed monthly directory cost no matter how many desktops sit on it, so this works from about three desktops up and does not make sense for one person with one machine.",
+      },
+      {
+        question: "What do I actually get?",
+        answer:
+          "A full Windows machine, in one of three sizes, that your people reach from a browser or a desktop client. It has internet access and works like any other computer. It arrives blank — no software pre-installed — so you install what you need. There is no connection to an office network: no VPN, no private link. That is a separate managed engagement rather than a feature.",
+      },
+      {
         question: "Why not just use what I already resell?",
         answer:
           "You probably resell something that puts all of your clients in one shared environment. That is fine until it is not, and the moment it is not is the moment you have to explain it to a client. The other difference is operational: onboarding a client here does not need an engineer and does not need a day.",
@@ -516,6 +571,7 @@ export const site: Site = {
           { label: "The problem it solves", href: "#problem" },
           { label: "How it works", href: "#how-it-works" },
           { label: "What it does today", href: "#today" },
+          { label: "Who it is for", href: "#audiences" },
           { label: "Trust", href: "#trust" },
           { label: "Who builds it", href: "#founder" },
           { label: "Questions", href: "#faq" },
