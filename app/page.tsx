@@ -6,6 +6,10 @@ import { SiteFooter } from "@/components/site-footer";
 import { Hero } from "@/components/hero";
 import { Problem } from "@/components/problem";
 import { ControlPlaneDeep } from "@/components/control-plane-deep";
+import { HowItWorks } from "@/components/how-it-works";
+import { Today } from "@/components/today";
+import { UseCases } from "@/components/use-cases";
+import { Trust } from "@/components/trust";
 import { Faq } from "@/components/faq";
 
 export default function Page() {
@@ -25,6 +29,10 @@ export default function Page() {
         {site.controlPlane.enabled && (
           <ControlPlaneDeep controlPlane={site.controlPlane} ctas={site.ctas} />
         )}
+        {site.howItWorks.enabled && <HowItWorks howItWorks={site.howItWorks} />}
+        {site.today.enabled && <Today today={site.today} />}
+        {site.useCases.enabled && <UseCases useCases={site.useCases} />}
+        {site.trust.enabled && <Trust trust={site.trust} />}
         {site.faq.enabled && <Faq faq={site.faq} />}
       </main>
       {site.footer.enabled && <SiteFooter site={site} />}

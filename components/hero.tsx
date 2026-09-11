@@ -39,7 +39,7 @@ export function Hero({ site }: { site: Site }) {
           {hero.subhead}
         </Reveal>
 
-        {/* Channel-only trust line — amber indicator bar (not a fill), loud, above the fold. */}
+        {/* Client-protection line — amber indicator bar (not a fill), loud, above the fold. */}
         <Reveal
           as="p"
           delay={180}
@@ -53,7 +53,6 @@ export function Hero({ site }: { site: Site }) {
 
         <Reveal delay={240} className="mt-8 flex flex-wrap items-center gap-3">
           <CtaButton cta={ctas.pilot} position="hero" variant="primary" />
-          <CtaButton cta={ctas.pricing} position="hero" variant="secondary" />
         </Reveal>
 
         {/* Provisioning number: rendered ONLY when it's a real, measured fact. */}

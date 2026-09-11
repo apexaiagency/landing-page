@@ -1,3 +1,26 @@
+> **Superseded — 11 September 2026.**
+>
+> This review was written on 2026-09-07 against the monorepo. It has been overtaken by two
+> documents dated **10 September 2026**: *offsiteLABS Product and Marketing Documentation* v1.0
+> and *offsiteLABS Technical Product Documentation* v1.0. Those are now the source of truth for
+> every claim on this page.
+>
+> What changed since this review:
+> - **§1 (regions)** is resolved. Four locations — Virginia, Ohio, Oregon and central Canada —
+>   shipped on 10 September 2026. The page now states them. The choice is locked at first desktop
+>   with no migration path, and that caveat ships with the claim.
+> - **§2 (billing)** stands and was already fixed: per-client spend visibility is real, a
+>   wholesale-to-partner markup engine is not.
+> - **§3 (fleet view)** stands. The provider endpoints have been live since 4 September with no
+>   interface at all; a design spec landed 10 September. The `fleet` capability and the hero
+>   artifact both stay omitted until those screens ship.
+> - **"Not flagged — checked and accurate" is now wrong on its first bullet.** Channel-only
+>   positioning is **false**: self-service registration is open in the product, and any provider
+>   can disprove the claim in thirty seconds. All three channel-only strings have been removed
+>   from the page (see the launch-copy PR).
+
+---
+
 # Content accuracy review — what needs to change
 
 Reviewed against the actual platform (`offsitelabs-AI` monorepo: `CLAUDE.md`, `DECISIONS.md`,

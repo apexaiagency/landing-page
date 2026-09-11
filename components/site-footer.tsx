@@ -16,7 +16,6 @@ export function SiteFooter({ site }: { site: Site }) {
           </div>
           <div className="flex flex-wrap gap-3">
             <CtaButton cta={ctas.pilot} position="footer" variant="primary" />
-            <CtaButton cta={ctas.pricing} position="footer" variant="secondary" />
           </div>
         </div>
 

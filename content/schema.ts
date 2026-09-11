@@ -190,6 +190,99 @@ const ControlPlaneSchema = z.object({
   ctaLine: z.string().min(1),
 });
 
+/** How it works — four plain-language steps. No infrastructure diagrams (marketing doc §8). */
+const HowItWorksSchema = z.object({
+  enabled: z.boolean(),
+  eyebrow: z.string().min(1),
+  heading: z.string().min(1),
+  intro: z.string().optional(),
+  steps: z
+    .array(
+      z.object({
+        title: z.string().min(1),
+        body: z.string().min(1),
+        /** Optional honest aside — e.g. "this is an API call today, not a screen". */
+        caveat: z.string().optional(),
+      })
+    )
+    .min(3)
+    .max(4),
+});
+
+/**
+ * What it does today — CURRENT capabilities only, grouped so a reader can scan.
+ * Anything In Progress / Planned / Exploring belongs on the roadmap, not here.
+ * Each item carries its benefit, so "why it matters" doesn't need its own section.
+ */
+const TodaySchema = z.object({
+  enabled: z.boolean(),
+  eyebrow: z.string().min(1),
+  heading: z.string().min(1),
+  intro: z.string().optional(),
+  groups: z
+    .array(
+      z.object({
+        title: z.string().min(1),
+        items: z
+          .array(
+            z.object({
+              title: z.string().min(1),
+              /** The benefit, not a restatement of the capability. */
+              body: z.string().min(1),
+            })
+          )
+          .min(1),
+      })
+    )
+    .min(1),
+  /** Rendered under the grid — what we deliberately do not claim. Honesty is the point. */
+  notIncluded: z.string().optional(),
+});
+
+/** Who uses it — two use cases. Two, not six (marketing doc §8). */
+const UseCasesSchema = z.object({
+  enabled: z.boolean(),
+  eyebrow: z.string().min(1),
+  heading: z.string().min(1),
+  intro: z.string().optional(),
+  cases: z
+    .array(
+      z.object({
+        audience: z.string().min(1),
+        situation: z.string().min(1),
+        problem: z.string().min(1),
+        howWeHelp: z.string().min(1),
+        benefit: z.string().min(1),
+        /** The honest rough edge, if there is one. Shown, not buried. */
+        caveat: z.string().optional(),
+      })
+    )
+    .min(1)
+    .max(2),
+});
+
+/**
+ * Trust — architecture and commitments only. Thin on purpose.
+ * `notYet` is not a disclaimer we were forced into: naming a gap before the buyer
+ * finds it is worth more than the objection it prevents (marketing doc §11).
+ * Nothing goes in `have` that isn't checkable today. No certifications, no audits,
+ * no pen tests, no uptime figures, no SLA — those do not exist.
+ */
+const TrustSchema = z.object({
+  enabled: z.boolean(),
+  eyebrow: z.string().min(1),
+  heading: z.string().min(1),
+  intro: z.string().optional(),
+  have: z
+    .array(z.object({ title: z.string().min(1), body: z.string().min(1) }))
+    .min(1),
+  notYet: z.object({
+    heading: z.string().min(1),
+    items: z.array(z.string().min(1)).min(1),
+    note: z.string().optional(),
+  }),
+});
+
 const FaqItemSchema = z.object({
   question: z.string().min(1),
   answer: z.string().min(1),
@@ -223,6 +316,10 @@ export const SiteSchema = z.object({
   form: FormSchema,
   problem: ProblemSchema,
   controlPlane: ControlPlaneSchema,
+  howItWorks: HowItWorksSchema,
+  today: TodaySchema,
+  useCases: UseCasesSchema,
+  trust: TrustSchema,
   // v2/v3 sections — defined so filling them later is a content edit, not code.
   commercialModel: SectionStubSchema,
   whiteLabel: SectionStubSchema,

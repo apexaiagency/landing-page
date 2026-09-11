@@ -13,8 +13,11 @@ export function SiteHeader({ site }: { site: Site }) {
             {site.brand.name}
           </span>
         </a>
+        {/* One CTA, repeated everywhere (marketing doc §8). The pricing CTA is not
+            rendered anywhere on the page: it promised a wholesale rate card within a
+            business day and that document does not exist yet. */}
         <CtaButton
-          cta={site.ctas.pricing}
+          cta={site.ctas.pilot}
           position="header"
           variant="secondary"
           className="px-4 py-2"
