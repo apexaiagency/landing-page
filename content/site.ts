@@ -66,8 +66,26 @@ export const site: Site = {
     enabled: true,
     eyebrow: "Windows desktops in the cloud",
     headline: "A work computer that lives in the cloud, not on a desk.",
+    headlineAccent: "in the cloud",
     subhead:
       "Full Windows machines your people reach from a browser, with no hardware to buy and no server to run. Every customer gets their own separate cloud account underneath — and the whole environment builds itself, with nobody in the room.",
+    /**
+     * Stands where a product screenshot would. Every line is a Current capability and
+     * is stated again, with its caveat, further down the page — this panel is a summary
+     * of the page, never a claim the page does not otherwise make.
+     */
+    checklist: {
+      label: "What you get",
+      items: [
+        "Your own cloud account, network and key",
+        "Unattended setup in about 30 minutes",
+        "No AWS knowledge needed to run it",
+        "Self-checking every six hours",
+        "Live cost visibility while the month runs",
+        "Four locations, including Canada",
+      ],
+    },
+    secondaryLink: { label: "See how it works", href: "#how-it-works" },
     provisioningTime: {
       /**
        * Twenty to forty minutes for a BRAND NEW client, from a small number of runs.
@@ -176,6 +194,18 @@ export const site: Site = {
         body: "The alternative is hardware: ordering it, imaging it, shipping it, securing it, and recovering it from people who leave. A new hire two time zones away starts Monday and the laptop does not.",
       },
     ],
+    answer:
+      "We took the safe option and automated it. You get the architecture that holds, without the engineering time that made it impractical.",
+    comparison: {
+      theirs: {
+        label: "How most platforms work",
+        body: "One shared cloud account. Customers separated by rules in software. Quick to deploy, hard to explain to a nervous client, and one misconfiguration away from an incident.",
+      },
+      ours: {
+        label: "How Offsite Labs works",
+        body: "One cloud account per customer, built automatically. The separation is an account boundary, not a rule in our software. That boundary holds even when the code is wrong.",
+      },
+    },
   },
 
   controlPlane: {
@@ -245,6 +275,10 @@ export const site: Site = {
       {
         label: "Businesses buying for themselves",
         who: "Companies with roughly three to thirty desktop users, no IT department or a very small one.",
+        scenario:
+          "A company hires someone two time zones away starting Monday. Ordering, imaging and shipping a laptop takes longer than that, and then the company owns a machine it cannot see. An administrator creates a desktop, assigns it, and invites the person by email address. They set their own password, sign in from a browser, and start work.",
+        outcome:
+          "No hardware, and the work stays on a machine the company controls rather than a personal laptop. When that person leaves, one action ends their access everywhere.",
         gains: [
           "No hardware to buy, ship, secure or recover",
           "A new hire works on Monday, wherever they are",
@@ -258,6 +292,10 @@ export const site: Site = {
       {
         label: "Providers running desktops for clients",
         who: "Companies delivering IT to other businesses, often already reselling someone's cloud desktop and unhappy about it.",
+        scenario:
+          "A provider signs a fifteen-person accounting firm and needs desktops running. They add the client, create the first desktop, and walk away. The platform builds a separate cloud account, network, encryption key and directory on its own. Twenty to forty minutes later it is ready, and the remaining fourteen desktops go into the environment that now exists.",
+        outcome:
+          "A client that used to be a project becomes a task, and the firm's data sits in its own account from the first minute.",
         gains: [
           "Each client separated at the account level, not by a filter",
           "Onboarding a client without booking an engineer",
@@ -384,8 +422,13 @@ export const site: Site = {
       "Not in the product today, and we would rather you heard it here: multi-factor authentication, password reset for the platform login, invoicing or payment of any kind, an audit log you can read, data export before deletion, changing someone's role after they are invited, resizing a desktop after it is created, and any location outside North America.",
   },
 
+  /**
+   * Superseded by the tabbed `audiences` section, which carries the same two stories
+   * with the audience framing attached. Kept rather than deleted: if the page ever
+   * grows a longer case-study block, the material is already written and checked.
+   */
   useCases: {
-    enabled: true,
+    enabled: false,
     eyebrow: "Who uses it",
     heading: "What that looks like in practice.",
     cases: [
@@ -453,6 +496,10 @@ export const site: Site = {
         "No reference customers we can name — the first provider is onboarding now",
       ],
       note: "If any of those is a hard requirement for you today, we are the wrong choice today. We would rather tell you now than in the second meeting.",
+    },
+    worthKnowing: {
+      label: "Worth knowing",
+      body: "Microsoft's own guidance for Azure Virtual Desktop recommends a separate tenant and subscription per customer for commercial delivery — the same conclusion we reached. Citrix's own partner documentation states that its partner console does not automatically enforce scopes. Both are on the record, and neither is ours.",
     },
   },
 

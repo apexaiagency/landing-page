@@ -13,12 +13,12 @@ import { Reveal } from "./reveal";
  */
 export function Founder({ founder }: { founder: Site["founder"] }) {
   return (
-    <SectionShell id="founder" className="border-t border-line-soft py-20 sm:py-28">
+    <SectionShell id="founder" className="border-t border-line py-24">
       <SectionHeading eyebrow={founder.eyebrow} heading={founder.heading} />
 
       <Reveal
         delay={80}
-        className="mt-10 rounded-card border border-line-soft bg-surface p-6 sm:mt-12 sm:p-8 lg:flex lg:gap-12"
+        className="mt-12 rounded-card border border-line bg-surface p-8 lg:flex lg:gap-12"
       >
         <div className="lg:w-56 lg:shrink-0">
           <div className="font-display text-xl font-semibold tracking-tight text-fg">

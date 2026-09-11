@@ -5,10 +5,10 @@ import { Logo } from "./logo";
 export function SiteFooter({ site }: { site: Site }) {
   const { footer, ctas, brand } = site;
   return (
-    <footer className="border-t border-line-soft bg-surface">
+    <footer className="border-t border-line">
       <div className="mx-auto max-w-column px-6 py-16">
         {/* Final CTA band */}
-        <div className="flex flex-col gap-6 rounded-card border border-line bg-raised p-8 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-6 rounded-card border border-line bg-surface p-8 sm:flex-row sm:items-center sm:justify-between">
           <div className="max-w-md">
             <p className="font-display text-xl font-semibold tracking-tight text-fg">
               {footer.ctaHeading}

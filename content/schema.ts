@@ -75,7 +75,20 @@ const HeroSchema = z.object({
   enabled: z.boolean(),
   eyebrow: z.string().min(1),
   headline: z.string().min(1),
+  /**
+   * The one phrase in the headline set in accent. Must appear verbatim in `headline`
+   * or it is ignored — a mismatch silently drops the emphasis rather than breaking.
+   */
+  headlineAccent: z.string().min(1).optional(),
   subhead: z.string().min(1),
+  /**
+   * The hero's right-hand panel. It exists because the honest alternative to a product
+   * screenshot is not an empty column — it is the claims themselves, set as an object.
+   * Every line must be a Current capability.
+   */
+  checklist: z.object({ label: z.string().min(1), items: z.array(z.string().min(1)).min(3) }),
+  /** In-page anchor beside the CTA. Not a second conversion path. */
+  secondaryLink: z.object({ label: z.string().min(1), href: z.string().min(1) }),
   /** Provisioning time, as a Fact. If known:false the number is omitted entirely. */
   provisioningTime: z.object({
     fact: FactSchema,
@@ -167,6 +180,13 @@ const ProblemSchema = z.object({
       })
     )
     .min(1),
+  /** The turn: what we did about it, set against the accent rule. */
+  answer: z.string().min(1),
+  /** Them vs us, as one ruled object. The comparison is the argument. */
+  comparison: z.object({
+    theirs: z.object({ label: z.string().min(1), body: z.string().min(1) }),
+    ours: z.object({ label: z.string().min(1), body: z.string().min(1) }),
+  }),
 });
 
 /** Control plane in depth — capability panels, each with a bespoke real-UI treatment. */
@@ -281,6 +301,8 @@ const TrustSchema = z.object({
     items: z.array(z.string().min(1)).min(1),
     note: z.string().optional(),
   }),
+  /** On-the-record facts from other vendors. Quote accurately or remove. */
+  worthKnowing: z.object({ label: z.string().min(1), body: z.string().min(1) }),
 });
 
 /**
@@ -317,6 +339,10 @@ const AudiencesSchema = z.object({
       z.object({
         label: z.string().min(1),
         who: z.string().min(1),
+        /** The concrete story. Rendered as "the situation". */
+        scenario: z.string().min(1),
+        /** What changes because of it. Rendered as "the outcome". */
+        outcome: z.string().min(1),
         gains: z.array(z.string().min(1)).min(1),
         /** The honest limit for this audience. Rendered, not hidden. */
         note: z.string().optional(),

@@ -1,10 +1,15 @@
 import type { Config } from "tailwindcss";
 
 /**
- * Design tokens — dark-first premium identity (Linear/Vercel-inspired), adapted from
- * the platform's Premium Frontend Redesign spec (2026-08-13). The discipline that makes
- * it read as "serious infrastructure": one accent (amber) used ONLY on interactive
- * elements + status-ready dots, 1px hairline borders instead of shadows, tight radii.
+ * Design tokens — taken from the Figma Make design (src/index.css @theme block).
+ *
+ * Two things in it do more work than anything else. The `paper` surface lets one
+ * section invert to light, which breaks a long dark page into two acts. And hairlines
+ * are drawn as `gap-px` over a `rule`-coloured parent rather than as borders, so a grid
+ * of cards reads as one ruled object instead of a row of boxes.
+ *
+ * Orange stays reserved for interactive elements, status and the single emphasised
+ * phrase per heading. The moment it decorates, it stops signalling.
  */
 const config: Config = {
   content: [
@@ -15,44 +20,49 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Near-black surfaces
-        bg: "#0a0a0b",
-        surface: "#111113", // card layer 1
-        raised: "#141416", // card layer 2 (hover/raised)
-        // Hairline / border ladder
+        // Ink ladder — the dark ground and its two card layers
+        bg: "#0D0D0D",
+        surface: "#1A1A1A",
+        raised: "#252525",
+        // The light act
+        paper: {
+          DEFAULT: "#F7F6F4",
+          2: "#EEEAE4",
+          rule: "#D8D4CC",
+        },
+        // Hairlines
         line: {
-          DEFAULT: "#27272a",
-          soft: "#1c1c1f",
-          strong: "#3f3f46",
+          DEFAULT: "#2E2E2E",
+          soft: "#2E2E2E",
+          strong: "#6B6B6B",
         },
         // Text
-        fg: "#f4f4f5",
-        "fg-2": "#a1a1aa",
-        "fg-3": "#71717a",
-        // The single accent — amber. Interactive elements + status-ready only.
+        fg: "#F7F6F4",
+        "fg-2": "#9B9B9B",
+        "fg-3": "#6B6B6B",
+        // The single accent
         accent: {
-          DEFAULT: "#f59e0b",
-          hover: "#fbbf24",
-          fg: "#1c1917", // foreground on accent
+          DEFAULT: "#F5A623",
+          hover: "#D8881A",
+          fg: "#0D0D0D",
         },
-        // Status: ready = amber (dot+glow); off = neutral gray; attention = red family.
         status: {
-          off: "#52525b",
+          off: "#3A3A3A",
           attention: "#f87171",
           "attention-dim": "#b91c1c",
         },
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        display: ["var(--font-montserrat)", "var(--font-inter)", "system-ui", "sans-serif"],
-        mono: ["var(--font-jetbrains-mono)", "ui-monospace", "monospace"],
+        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        display: ["var(--font-sans)", "system-ui", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       maxWidth: {
         column: "72rem",
       },
       borderRadius: {
-        card: "0.875rem", // 14px cards/panels
-        control: "0.625rem", // 10px controls — matches off-sitelabs.com's button radius
+        card: "0.75rem", // 12px panels — the Figma design's rounded-xl
+        control: "0.375rem", // 6px controls — the Figma design's rounded-md
       },
       transitionTimingFunction: {
         // One shared curve for anything that moves distance (lift/slide).
