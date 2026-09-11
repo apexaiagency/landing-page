@@ -10,6 +10,7 @@ import { HowItWorks } from "@/components/how-it-works";
 import { Today } from "@/components/today";
 import { UseCases } from "@/components/use-cases";
 import { Trust } from "@/components/trust";
+import { Founder } from "@/components/founder";
 import { Faq } from "@/components/faq";
 
 export default function Page() {
@@ -33,6 +34,7 @@ export default function Page() {
         {site.today.enabled && <Today today={site.today} />}
         {site.useCases.enabled && <UseCases useCases={site.useCases} />}
         {site.trust.enabled && <Trust trust={site.trust} />}
+        {site.founder.enabled && <Founder founder={site.founder} />}
         {site.faq.enabled && <Faq faq={site.faq} />}
       </main>
       {site.footer.enabled && <SiteFooter site={site} />}

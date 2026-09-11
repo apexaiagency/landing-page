@@ -283,6 +283,23 @@ const TrustSchema = z.object({
   }),
 });
 
+/**
+ * Founder — lifted from off-sitelabs.com, which is the one section of that site that
+ * earns its place here. With no customers to name, no certifications and no audit, a
+ * named person with a checkable track record is the only proof this page actually has.
+ * Everything in it must stay verifiable: no certifications, no client counts.
+ */
+const FounderSchema = z.object({
+  enabled: z.boolean(),
+  eyebrow: z.string().min(1),
+  heading: z.string().min(1),
+  name: z.string().min(1),
+  role: z.string().min(1),
+  location: z.string().min(1),
+  /** Paragraphs, in order. */
+  body: z.array(z.string().min(1)).min(1),
+});
+
 const FaqItemSchema = z.object({
   question: z.string().min(1),
   answer: z.string().min(1),
@@ -320,6 +337,7 @@ export const SiteSchema = z.object({
   today: TodaySchema,
   useCases: UseCasesSchema,
   trust: TrustSchema,
+  founder: FounderSchema,
   // v2/v3 sections — defined so filling them later is a content edit, not code.
   commercialModel: SectionStubSchema,
   whiteLabel: SectionStubSchema,

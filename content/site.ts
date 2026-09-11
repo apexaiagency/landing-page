@@ -411,6 +411,25 @@ export const site: Site = {
     },
   },
 
+  /**
+   * Adapted from off-sitelabs.com's founder section — his own public copy, tightened
+   * and pointed at this product. Nothing here is a claim that needs checking against
+   * the source documents, because none of it is about the platform.
+   */
+  founder: {
+    enabled: true,
+    eyebrow: "Who builds it",
+    heading: "A small team you can actually reach.",
+    name: "Oke Bello",
+    role: "Founder",
+    location: "Vancouver, British Columbia",
+    body: [
+      "Ten years across web development, cybersecurity and IT management — most of it spent close enough to small businesses to watch them miss out on technology for want of an engineer they could not justify hiring.",
+      "That is the same problem this platform solves, one layer down. Per-client isolation was never architecturally hard. It was expensive in engineer hours, so almost nobody did it properly. Automating it is the whole product.",
+      "The practical version: when something breaks, you are not filing a ticket into a queue. You are talking to the people who wrote it.",
+    ],
+  },
+
   // ── v2 / v3 sections: defined so filling them later is a content edit, not code. ──
   commercialModel: { enabled: false, heading: "How the commercial model works" },
   whiteLabel: { enabled: false, heading: "White-label" },
@@ -486,7 +505,8 @@ export const site: Site = {
   footer: {
     enabled: true,
     ctaHeading: "See a client environment built from nothing.",
-    tagline: "Windows desktops in the cloud. Every client in their own account.",
+    tagline:
+      "Windows desktops in the cloud. Every client in their own account. Built in Vancouver, British Columbia.",
     // [FILL] confirm the real contact address once email is live on the new domain — see TODO.md
     contactEmail: "partners@offsitelabs.io",
     columns: [
@@ -497,6 +517,7 @@ export const site: Site = {
           { label: "How it works", href: "#how-it-works" },
           { label: "What it does today", href: "#today" },
           { label: "Trust", href: "#trust" },
+          { label: "Who builds it", href: "#founder" },
           { label: "Questions", href: "#faq" },
         ],
       },

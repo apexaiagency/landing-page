@@ -4,6 +4,7 @@
 
 :root {
   --font-inter: "Inter", system-ui, sans-serif;
+  --font-montserrat: "Montserrat", system-ui, sans-serif;
   --font-jetbrains-mono: "JetBrains Mono", monospace;
   --ease-move: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
@@ -18,6 +19,17 @@
     @apply bg-bg text-fg antialiased;
     font-feature-settings: "cv11", "ss01";
     text-rendering: optimizeLegibility;
+
+    /*
+     * The dot grid from off-sitelabs.com, translated to the dark ground. On the old
+     * site it is the one texture doing all the work — it keeps a large empty page from
+     * reading as unfinished. At 3.5% white it is felt rather than seen; anything
+     * stronger competes with the amber, which is the only element allowed to draw.
+     */
+    background-image: radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 22px 22px;
+    background-position: -1px -1px;
+    background-attachment: fixed;
   }
 
   /* Amber focus ring on every interactive element (WCAG 2.4.7). */
@@ -32,9 +44,13 @@
     color: #fff;
   }
 
-  /* Tighter display tracking — Linear/Vercel heading feel with Inter. */
+  /*
+   * Montserrat is a geometric face and sets looser than Inter, so it needs less negative
+   * tracking than the -0.021em Inter wanted — over-tightening it closes the counters on
+   * the round letterforms that give it its warmth.
+   */
   .font-display {
-    letter-spacing: -0.021em;
+    letter-spacing: -0.012em;
   }
 }
 

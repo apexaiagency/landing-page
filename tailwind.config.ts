@@ -44,7 +44,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        display: ["var(--font-inter)", "system-ui", "sans-serif"],
+        display: ["var(--font-montserrat)", "var(--font-inter)", "system-ui", "sans-serif"],
         mono: ["var(--font-jetbrains-mono)", "ui-monospace", "monospace"],
       },
       maxWidth: {
@@ -52,7 +52,7 @@ const config: Config = {
       },
       borderRadius: {
         card: "0.875rem", // 14px cards/panels
-        control: "0.5rem", // 8px controls
+        control: "0.625rem", // 10px controls — matches off-sitelabs.com's button radius
       },
       transitionTimingFunction: {
         // One shared curve for anything that moves distance (lift/slide).

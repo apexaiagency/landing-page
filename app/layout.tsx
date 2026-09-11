@@ -5,9 +5,14 @@ import { getSite } from "@/content";
 
 /**
  * Type system — justified in one line:
- * Inter (self-hosted, 400–700) drives both body and headings — tight negative tracking
- * on display sizes gives the Linear/Vercel infrastructure feel; JetBrains Mono carries
- * eyebrow labels and the control-plane data, signaling a real console, not a mockup.
+ * Montserrat 600/700 carries the headings, taken from off-sitelabs.com so the two web
+ * properties read as one company; Inter (self-hosted, 400–700) carries body text, where
+ * its larger x-height reads better at small sizes than Montserrat does; JetBrains Mono
+ * carries eyebrow labels and the control-plane data, signaling a real console.
+ *
+ * Montserrat is the one piece of the old site's identity that survives the move to the
+ * dark system — its palette and its light ground do not. If the pairing ever needs to go
+ * colder, Space Grotesk is already sitting in app/fonts and is a one-token swap.
  *
  * Fonts are self-hosted (woff2 in app/fonts) rather than fetched from Google at build:
  * no build-time network dependency, faster LCP (no third-party connection), and no
@@ -21,6 +26,14 @@ const inter = localFont({
     { path: "./fonts/inter-latin-500-normal.woff2", weight: "500", style: "normal" },
     { path: "./fonts/inter-latin-600-normal.woff2", weight: "600", style: "normal" },
     { path: "./fonts/inter-latin-700-normal.woff2", weight: "700", style: "normal" },
+  ],
+});
+const montserrat = localFont({
+  variable: "--font-montserrat",
+  display: "swap",
+  src: [
+    { path: "./fonts/montserrat-latin-600-normal.woff2", weight: "600", style: "normal" },
+    { path: "./fonts/montserrat-latin-700-normal.woff2", weight: "700", style: "normal" },
   ],
 });
 const jetbrainsMono = localFont({
@@ -87,7 +100,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${montserrat.variable} ${jetbrainsMono.variable}`}>
       <body className="font-sans">
         <script
           type="application/ld+json"
