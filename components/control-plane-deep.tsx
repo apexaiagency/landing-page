@@ -181,7 +181,6 @@ export function ControlPlaneDeep({
         </p>
         <div className="flex flex-wrap gap-3">
           <CtaButton cta={ctas.pilot} position="control-plane" variant="primary" />
-          <CtaButton cta={ctas.pricing} position="control-plane" variant="secondary" />
         </div>
       </div>
     </SectionShell>

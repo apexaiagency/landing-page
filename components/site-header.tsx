@@ -1,23 +1,38 @@
 import type { Site } from "@/content";
 import { CtaButton } from "./cta-button";
+import { Logo } from "./logo";
 
 export function SiteHeader({ site }: { site: Site }) {
   return (
-    <header className="sticky top-0 z-40 border-b border-line-soft bg-bg/80 backdrop-blur-md">
-      <div className="mx-auto flex max-w-column items-center justify-between px-6 py-3.5">
-        <a href="#top" className="flex items-center gap-2.5">
-          <span aria-hidden className="inline-flex h-5 w-5 items-center justify-center rounded-[5px] bg-accent">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent-fg" />
-          </span>
-          <span className="font-display text-[15px] font-semibold tracking-tight text-fg">
-            {site.brand.name}
-          </span>
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-bg/95 backdrop-blur-sm">
+      <div className="mx-auto flex h-16 max-w-column items-center justify-between px-6">
+        <a href="#top" aria-label={`${site.brand.name} — back to top`} className="flex items-center">
+          <Logo />
         </a>
+        {/* One CTA, repeated everywhere (marketing doc §8). The pricing CTA is not
+            rendered anywhere on the page: it promised a wholesale rate card within a
+            business day and that document does not exist yet. */}
+        <nav className="hidden items-center gap-8 md:flex">
+          {[
+            { label: "How it works", href: "#how-it-works" },
+            { label: "What it does", href: "#today" },
+            { label: "Who it is for", href: "#audiences" },
+            { label: "Trust", href: "#trust" },
+          ].map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              className="text-sm text-fg-3 transition-colors duration-fast hover:text-fg"
+            >
+              {l.label}
+            </a>
+          ))}
+        </nav>
         <CtaButton
-          cta={site.ctas.pricing}
+          cta={site.ctas.pilot}
           position="header"
-          variant="secondary"
-          className="px-4 py-2"
+          variant="primary"
+          className="px-5 py-2"
         />
       </div>
     </header>

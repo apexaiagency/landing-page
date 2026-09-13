@@ -25,11 +25,11 @@ export function CtaButton({
   const { open } = useLeadForm();
 
   const base =
-    "group inline-flex items-center justify-center gap-2 rounded-control px-5 py-3 text-sm font-medium transition duration-fast ease-move will-change-transform hover:-translate-y-px active:translate-y-0 active:scale-[.98]";
+    "group inline-flex items-center justify-center gap-2 rounded-control px-7 py-3.5 text-sm font-semibold transition-colors duration-fast";
   const styles =
     variant === "primary"
       ? "bg-accent text-accent-fg hover:bg-accent-hover"
-      : "border border-line text-fg-2 hover:border-line-strong hover:text-fg";
+      : "border border-line text-fg hover:border-line-strong";
 
   return (
     <a

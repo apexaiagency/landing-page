@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --font-inter: "Inter", system-ui, sans-serif;
-  --font-jetbrains-mono: "JetBrains Mono", monospace;
+  --font-sans: "DM Sans", system-ui, sans-serif;
+  --font-mono: "DM Mono", monospace;
   --ease-move: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -18,23 +18,40 @@
     @apply bg-bg text-fg antialiased;
     font-feature-settings: "cv11", "ss01";
     text-rendering: optimizeLegibility;
+
+    /*
+     * The dot grid is gone. The Figma design gets its texture from the ruled grids and
+     * the light/dark section break instead, and running both made the page busy.
+     */
   }
 
   /* Amber focus ring on every interactive element (WCAG 2.4.7). */
   :where(a, button, input, select, textarea, [tabindex]):focus-visible {
     @apply outline-none ring-2 ring-accent ring-offset-2;
-    --tw-ring-offset-color: #0a0a0b;
+    --tw-ring-offset-color: #0D0D0D;
     border-radius: 6px;
   }
 
   ::selection {
-    background: rgba(245, 158, 11, 0.28);
+    background: rgba(245, 166, 35, 0.28);
     color: #fff;
   }
 
-  /* Tighter display tracking — Linear/Vercel heading feel with Inter. */
+  /* DM Sans sets fairly tight already; display sizes only need a light pull. */
   .font-display {
-    letter-spacing: -0.021em;
+    letter-spacing: -0.02em;
+  }
+
+  /* The custom scrollbar from the Figma design. */
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #3a3a3a;
+    border-radius: 3px;
   }
 }
 

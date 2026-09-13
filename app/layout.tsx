@@ -4,31 +4,33 @@ import "./globals.css";
 import { getSite } from "@/content";
 
 /**
- * Type system — justified in one line:
- * Inter (self-hosted, 400–700) drives both body and headings — tight negative tracking
- * on display sizes gives the Linear/Vercel infrastructure feel; JetBrains Mono carries
- * eyebrow labels and the control-plane data, signaling a real console, not a mockup.
+ * Type system — taken from the Figma Make design, which is now the reference for
+ * this page's visual system:
  *
- * Fonts are self-hosted (woff2 in app/fonts) rather than fetched from Google at build:
- * no build-time network dependency, faster LCP (no third-party connection), and no
- * third-party font request from a page MSPs forward to their own clients.
+ * DM Sans (variable, 300–700, self-hosted) carries everything a reader reads. It is a
+ * geometric grotesque with open counters — warmer than Inter without tipping into the
+ * softness the old off-sitelabs.com identity had, and it sits next to the logo's
+ * wordmark as though they were chosen together.
+ *
+ * DM Mono carries eyebrow labels and status text, signalling a real console rather
+ * than a mockup — the same job JetBrains Mono did before, in the same family voice.
+ *
+ * Self-hosted rather than fetched from Google at build: no build-time network
+ * dependency, faster LCP, and no third-party font request from a page a provider may
+ * forward to their own clients. (The Figma export imports both from Google at runtime;
+ * that is the one thing from it deliberately not carried across.)
  */
-const inter = localFont({
-  variable: "--font-inter",
+const dmSans = localFont({
+  variable: "--font-sans",
   display: "swap",
-  src: [
-    { path: "./fonts/inter-latin-400-normal.woff2", weight: "400", style: "normal" },
-    { path: "./fonts/inter-latin-500-normal.woff2", weight: "500", style: "normal" },
-    { path: "./fonts/inter-latin-600-normal.woff2", weight: "600", style: "normal" },
-    { path: "./fonts/inter-latin-700-normal.woff2", weight: "700", style: "normal" },
-  ],
+  src: [{ path: "./fonts/dm-sans-latin-variable.woff2", weight: "300 700", style: "normal" }],
 });
-const jetbrainsMono = localFont({
-  variable: "--font-jetbrains-mono",
+const dmMono = localFont({
+  variable: "--font-mono",
   display: "swap",
   src: [
-    { path: "./fonts/jetbrains-mono-latin-400-normal.woff2", weight: "400", style: "normal" },
-    { path: "./fonts/jetbrains-mono-latin-500-normal.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/dm-mono-latin-400.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/dm-mono-latin-500.woff2", weight: "500", style: "normal" },
   ],
 });
 
@@ -87,7 +89,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${dmSans.variable} ${dmMono.variable}`}>
       <body className="font-sans">
         <script
           type="application/ld+json"
