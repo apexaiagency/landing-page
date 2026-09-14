@@ -1,0 +1,262 @@
+{
+  "_meta": {
+    "site": "offsitelabs.io",
+    "brand": "Offsite Labs",
+    "version": "draft-1",
+    "date": "2026-09-14",
+    "note": "Every string here traces to a Current capability in the Offsite Labs v1.0 technical and marketing documentation. Do not add copy to this file without checking it the same way.",
+    "voice": "Plain and blunt. Short sentences. No buzzwords, no hedging, no em dashes.",
+    "cta": { "label": "Book a walkthrough", "href": "/walkthrough" }
+  },
+
+  "hero": {
+    "h1": "Cloud computers that run themselves.",
+    "body": [
+      "Offsite Labs gives your business real Windows machines in the cloud. The platform builds them, watches every one of them every six hours, and repairs what it can before anybody files a ticket.",
+      "No hardware. No server. Nobody who has to know AWS."
+    ],
+    "cta": { "label": "Book a walkthrough", "href": "/walkthrough" },
+    "imageRule": "Any product shot must show the product as it is today: four locations, the real computers list, real screens. Never a mockup of something unbuilt."
+  },
+
+  "band": {
+    "heading": "Everyone is building AI. We build the thing you run it on.",
+    "body": [
+      "There is no AI in this product. Nothing here is decided by a model. Building a machine, repairing it and tracking what it costs are ordinary code that does the same thing every time.",
+      "We went back to what people actually need, which is real compute they can reach, that somebody else keeps running."
+    ]
+  },
+
+  "selector": {
+    "heading": "Three ways people use this. Pick yours and the rest of the page changes.",
+    "behaviour": "Soft selector below the hero, not a gate. No path pre-selected. Every shared section below stays fully visible before any click.",
+    "options": [
+      { "id": "msp",  "label": "I run an MSP",   "sub": "I deliver IT to other businesses and I need my clients kept properly apart." },
+      { "id": "org",  "label": "I run a team",   "sub": "I need machines for a team, a project or contractors, without a hardware order." },
+      { "id": "solo", "label": "It's just me",   "sub": "I want a proper work computer I can reach from anywhere." }
+    ]
+  },
+
+  "paths": {
+    "msp": {
+      "h2": "Your clients are separated by an account boundary. Not by our code.",
+      "body": [
+        "Every platform in this market hands you the same choice. Put all your clients in one cloud account and separate them with software rules, which is quick to buy and permanently risky. Or give each client their own account, which is genuinely safe and takes an engineer several hours per client.",
+        "Almost everyone picks the first one, because the second does not scale by hand.",
+        "We automated the second one.",
+        "Each of your clients gets their own cloud account, their own network, their own encryption key, their own directory. There is no shared place for one client's data to reach another, because there is nothing shared. A software rule is only as good as the code enforcing it. An account boundary holds even when the code is wrong.",
+        "A brand new client takes about twenty to forty minutes and nobody has to watch it. Their costs arrive already separated, because their accounts are already separate. And the product never says network, account, instance or image, so anyone on your service desk can run it."
+      ],
+      "proof": {
+        "heading": "Two facts you can check, neither of them ours",
+        "items": [
+          "Microsoft's own Azure Virtual Desktop guidance recommends a separate tenant and subscription per customer for commercial delivery.",
+          "Citrix's own partner documentation states that its partner console does not automatically enforce scopes."
+        ]
+      },
+      "caveat": {
+        "heading": "Where we are straight with you",
+        "body": [
+          "The provider screens are being built right now. Today, adding a client and switching between clients happen through our API, which means we sit alongside you for your first few. That works for a first partner. It does not scale, and we are not going to pretend it does."
+        ]
+      }
+    },
+
+    "org": {
+      "h2": "Machines for your team, in a cloud account that is only yours.",
+      "body": [
+        "Your own network, your own encryption key, your own directory. Volumes are encrypted with your key and that is not optional.",
+        "Our platform cannot reach two customers in one request. Every internal call carries a tag naming which customer it is for, and an account refuses anything that arrives untagged. Our control plane can only deploy our approved templates into your account. It cannot run commands there.",
+        "There are no long-lived credentials anywhere in the platform, because creating them is denied by policy inside every customer account. Activity logging runs at the organisation level to a separate account nobody reaches from a desktop.",
+        "Four locations: Virginia, Ohio, Oregon and central Canada. Chosen when your first machine is created, and locked from then on."
+      ],
+      "caveat": {
+        "heading": "What we do not have yet",
+        "intro": "You would find all of this in your first security review, so here it is now.",
+        "items": [
+          "No multi-factor authentication.",
+          "No single sign-on.",
+          "No audit log you can read.",
+          "No certifications, no third-party audit, no penetration test.",
+          "No published service level agreement."
+        ],
+        "outro": "Where each of those sits is in the roadmap further down. If one of them is a hard requirement today, we are not the right fit yet, and we would rather say so now than in your second meeting."
+      }
+    },
+
+    "solo": {
+      "h2": "A proper work computer that isn't sitting on your desk.",
+      "body": [
+        "A real Windows machine, yours, reachable from any browser or from a desktop app. Turn it off, restart it, rename it. Connect to it when it is off and it starts itself.",
+        "You set your own password and you are the only person who knows it. Nobody at Offsite Labs can see it. No administrator can either. Every machine has its own sign-in and we hold none of them.",
+        "Your laptop stops needing to be fast, because the work is not happening on it."
+      ],
+      "caveat": {
+        "body": [
+          "It arrives as a blank Windows machine. Nothing is pre-installed. You install what you need, the same as you would on any new computer."
+        ]
+      }
+    }
+  },
+
+  "howItWorks": {
+    "h2": "How it works",
+    "steps": [
+      { "n": 1, "title": "Ask for a computer.", "body": "That is the whole of your part." },
+      { "n": 2, "title": "The platform builds your environment.", "body": "A new cloud account, a private network inside it, an encryption key and a directory that belong only to you, then the machine. In order, with retries. About twenty to forty minutes, and nobody watches it." },
+      { "n": 3, "title": "Sign in and set your password.", "body": "From a browser, or from a desktop app if you prefer one." },
+      { "n": 4, "title": "Add people and more machines from a list.", "body": "Your environment already exists, so everything after the first is quicker." }
+    ]
+  },
+
+  "useCases": {
+    "h2": "It is a full Windows computer with internet access. If it runs on Windows, it runs here.",
+    "items": [
+      { "title": "Software that never left Windows", "body": "The practice management system, the accounting package, the design tool that only ever shipped one way." },
+      { "title": "Contractors and remote staff", "body": "The work sits on a machine you control instead of a personal laptop you never see." },
+      { "title": "A machine that outlives the person", "body": "Someone leaves, you transfer their machine to whoever picks up the work, and the new person sets their own password. The job survives the departure." },
+      { "title": "Agents and automation", "body": "Automation and agent software that runs on Windows runs here, on a machine that stays up when your laptop closes. We are not in the AI race. We are the floor it stands on." },
+      { "title": "A vendor that demands a fixed address", "body": "We can set your environment up so every machine shares one stable outbound address, for software that only accepts addresses on an allowlist. Arranged with us at onboarding, before your first machine exists." }
+    ]
+  },
+
+  "management": {
+    "h2": "Every six hours, whether anyone is watching or not.",
+    "body": [
+      "The platform compares its own records against what is actually running in every environment. It removes what has been left stranded and is quietly billing. It can rebuild a broken machine onto a clean system drive while keeping the user's files, and it stops after two automatic rebuilds in a day and asks a person instead.",
+      "Most platforms in this market sell you a better console. We do the management."
+    ],
+    "caveat": [
+      "One thing to know: today that repair is invisible to you. Your screen can still show a problem after the machine is already fine. Telling you what happened is the next thing being built."
+    ]
+  },
+
+  "trust": {
+    "h2": "Trust",
+    "trueToday": {
+      "heading": "True today",
+      "items": [
+        "Your own cloud account, network, encryption key and directory",
+        "Volumes encrypted with your own key, and it is not optional",
+        "No long-lived credentials anywhere in the platform. Creating them is denied by policy in every customer account.",
+        "Every internal request tagged with which customer it is for. Accounts reject anything untagged.",
+        "Our control plane can deploy our approved templates into your account and nothing else",
+        "Organisation-level activity logging to a separate account",
+        "35 days of point-in-time recovery on our database. The restore was tested on 21 July 2026 and completed in about eleven minutes. That drill ran at trivial data volume, so treat the figure as tested rather than proven at scale."
+      ]
+    },
+    "notBuilt": {
+      "heading": "Not built yet",
+      "items": [
+        "Multi-factor authentication",
+        "Password reset for the platform login",
+        "An audit log you can read",
+        "Invoicing, billing history or payment",
+        "Data export before deletion",
+        "Any certification, audit, penetration test or service level agreement"
+      ]
+    },
+    "openIssue": "RESOLVED 14 Sep 2026 by carrying the caveat in the sentence, which was the first of the two options the spec allowed. The figure stays on the page and now states its own limit. Drop it instead if a second drill at realistic size is not run before launch."
+  },
+
+  "roadmap": {
+    "h2": "What's next",
+    "rule": "Labelled by real status, never by date. Nothing enters a column without a build actually underway for that column's label.",
+    "columns": [
+      {
+        "status": "Being built now",
+        "items": [
+          "Screens for managed service providers: registration, adding a client, switching between clients, and the cost rollup across them"
+        ]
+      },
+      {
+        "status": "Planned next",
+        "items": [
+          "Email that comes from us and looks like it",
+          "Telling you when something failed, when a machine was repaired, and what to do next"
+        ]
+      },
+      {
+        "status": "Designed, not started",
+        "items": [
+          "Multi-factor authentication",
+          "Threat detection",
+          "An audit log you can read"
+        ]
+      }
+    ]
+  },
+
+  "sustainability": {
+    "h2": "Your laptop stops needing to be fast.",
+    "body": [
+      "The work happens on the machine in the cloud. The thing on your desk is a screen, a keyboard and a connection. A five year old laptop reaches a four processor machine exactly as well as a new one does.",
+      "So the hardware refresh you had budgeted might not be a refresh. It might be nothing."
+    ],
+    "founderNote": {
+      "heading": "Why we built it this way",
+      "attribution": "Jay Hamidova, co-founder",
+      "draft": true,
+      "body": [
+        "I kept watching companies throw out working computers because the software got heavier. The machines were fine. They just could not keep up with what was being asked of them.",
+        "Moving the work off the desk fixes that. The computer in front of you stops being the bottleneck, so it stops being the thing you replace every three years.",
+        "We did not build this as a climate product. We built it because it is the obvious way round, and keeping working hardware out of a landfill is a reason to do it rather than a line to put on the front page."
+      ]
+    }
+  },
+
+  "close": {
+    "h2": "Book a walkthrough.",
+    "body": [
+      "We will build a brand new environment from nothing while you watch, and go through what it costs for your situation."
+    ],
+    "cta": { "label": "Book a walkthrough", "href": "/walkthrough" },
+    "optionalPricingLine": {
+      "include": true,
+      "text": "Pricing is flat and monthly, per machine. No hourly metering and no usage bill that moves.",
+      "note": "Publishes no number, so the wholesale spread stays invisible to a partner's clients. Set include to false to keep pricing entirely off the site."
+    }
+  },
+
+  "constraints": {
+    "neverSay": [
+      "any certification",
+      "any audit",
+      "penetration test",
+      "service level agreement",
+      "uptime figure",
+      "customer count",
+      "named customer",
+      "testimonial",
+      "multi-factor authentication as available",
+      "spend alerts",
+      "budgets",
+      "per-customer audit trail",
+      "data retention period",
+      "threat detection",
+      "automated invoicing",
+      "white labelling",
+      "any region outside North America",
+      "any named application on a shared desktop",
+      "any provisioning time other than twenty to forty minutes for a brand new client",
+      "any timing for adding a machine to an existing customer",
+      "enterprise-grade security",
+      "currently in beta",
+      "coming soon for anything without a build underway"
+    ],
+    "doNotBuild": [
+      "Logo wall. There are no reference customers.",
+      "Metrics band. There are no measured numbers to fill it.",
+      "Testimonials.",
+      "Long feature grid. Most of what would fill it is not built.",
+      "Pricing table. By decision, not by necessity."
+    ],
+    "removeFromCurrentSite": [
+      { "string": "sold only through managed service providers", "why": "Self-service registration is open in the product. Any partner disproves it in thirty seconds." },
+      { "string": "we never sell direct", "why": "Same problem. The direct-price-at-or-above-partner-price mechanic that would make it honest has not been decided." },
+      { "string": "there is no end-customer signup", "why": "There is. Anyone can create an account right now." },
+      { "string": "wholesale rate card within one business day", "why": "The rate card exists internally but is not customer-ready, and public pricing is off by decision. Replace with the walkthrough CTA." },
+      { "string": "offsiteLABS / Off-Site Desktops", "why": "Both still appear in live product strings and on the site. Everything customer-facing is now Offsite Labs." }
+    ]
+  }
+}

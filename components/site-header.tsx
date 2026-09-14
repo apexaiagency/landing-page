@@ -1,8 +1,8 @@
-import type { Site } from "@/content";
+import type { Site, Cta } from "@/content";
 import { CtaButton } from "./cta-button";
 import { Logo } from "./logo";
 
-export function SiteHeader({ site }: { site: Site }) {
+export function SiteHeader({ site, cta }: { site: Site; cta: Cta }) {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-bg/95 backdrop-blur-sm">
       <div className="mx-auto flex h-16 max-w-column items-center justify-between px-6">
@@ -15,9 +15,9 @@ export function SiteHeader({ site }: { site: Site }) {
         <nav className="hidden items-center gap-8 md:flex">
           {[
             { label: "How it works", href: "#how-it-works" },
-            { label: "What it does", href: "#today" },
-            { label: "Who it is for", href: "#audiences" },
+            { label: "What it is for", href: "#use-cases" },
             { label: "Trust", href: "#trust" },
+            { label: "What's next", href: "#roadmap" },
           ].map((l) => (
             <a
               key={l.href}
@@ -28,12 +28,7 @@ export function SiteHeader({ site }: { site: Site }) {
             </a>
           ))}
         </nav>
-        <CtaButton
-          cta={site.ctas.pilot}
-          position="header"
-          variant="primary"
-          className="px-5 py-2"
-        />
+        <CtaButton cta={cta} position="header" variant="primary" className="px-5 py-2" />
       </div>
     </header>
   );
