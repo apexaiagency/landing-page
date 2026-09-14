@@ -17,7 +17,13 @@
  */
 
 const BOX = 340; // the coordinate space everything below is expressed in
-const TILE = 48;
+const TILE = 48; // the three satellites
+/**
+ * The centre disc carrying the mark. Sized independently of the satellites so the mark
+ * reads as the subject rather than a fourth node. At 84 it still clears the inner ring
+ * by a comfortable margin: the ring sits at radius 126, the disc reaches 42.
+ */
+const MARK = 84;
 const C = BOX / 2;
 
 /** Percentages of BOX, so the whole piece scales with its column instead of clipping. */
@@ -77,14 +83,14 @@ export function Constellation() {
       <div
         className="absolute flex items-center justify-center rounded-full border border-accent bg-surface"
         style={{
-          left: pct(C - TILE / 2),
-          top: pct(C - TILE / 2),
-          width: pct(TILE),
-          height: pct(TILE),
+          left: pct(C - MARK / 2),
+          top: pct(C - MARK / 2),
+          width: pct(MARK),
+          height: pct(MARK),
         }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/mark.png" alt="" className="w-[62%] object-contain" />
+        <img src="/mark.png" alt="" className="w-[64%] object-contain" />
       </div>
 
       {TILES.map((t) => (
