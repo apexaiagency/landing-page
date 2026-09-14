@@ -29,7 +29,7 @@
   },
 
   "selector": {
-    "heading": "Three ways people use this. Pick yours and the rest of the page changes.",
+    "heading": "View your experience with Offsite based on who you are:",
     "behaviour": "Soft selector below the hero, not a gate. No path pre-selected. Every shared section below stays fully visible before any click.",
     "options": [
       { "id": "msp",  "label": "I run an MSP",   "sub": "I deliver IT to other businesses and I need my clients kept properly apart." },
