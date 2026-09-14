@@ -1,8 +1,18 @@
 import type { Site, Cta } from "@/content";
+import type { Landing } from "@/content/landing";
 import { CtaButton } from "./cta-button";
+import { LoginButton } from "./login-button";
 import { Logo } from "./logo";
 
-export function SiteHeader({ site, cta }: { site: Site; cta: Cta }) {
+export function SiteHeader({
+  site,
+  cta,
+  login,
+}: {
+  site: Site;
+  cta: Cta;
+  login: Landing["login"];
+}) {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-bg/95 backdrop-blur-sm">
       <div className="mx-auto flex h-16 max-w-column items-center justify-between px-6">
@@ -27,7 +37,10 @@ export function SiteHeader({ site, cta }: { site: Site; cta: Cta }) {
             </a>
           ))}
         </nav>
-        <CtaButton cta={cta} position="header" variant="primary" className="px-5 py-2" />
+        <div className="flex items-center gap-3">
+          <LoginButton login={login} />
+          <CtaButton cta={cta} position="header" variant="primary" className="px-5 py-2" />
+        </div>
       </div>
     </header>
   );

@@ -206,6 +206,12 @@
     }
   },
 
+  "login": {
+    "label": "Log in",
+    "href": "PLACEHOLDER_NOT_CONNECTED",
+    "note": "Destination not decided yet. Replace href with the real sign-in URL. While the placeholder stands the button renders as disabled rather than as a link, so nothing ships pointing nowhere, and the claim check prints a reminder on every build."
+  },
+
   "affiliation": {
     "eyebrow": "Where we are",
     "text": "Offsite Labs is part of the Labs17 batch at League of Innovators.",

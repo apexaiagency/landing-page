@@ -41,7 +41,7 @@ export default function Page() {
     <LeadFormProvider form={site.form} signupHandoffUrl={signupHandoffUrl}>
       <AnalyticsBoot />
       <span id="top" />
-      <SiteHeader site={site} cta={cta} />
+      <SiteHeader site={site} cta={cta} login={landing.login} />
       <main>
         <Hero hero={landing.hero} cta={cta} />
         <PositioningBand band={landing.band} />

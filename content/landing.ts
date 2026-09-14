@@ -112,6 +112,17 @@ export const LandingSchema = z.object({
     }),
   }),
   /**
+   * Sign-in for people who already have an account. Navigation, not conversion: it is
+   * not a second call to action competing with the walkthrough, which is why it is
+   * styled quietly and never repeated down the page.
+   */
+  login: z.object({
+    label: z.string().min(1),
+    /** The literal PLACEHOLDER_NOT_CONNECTED until a real URL is decided. */
+    href: z.string().min(1),
+    note: z.string(),
+  }),
+  /**
    * The one piece of outside credibility on the page. With the trust section removed,
    * everything else here is the company describing itself.
    */

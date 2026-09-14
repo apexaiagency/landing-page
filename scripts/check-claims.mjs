@@ -133,6 +133,16 @@ if (content.sustainability.founderNote.draft) {
   );
 }
 
+// ── 4b. sign-in destination ─────────────────────────────────────────────────
+// A note rather than a failure, for the same reason as the founder note: the renderer
+// already refuses to ship it as a link, so the honest state is on the page and this is
+// the reminder that it is still waiting.
+if (content.login.href === "PLACEHOLDER_NOT_CONNECTED") {
+  console.log(
+    "  note: sign-in has no destination yet, so the header button renders disabled. Set login.href in the content file."
+  );
+}
+
 // ── 5. restore figure carries its caveat ────────────────────────────────────
 const restore = content.trust.trueToday.items.find((i) => /eleven minutes/i.test(i));
 if (restore && !/trivial data volume|rather than proven at scale/i.test(restore)) {

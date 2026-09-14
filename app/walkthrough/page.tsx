@@ -22,7 +22,7 @@ export default function WalkthroughPage() {
 
   return (
     <LeadFormProvider form={site.form} signupHandoffUrl={signupHandoffUrl}>
-      <SiteHeader site={site} cta={cta} />
+      <SiteHeader site={site} cta={cta} login={landing.login} />
       <main className="mx-auto max-w-2xl px-6 pb-24 pt-32 sm:pt-40">
         <h1 className="font-display text-3xl font-bold leading-tight tracking-tight md:text-4xl">
           {landing.close.h2}
