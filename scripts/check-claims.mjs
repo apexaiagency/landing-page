@@ -35,6 +35,26 @@ const content = JSON.parse(readFileSync(join(root, "content/landing-content.json
 const failures = [];
 const fail = (check, detail) => failures.push({ check, detail });
 
+/**
+ * Fields that are AUTHORING GUIDANCE and never reach the page. They live in the content
+ * file so the reasoning sits beside the copy it governs, but a scanner that reads them
+ * as copy will flag a note explaining why something is absent as though it were a claim
+ * that it exists. That happened: a note recording "no certifications, no audit and no
+ * penetration test" failed the build.
+ *
+ * Adding a path here asserts that no component renders it. Check before you do.
+ */
+const METADATA_PATHS = [
+  "hero.imageRule",
+  "selector.behaviour",
+  "roadmap.rule",
+  "trust.openIssue",
+  "close.optionalPricingLine.note",
+  "affiliation.note",
+  "login.note",
+  "industries.note",
+];
+
 /** Content paths whose whole job is to say a thing does NOT exist. */
 const DENIAL_PATHS = [
   "trust.notBuilt",
@@ -76,7 +96,10 @@ function* strings(node, path = "") {
 }
 
 const copy = [...strings(content)].filter(
-  ([p]) => !p.startsWith("constraints") && !p.startsWith("_meta")
+  ([p]) =>
+    !p.startsWith("constraints") &&
+    !p.startsWith("_meta") &&
+    !METADATA_PATHS.some((m) => p === m || p.startsWith(`${m}[`))
 );
 
 const inDenialContext = (p) => DENIAL_PATHS.some((d) => p.startsWith(d));

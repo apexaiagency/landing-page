@@ -121,6 +121,20 @@
     ]
   },
 
+  "industries": {
+    "h2": "The businesses whose software never left Windows.",
+    "intro": "Not a customer list. These are the kinds of business whose core software assumes a Windows desktop, which is the reason this exists.",
+    "items": [
+      { "name": "Accounting and bookkeeping", "body": "Practice management and tax software that never shipped for anything else." },
+      { "name": "Legal", "body": "Case and document management chosen years ago and still running." },
+      { "name": "Design and engineering", "body": "CAD and production tools with no real alternative on another platform." },
+      { "name": "Education", "body": "Student information systems, assessment tools and lab software that assume a Windows desktop." },
+      { "name": "Healthcare administration", "body": "Clinical and billing systems built for Windows and kept there." },
+      { "name": "Professional services", "body": "The one line of business application everything else is organised around." }
+    ],
+    "note": "Each line describes the software landscape of an industry, never a deployment in it. There are no customers to name yet, and a list of industries served would be the logo wall in constraints.doNotBuild with the logos removed. Healthcare and legal appear here only as places Windows-only software runs. They must not become a compliance claim: the compliance-driven segment is marked Needs validation in the marketing documentation, and there are no certifications, no audit and no penetration test."
+  },
+
   "management": {
     "h2": "Every six hours, whether anyone is watching or not.",
     "body": [

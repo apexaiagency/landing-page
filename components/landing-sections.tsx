@@ -175,6 +175,49 @@ export function UseCases({ useCases }: { useCases: Landing["useCases"] }) {
   );
 }
 
+/**
+ * Industries, as a grid whose column count is derived from the item count so it can
+ * never leave a hole. Six items sit three up; change the list to four and it goes two
+ * up; an odd count falls back to a single column. The count lives in the content file
+ * where it will be edited, and the use-cases grid already had to be rebuilt once for
+ * exactly this reason.
+ *
+ * The intro line is load-bearing, not throat-clearing. Without it a reader takes this
+ * for a client list, which it is not.
+ */
+export function Industries({ industries }: { industries: Landing["industries"] }) {
+  const n = industries.items.length;
+  const cols = n % 3 === 0 ? "md:grid-cols-3" : n % 2 === 0 ? "md:grid-cols-2" : "";
+
+  return (
+    <SectionShell id="industries" className="border-t border-line py-24">
+      <Reveal
+        as="h2"
+        className="max-w-3xl font-display text-3xl font-bold leading-[1.12] tracking-tight md:text-4xl"
+      >
+        {industries.h2}
+      </Reveal>
+      <Reveal as="p" delay={80} className="mt-5 max-w-measure text-lg leading-relaxed text-fg-2">
+        {industries.intro}
+      </Reveal>
+
+      <RuledGrid className={`mt-12 ${cols}`}>
+        {industries.items.map((item, i) => (
+          <Reveal
+            key={item.name}
+            delay={i * 50}
+            className="bg-surface p-7 transition-colors duration-base hover:bg-raised"
+          >
+            <div className="mb-5 h-px w-6 bg-accent" />
+            <h3 className="font-display text-base font-semibold tracking-tight">{item.name}</h3>
+            <p className="mt-3 text-sm leading-relaxed text-fg-2">{item.body}</p>
+          </Reveal>
+        ))}
+      </RuledGrid>
+    </SectionShell>
+  );
+}
+
 /** The caveat stays in the same block as the body. No tooltip, no accordion. */
 export function Management({ management }: { management: Landing["management"] }) {
   return (

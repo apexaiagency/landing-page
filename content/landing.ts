@@ -78,6 +78,18 @@ export const LandingSchema = z.object({
     h2: z.string().min(1),
     items: z.array(z.object({ title: z.string().min(1), body: z.string().min(1) })).length(5),
   }),
+  /**
+   * Industries, framed as where Windows-only software lives rather than where the
+   * product is deployed. The distinction is the whole section: there are no customers
+   * to name, so a list of industries SERVED would be a customer claim wearing a
+   * different hat. See the note in the content file.
+   */
+  industries: z.object({
+    h2: z.string().min(1),
+    intro: z.string().min(1),
+    items: z.array(z.object({ name: z.string().min(1), body: z.string().min(1) })).min(2),
+    note: z.string(),
+  }),
   management: z.object({
     h2: z.string().min(1),
     body: z.array(z.string().min(1)).min(1),

@@ -10,6 +10,7 @@ import {
   PositioningBand,
   HowItWorks,
   UseCases,
+  Industries,
   Management,
   Roadmap,
   Sustainability,
@@ -48,6 +49,7 @@ export default function Page() {
         <PathSelector selector={landing.selector} paths={landing.paths} cta={cta} />
         <HowItWorks howItWorks={landing.howItWorks} />
         <UseCases useCases={landing.useCases} />
+        <Industries industries={landing.industries} />
         <Management management={landing.management} />
         {/*
           Trust is deliberately NOT rendered, by decision on 14 Sep 2026. SPEC.md still
