@@ -91,7 +91,6 @@ export const site: Site = {
         links: [
           { label: "How it works", href: "#how-it-works" },
           { label: "What it is for", href: "#use-cases" },
-          { label: "Trust", href: "#trust" },
           { label: "What's next", href: "#roadmap" },
         ],
       },

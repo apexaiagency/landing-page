@@ -208,50 +208,12 @@ export function Management({ management }: { management: Landing["management"] }
 }
 
 /**
- * Two panels, equal width and equal weight. "Not built yet" gets the same heading size,
- * the same surface and the same type as "True today" — it is the differentiator, not an
- * admission, and any muting of it would undo the point.
- */
-export function Trust({ trust }: { trust: Landing["trust"] }) {
-  const panels = [trust.trueToday, trust.notBuilt];
-  return (
-    <SectionShell id="trust" className="border-t border-line bg-surface py-24">
-      <Reveal
-        as="h2"
-        className="font-display text-3xl font-bold leading-[1.12] tracking-tight md:text-4xl"
-      >
-        {trust.h2}
-      </Reveal>
-      <div className="mt-12 grid gap-6 md:grid-cols-2">
-        {panels.map((panel, i) => (
-          <Reveal key={panel.heading} delay={i * 80} className="rounded-card border border-line bg-bg p-8">
-            <h3 className="font-display text-xl font-semibold tracking-tight">{panel.heading}</h3>
-            <ul className="mt-6 space-y-4">
-              {panel.items.map((item) => (
-                <li key={item} className="flex items-start gap-3 leading-relaxed text-fg-2">
-                  <span
-                    aria-hidden
-                    className={
-                      i === 0
-                        ? "mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
-                        : "mt-3 h-px w-3 shrink-0 bg-fg-3"
-                    }
-                  />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-        ))}
-      </div>
-    </SectionShell>
-  );
-}
-
-/**
- * Sits directly under Trust on purpose: it is what turns that second panel from a list
- * of absences into a list of things with dates attached to work, not to promises.
- * Labelled by status, never by date.
+ * Labelled by real status, never by date.
+ *
+ * It used to sit under Trust and turn that section's "Not built yet" panel from a list
+ * of absences into a list of things being worked on. With Trust removed this is the
+ * only place the page says what is missing, so its first column carries more weight
+ * than it was designed to.
  */
 export function Roadmap({ roadmap }: { roadmap: Landing["roadmap"] }) {
   return (
