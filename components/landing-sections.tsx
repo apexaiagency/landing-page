@@ -3,7 +3,8 @@ import type { Cta } from "@/content";
 import { SectionShell, Tag, RuledGrid } from "./section";
 import { Reveal } from "./reveal";
 import { CtaButton } from "./cta-button";
-import { OrbitRig } from "./orbit-rig";
+import { Constellation } from "./constellation";
+import { BuildSheet } from "./build-sheet";
 
 /**
  * Illustrations from the 14 Sep Figma Make export, mapped to sections here rather than
@@ -60,14 +61,8 @@ export function Hero({ hero, cta }: { hero: Landing["hero"]; cta: Cta }) {
           </Reveal>
         </div>
 
-        {/*
-          Brand artwork, not a product shot. hero.imageRule forbids a mockup of an
-          unbuilt screen, and this claims nothing about what a screen looks like: a
-          mark, two rings, two empty window frames. The real screenshots still do not
-          exist, and this does not pretend otherwise.
-        */}
         <Reveal delay={160} duration={600} className="hidden justify-center md:col-span-5 md:flex">
-          <OrbitRig />
+          <Constellation />
         </Reveal>
       </div>
     </section>
@@ -107,22 +102,33 @@ export function HowItWorks({ howItWorks }: { howItWorks: Landing["howItWorks"] }
       >
         {howItWorks.h2}
       </Reveal>
-      <RuledGrid className="mt-12 md:grid-cols-2">
-        {howItWorks.steps.map((step, i) => (
-          <Reveal
-            key={step.n}
-            delay={i * 70}
-            className="bg-surface p-8 transition-colors duration-base hover:bg-raised"
-          >
-            <div className="flex items-center justify-between">
-              <Tag tone="accent">{String(step.n).padStart(2, "0")}</Tag>
-              <Art name={STEP_ART[i] ?? "cursor-click"} className="h-9 w-9 opacity-80" />
-            </div>
-            <h3 className="mt-5 font-display text-lg font-semibold tracking-tight">{step.title}</h3>
-            <p className="mt-3 text-sm leading-relaxed text-fg-2">{step.body}</p>
-          </Reveal>
-        ))}
-      </RuledGrid>
+      <div className="mt-12 grid gap-8 lg:grid-cols-12 lg:gap-10">
+        <RuledGrid className="lg:col-span-7 md:grid-cols-2">
+          {howItWorks.steps.map((step, i) => (
+            <Reveal
+              key={step.n}
+              delay={i * 70}
+              className="bg-surface p-7 transition-colors duration-base hover:bg-raised"
+            >
+              <div className="flex items-center justify-between">
+                <Tag tone="accent">{String(step.n).padStart(2, "0")}</Tag>
+                <Art name={STEP_ART[i] ?? "cursor-click"} className="h-9 w-9 opacity-80" />
+              </div>
+              <h3 className="mt-5 font-display text-lg font-semibold tracking-tight">{step.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-fg-2">{step.body}</p>
+            </Reveal>
+          ))}
+        </RuledGrid>
+
+        {/*
+          Sits beside step 02, which describes this sequence in words. The picture adds
+          the one thing the sentence cannot carry: the order, and that it finishes
+          without anyone present.
+        */}
+        <Reveal delay={200} duration={600} className="lg:col-span-5 lg:self-start">
+          <BuildSheet />
+        </Reveal>
+      </div>
     </SectionShell>
   );
 }

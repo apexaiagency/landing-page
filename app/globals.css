@@ -57,43 +57,38 @@
 
 @layer components {
   /*
-   * Hero orbit rig. Two tiles circle the mark on different radii and in opposite
-   * directions; the counter-rotation on each keeps the tile itself upright while it
-   * travels. Rings breathe on a slow opacity cycle.
+   * Hero constellation. The geometry is fixed; only the dashed connectors travel,
+   * which reads as a live schematic rather than an animated logo. The dash pattern is
+   * 3 on 9 off, so a 24px offset is two full cycles and the loop is seamless.
    */
-  @keyframes orbit-cw {
-    from {
-      transform: rotate(0deg) translateX(140px) rotate(0deg);
-    }
+  @keyframes constellation-trace {
     to {
-      transform: rotate(360deg) translateX(140px) rotate(-360deg);
+      stroke-dashoffset: -24;
     }
   }
-  @keyframes orbit-ccw {
-    from {
-      transform: rotate(0deg) translateX(185px) rotate(0deg);
-    }
-    to {
-      transform: rotate(-360deg) translateX(185px) rotate(360deg);
-    }
+  .constellation-trace {
+    animation: constellation-trace 3s linear infinite;
   }
-  @keyframes orbit-pulse {
+
+  /*
+   * Build sheet rows. Each settles in turn and holds, then the run restarts, so the
+   * sequence reads as an order of operations rather than a progress bar.
+   */
+  @keyframes build-row {
     0%,
+    8% {
+      opacity: 0.28;
+    }
+    14%,
+    92% {
+      opacity: 1;
+    }
     100% {
-      opacity: 0.08;
-    }
-    50% {
-      opacity: 0.18;
+      opacity: 0.28;
     }
   }
-  .orbit-ring {
-    animation: orbit-pulse 4s ease-in-out infinite;
-  }
-  .orbit-inner {
-    animation: orbit-cw 18s linear infinite;
-  }
-  .orbit-outer {
-    animation: orbit-ccw 26s linear infinite;
+  .build-row {
+    animation: build-row 9s ease-in-out infinite;
   }
 
   /* First-view staggered reveal. Applied by the Reveal client component once per mount. */
@@ -128,17 +123,15 @@
     transform: none;
   }
   /*
-   * The orbit tiles are positioned BY their animation, so simply stopping it would
-   * pile both on top of the mark. Park them at fixed points instead, which leaves a
-   * static composition rather than a broken one.
+   * Both new pieces are laid out by CSS rather than by their animation, so stopping
+   * them leaves the finished composition rather than a broken one. The connectors keep
+   * their dashes; the build rows rest complete.
    */
-  .orbit-inner {
-    transform: rotate(35deg) translateX(140px) rotate(-35deg);
+  .constellation-trace {
+    animation: none;
   }
-  .orbit-outer {
-    transform: rotate(215deg) translateX(185px) rotate(-215deg);
-  }
-  .orbit-ring {
-    opacity: 0.12;
+  .build-row {
+    animation: none;
+    opacity: 1;
   }
 }
