@@ -308,6 +308,42 @@ export function Sustainability({
   );
 }
 
+/**
+ * The affiliation band, directly above the close.
+ *
+ * Placed here rather than in the footer on purpose: it is the only outside voice on
+ * the page, and it does the most work immediately before the decision. Deliberately
+ * quiet, one row, no card, no accent. It is a fact being stated, not a badge being
+ * worn, and dressing it up would undercut it.
+ *
+ * Not a logo wall. constraints.doNotBuild rules that out and is right to: a wall
+ * implies customers, and there are none. One programme the company takes part in is a
+ * different thing, and it says so in words as well as in the mark.
+ */
+export function Affiliation({ affiliation }: { affiliation: Landing["affiliation"] }) {
+  return (
+    <section className="border-t border-line bg-surface py-16">
+      <div className="mx-auto flex max-w-column flex-col gap-8 px-6 sm:flex-row sm:items-center sm:justify-between sm:gap-12">
+        <div>
+          <Tag>{affiliation.eyebrow}</Tag>
+          <p className="mt-4 max-w-measure text-lg leading-relaxed text-fg">{affiliation.text}</p>
+        </div>
+        {/*
+          The supplied artwork is a white horizontal lockup, which is why it only works
+          on this ground. Anything light behind it and it disappears.
+          eslint-disable-next-line @next/next/no-img-element
+        */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/league-of-innovators.png"
+          alt={affiliation.logoAlt}
+          className="h-8 w-auto shrink-0 opacity-90 sm:h-9"
+        />
+      </div>
+    </section>
+  );
+}
+
 /** One CTA, the hero's. No competing secondary action. */
 export function Close({ close, cta }: { close: Landing["close"]; cta: Cta }) {
   return (

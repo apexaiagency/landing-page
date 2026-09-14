@@ -13,6 +13,7 @@ import {
   Management,
   Roadmap,
   Sustainability,
+  Affiliation,
   Close,
 } from "@/components/landing-sections";
 
@@ -58,6 +59,7 @@ export default function Page() {
         */}
         <Roadmap roadmap={landing.roadmap} />
         <Sustainability sustainability={landing.sustainability} />
+        <Affiliation affiliation={landing.affiliation} />
         <Close close={landing.close} cta={cta} />
       </main>
       <SiteFooter site={site} cta={cta} />

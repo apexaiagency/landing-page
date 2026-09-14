@@ -111,6 +111,16 @@ export const LandingSchema = z.object({
       body: z.array(z.string().min(1)).min(1),
     }),
   }),
+  /**
+   * The one piece of outside credibility on the page. With the trust section removed,
+   * everything else here is the company describing itself.
+   */
+  affiliation: z.object({
+    eyebrow: z.string().min(1),
+    text: z.string().min(1),
+    logoAlt: z.string().min(1),
+    note: z.string(),
+  }),
   close: z.object({
     h2: z.string().min(1),
     body: z.array(z.string().min(1)).min(1),
