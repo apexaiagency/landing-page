@@ -12,7 +12,7 @@
   "hero": {
     "h1": "Cloud computers that run themselves.",
     "body": [
-      "Offsite Labs gives your business real Windows machines in the cloud. The platform builds them, watches every one of them every six hours, and repairs what it can before anybody files a ticket.",
+      "Offsite Labs gives your business real Windows machines running on AWS. The platform builds them, watches every one of them every six hours, and repairs what it can before anybody files a ticket.",
       "No hardware. No server. Nobody who has to know AWS."
     ],
     "cta": { "label": "Book a walkthrough", "href": "/walkthrough" },
@@ -23,7 +23,8 @@
     "heading": "Everyone is building AI. We build the thing you run it on.",
     "body": [
       "There is no AI in this product. Nothing here is decided by a model. Building a machine, repairing it and tracking what it costs are ordinary code that does the same thing every time.",
-      "We went back to what people actually need, which is real compute they can reach, that somebody else keeps running."
+      "We went back to what people actually need, which is real compute they can reach, that somebody else keeps running.",
+      "It runs on AWS. Every customer gets their own AWS account, built with AWS services directly, and none of our code runs inside it."
     ]
   },
 
