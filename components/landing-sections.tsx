@@ -345,10 +345,15 @@ export function Affiliation({ affiliation }: { affiliation: Landing["affiliation
           className="shrink-0 self-start rounded-control opacity-90 transition-opacity duration-fast hover:opacity-100 sm:self-auto"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
+          {/*
+            The lockup is very wide, about 5.6:1, so height moves the width a long way:
+            at 56px it runs to roughly 315px. That still clears the 65 character
+            measure beside it inside the column.
+          */}
           <img
             src="/league-of-innovators.png"
             alt={affiliation.logoAlt}
-            className="h-8 w-auto sm:h-9"
+            className="h-12 w-auto sm:h-14"
           />
           <span className="sr-only"> (opens in a new tab)</span>
         </a>
