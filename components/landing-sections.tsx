@@ -133,6 +133,18 @@ export function HowItWorks({ howItWorks }: { howItWorks: Landing["howItWorks"] }
   );
 }
 
+/**
+ * A ruled LIST, not a card grid.
+ *
+ * Five items in three columns leaves a sixth cell empty, and five in two columns
+ * leaves one. Any fixed column count has that failure mode, and the item count lives
+ * in landing-content.json where someone else will change it. A list cannot have a
+ * hole at any count, which is the whole reason for the shape.
+ *
+ * Each row is icon, title, body across twelve columns, so the titles align down the
+ * page and read as a set. It also gives the page a third rhythm: two columns in how
+ * it works, three in the roadmap, one here.
+ */
 export function UseCases({ useCases }: { useCases: Landing["useCases"] }) {
   return (
     <SectionShell id="use-cases" className="border-t border-line py-24">
@@ -142,16 +154,20 @@ export function UseCases({ useCases }: { useCases: Landing["useCases"] }) {
       >
         {useCases.h2}
       </Reveal>
-      <RuledGrid className="mt-12 md:grid-cols-2 lg:grid-cols-3">
+      <RuledGrid className="mt-12">
         {useCases.items.map((item, i) => (
           <Reveal
             key={item.title}
             delay={i * 60}
-            className="bg-surface p-7 transition-colors duration-base hover:bg-raised"
+            className="grid items-start gap-x-6 gap-y-3 bg-surface p-7 transition-colors duration-base hover:bg-raised md:grid-cols-12 md:px-8 md:py-7"
           >
-            <Art name={USE_CASE_ART[i] ?? "cloud-computer"} className="mb-5 h-10 w-10" />
-            <h3 className="font-display text-base font-semibold tracking-tight">{item.title}</h3>
-            <p className="mt-3 text-sm leading-relaxed text-fg-2">{item.body}</p>
+            <div className="md:col-span-1">
+              <Art name={USE_CASE_ART[i] ?? "cloud-computer"} className="h-9 w-9" />
+            </div>
+            <h3 className="font-display text-base font-semibold tracking-tight md:col-span-4 md:pt-1">
+              {item.title}
+            </h3>
+            <p className="text-sm leading-relaxed text-fg-2 md:col-span-7 md:pt-1">{item.body}</p>
           </Reveal>
         ))}
       </RuledGrid>
