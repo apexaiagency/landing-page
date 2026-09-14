@@ -119,6 +119,7 @@ export const LandingSchema = z.object({
     eyebrow: z.string().min(1),
     text: z.string().min(1),
     logoAlt: z.string().min(1),
+    logoHref: z.string().url(),
     note: z.string(),
   }),
   close: z.object({

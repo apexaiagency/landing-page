@@ -329,16 +329,29 @@ export function Affiliation({ affiliation }: { affiliation: Landing["affiliation
           <p className="mt-4 max-w-measure text-lg leading-relaxed text-fg">{affiliation.text}</p>
         </div>
         {/*
+          Opens in a new tab: someone following the affiliation is checking us, not
+          leaving, so the page they were reading should still be there when they come
+          back. `noreferrer` goes with `noopener` as the usual pair for an outbound
+          link. The image alt names the destination, so the link has an accessible name
+          without a redundant aria-label reading it out twice.
+
           The supplied artwork is a white horizontal lockup, which is why it only works
-          on this ground. Anything light behind it and it disappears.
-          eslint-disable-next-line @next/next/no-img-element
+          on this ground. Put anything light behind it and it disappears.
         */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/league-of-innovators.png"
-          alt={affiliation.logoAlt}
-          className="h-8 w-auto shrink-0 opacity-90 sm:h-9"
-        />
+        <a
+          href={affiliation.logoHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="shrink-0 self-start rounded-control opacity-90 transition-opacity duration-fast hover:opacity-100 sm:self-auto"
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/league-of-innovators.png"
+            alt={affiliation.logoAlt}
+            className="h-8 w-auto sm:h-9"
+          />
+          <span className="sr-only"> (opens in a new tab)</span>
+        </a>
       </div>
     </section>
   );
