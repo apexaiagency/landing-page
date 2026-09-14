@@ -56,6 +56,46 @@
 }
 
 @layer components {
+  /*
+   * Hero orbit rig. Two tiles circle the mark on different radii and in opposite
+   * directions; the counter-rotation on each keeps the tile itself upright while it
+   * travels. Rings breathe on a slow opacity cycle.
+   */
+  @keyframes orbit-cw {
+    from {
+      transform: rotate(0deg) translateX(140px) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(140px) rotate(-360deg);
+    }
+  }
+  @keyframes orbit-ccw {
+    from {
+      transform: rotate(0deg) translateX(185px) rotate(0deg);
+    }
+    to {
+      transform: rotate(-360deg) translateX(185px) rotate(360deg);
+    }
+  }
+  @keyframes orbit-pulse {
+    0%,
+    100% {
+      opacity: 0.08;
+    }
+    50% {
+      opacity: 0.18;
+    }
+  }
+  .orbit-ring {
+    animation: orbit-pulse 4s ease-in-out infinite;
+  }
+  .orbit-inner {
+    animation: orbit-cw 18s linear infinite;
+  }
+  .orbit-outer {
+    animation: orbit-ccw 26s linear infinite;
+  }
+
   /* First-view staggered reveal. Applied by the Reveal client component once per mount. */
   .reveal {
     opacity: 0;
@@ -86,5 +126,19 @@
   .reveal {
     opacity: 1;
     transform: none;
+  }
+  /*
+   * The orbit tiles are positioned BY their animation, so simply stopping it would
+   * pile both on top of the mark. Park them at fixed points instead, which leaves a
+   * static composition rather than a broken one.
+   */
+  .orbit-inner {
+    transform: rotate(35deg) translateX(140px) rotate(-35deg);
+  }
+  .orbit-outer {
+    transform: rotate(215deg) translateX(185px) rotate(-215deg);
+  }
+  .orbit-ring {
+    opacity: 0.12;
   }
 }

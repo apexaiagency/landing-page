@@ -3,6 +3,31 @@ import type { Cta } from "@/content";
 import { SectionShell, Tag, RuledGrid } from "./section";
 import { Reveal } from "./reveal";
 import { CtaButton } from "./cta-button";
+import { OrbitRig } from "./orbit-rig";
+
+/**
+ * Illustrations from the 14 Sep Figma Make export, mapped to sections here rather than
+ * in the content file. An icon is a design decision, and landing-content.json is for
+ * strings the claim scanner has to read.
+ *
+ * Mapped by position, and the arrays are the same length as the content they decorate,
+ * which the schema fixes at four steps and five use cases. All of them are decorative:
+ * every one repeats something the adjacent text already says, so they carry empty alt
+ * text rather than a description a screen reader would have to sit through twice.
+ */
+const STEP_ART = ["cursor-click", "terminal", "person-waving", "arrow-launch"];
+const USE_CASE_ART = [
+  "cloud-computer",
+  "person-laptop",
+  "person-walking",
+  "connect-nodes",
+  "people-pair",
+];
+
+function Art({ name, className = "h-10 w-10" }: { name: string; className?: string }) {
+  // eslint-disable-next-line @next/next/no-img-element
+  return <img src={`/art/${name}.svg`} alt="" aria-hidden className={`${className} object-contain`} />;
+}
 
 /**
  * The shared sections, in page order. They hold no copy: every string arrives from
@@ -15,27 +40,36 @@ import { CtaButton } from "./cta-button";
 export function Hero({ hero, cta }: { hero: Landing["hero"]; cta: Cta }) {
   return (
     <section aria-labelledby="hero-heading" className="mx-auto max-w-column px-6 pb-20 pt-32 sm:pt-40">
-      <Reveal
-        as="h1"
-        className="max-w-4xl font-display text-[clamp(2.4rem,5.5vw,4.2rem)] font-bold leading-[1.08] tracking-tight"
-      >
-        <span id="hero-heading">{hero.h1}</span>
-      </Reveal>
-      <div className="mt-8 max-w-2xl space-y-5">
-        {hero.body.map((para, i) => (
-          <Reveal key={para} as="p" delay={80 + i * 60} className="text-lg leading-relaxed text-fg-2">
-            {para}
+      <div className="grid gap-12 md:grid-cols-12 md:items-center">
+        <div className="md:col-span-7">
+          <Reveal
+            as="h1"
+            className="font-display text-[clamp(2.4rem,5.5vw,4.2rem)] font-bold leading-[1.08] tracking-tight"
+          >
+            <span id="hero-heading">{hero.h1}</span>
           </Reveal>
-        ))}
+          <div className="mt-8 max-w-xl space-y-5">
+            {hero.body.map((para, i) => (
+              <Reveal key={para} as="p" delay={80 + i * 60} className="text-lg leading-relaxed text-fg-2">
+                {para}
+              </Reveal>
+            ))}
+          </div>
+          <Reveal delay={240} className="mt-10">
+            <CtaButton cta={cta} position="hero" variant="primary" />
+          </Reveal>
+        </div>
+
+        {/*
+          Brand artwork, not a product shot. hero.imageRule forbids a mockup of an
+          unbuilt screen, and this claims nothing about what a screen looks like: a
+          mark, two rings, two empty window frames. The real screenshots still do not
+          exist, and this does not pretend otherwise.
+        */}
+        <Reveal delay={160} duration={600} className="hidden justify-center md:col-span-5 md:flex">
+          <OrbitRig />
+        </Reveal>
       </div>
-      <Reveal delay={240} className="mt-10">
-        <CtaButton cta={cta} position="hero" variant="primary" />
-      </Reveal>
-      {/*
-        No product image. hero.imageRule requires any shot to show the product as it is
-        today, and no screenshot set of the real product exists yet. An empty hero is
-        the honest state; a mockup is the mistake the current site already made.
-      */}
     </section>
   );
 }
@@ -80,7 +114,10 @@ export function HowItWorks({ howItWorks }: { howItWorks: Landing["howItWorks"] }
             delay={i * 70}
             className="bg-surface p-8 transition-colors duration-base hover:bg-raised"
           >
-            <Tag tone="accent">{String(step.n).padStart(2, "0")}</Tag>
+            <div className="flex items-center justify-between">
+              <Tag tone="accent">{String(step.n).padStart(2, "0")}</Tag>
+              <Art name={STEP_ART[i] ?? "cursor-click"} className="h-9 w-9 opacity-80" />
+            </div>
             <h3 className="mt-5 font-display text-lg font-semibold tracking-tight">{step.title}</h3>
             <p className="mt-3 text-sm leading-relaxed text-fg-2">{step.body}</p>
           </Reveal>
@@ -106,7 +143,7 @@ export function UseCases({ useCases }: { useCases: Landing["useCases"] }) {
             delay={i * 60}
             className="bg-surface p-7 transition-colors duration-base hover:bg-raised"
           >
-            <div className="mb-5 h-px w-6 bg-accent" />
+            <Art name={USE_CASE_ART[i] ?? "cloud-computer"} className="mb-5 h-10 w-10" />
             <h3 className="font-display text-base font-semibold tracking-tight">{item.title}</h3>
             <p className="mt-3 text-sm leading-relaxed text-fg-2">{item.body}</p>
           </Reveal>
@@ -230,12 +267,18 @@ export function Sustainability({
   return (
     <SectionShell id="sustainability" className="border-t border-line py-24">
       <div className="grid gap-12 md:grid-cols-12">
-        <Reveal
-          as="h2"
-          className="font-display text-3xl font-bold leading-[1.12] tracking-tight md:col-span-5 md:text-4xl"
-        >
-          {sustainability.h2}
-        </Reveal>
+        <div className="md:col-span-5">
+          <Reveal>
+            <Art name="sun-rays" className="mb-6 h-12 w-12" />
+          </Reveal>
+          <Reveal
+            as="h2"
+            delay={60}
+            className="font-display text-3xl font-bold leading-[1.12] tracking-tight md:text-4xl"
+          >
+            {sustainability.h2}
+          </Reveal>
+        </div>
         <div className="space-y-5 md:col-span-7">
           {sustainability.body.map((para, i) => (
             <Reveal key={para} as="p" delay={60 + i * 60} className="text-lg leading-relaxed text-fg-2">
