@@ -14,6 +14,26 @@
     color-scheme: dark;
   }
 
+  /*
+   * Headings balance across their lines instead of leaving one orphaned word; body
+   * text avoids short last lines. Both are progressive - browsers without them just
+   * wrap normally.
+   */
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  p,
+  li {
+    text-wrap: pretty;
+  }
+
+  /* Digits line up wherever mono carries them. */
+  .font-mono {
+    font-variant-numeric: tabular-nums;
+  }
+
   body {
     @apply bg-bg text-fg antialiased;
     font-feature-settings: "cv11", "ss01";

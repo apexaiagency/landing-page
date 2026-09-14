@@ -49,7 +49,7 @@ export function Hero({ hero, cta }: { hero: Landing["hero"]; cta: Cta }) {
           >
             <span id="hero-heading">{hero.h1}</span>
           </Reveal>
-          <div className="mt-8 max-w-xl space-y-5">
+          <div className="mt-8 max-w-measure space-y-5">
             {hero.body.map((para, i) => (
               <Reveal key={para} as="p" delay={80 + i * 60} className="text-lg leading-relaxed text-fg-2">
                 {para}
@@ -80,7 +80,7 @@ export function PositioningBand({ band }: { band: Landing["band"] }) {
         >
           {band.heading}
         </Reveal>
-        <div className="space-y-4 md:col-span-7">
+        <div className="max-w-measure space-y-4 md:col-span-7">
           {band.body.map((para, i) => (
             <Reveal key={para} as="p" delay={60 + i * 60} className="leading-relaxed text-fg-2">
               {para}
@@ -187,7 +187,7 @@ export function Management({ management }: { management: Landing["management"] }
           {management.h2}
         </Reveal>
         <div className="md:col-span-7">
-          <div className="space-y-5">
+          <div className="max-w-measure space-y-5">
             {management.body.map((para, i) => (
               <Reveal key={para} as="p" delay={60 + i * 60} className="text-lg leading-relaxed text-fg-2">
                 {para}
@@ -249,48 +249,62 @@ export function Sustainability({
 }) {
   const note = sustainability.founderNote;
   return (
-    <SectionShell id="sustainability" className="border-t border-line py-24">
-      <div className="grid gap-12 md:grid-cols-12">
-        <div className="md:col-span-5">
-          <Reveal>
-            <Art name="sun-rays" className="mb-6 h-12 w-12" />
-          </Reveal>
-          <Reveal
-            as="h2"
-            delay={60}
-            className="font-display text-3xl font-bold leading-[1.12] tracking-tight md:text-4xl"
-          >
-            {sustainability.h2}
-          </Reveal>
-        </div>
-        <div className="space-y-5 md:col-span-7">
-          {sustainability.body.map((para, i) => (
-            <Reveal key={para} as="p" delay={60 + i * 60} className="text-lg leading-relaxed text-fg-2">
-              {para}
+    <section id="sustainability" className="border-t border-line bg-paper py-24 text-paper-ink">
+      <div className="mx-auto max-w-column px-6">
+        <div className="grid gap-12 md:grid-cols-12">
+          <div className="md:col-span-5">
+            <Reveal>
+              {/*
+                The shipped sun is white-stroked and disappears on light, so the paper
+                act gets its own variant rather than a filter that would also flip the
+                amber centre.
+              */}
+              <Art name="sun-rays-on-paper" className="mb-6 h-12 w-12" />
             </Reveal>
-          ))}
-        </div>
-      </div>
-
-      {/*
-        The founder note ships only once `draft` is cleared in the JSON. It is Jay's to
-        write, and the spec says not to ship the placeholder. Nothing renders in its
-        place: a section that is simply absent reads as complete, where a stub does not.
-      */}
-      {!note.draft && (
-        <Reveal delay={120} className="mt-14 max-w-3xl border-l-2 border-accent pl-8">
-          <Tag>{note.heading}</Tag>
-          <div className="mt-5 space-y-4">
-            {note.body.map((para) => (
-              <p key={para} className="text-lg leading-relaxed text-fg">
+            <Reveal
+              as="h2"
+              delay={60}
+              className="font-display text-3xl font-bold leading-[1.12] tracking-tight md:text-4xl"
+            >
+              {sustainability.h2}
+            </Reveal>
+          </div>
+          <div className="max-w-measure space-y-5 md:col-span-7">
+            {sustainability.body.map((para, i) => (
+              <Reveal
+                key={para}
+                as="p"
+                delay={60 + i * 60}
+                className="text-lg leading-relaxed text-paper-ink-2"
+              >
                 {para}
-              </p>
+              </Reveal>
             ))}
           </div>
-          <p className="mt-5 text-sm text-fg-3">{note.attribution}</p>
-        </Reveal>
-      )}
-    </SectionShell>
+        </div>
+
+        {/*
+          The founder note ships only once `draft` is cleared in the JSON. It is Jay's to
+          write, and the spec says not to ship the placeholder. Nothing renders in its
+          place: a section that is simply absent reads as complete, where a stub does not.
+        */}
+        {!note.draft && (
+          <Reveal delay={120} className="mt-14 max-w-measure border-l-2 border-accent pl-8">
+            <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-paper-ink-2">
+              {note.heading}
+            </span>
+            <div className="mt-5 space-y-4">
+              {note.body.map((para) => (
+                <p key={para} className="text-lg leading-relaxed text-paper-ink">
+                  {para}
+                </p>
+              ))}
+            </div>
+            <p className="mt-5 text-sm text-paper-ink-2">{note.attribution}</p>
+          </Reveal>
+        )}
+      </div>
+    </section>
   );
 }
 
@@ -304,7 +318,7 @@ export function Close({ close, cta }: { close: Landing["close"]; cta: Cta }) {
       >
         {close.h2}
       </Reveal>
-      <div className="mt-6 max-w-2xl space-y-4">
+      <div className="mt-6 max-w-measure space-y-4">
         {close.body.map((para) => (
           <p key={para} className="text-lg leading-relaxed text-fg-2">
             {para}
@@ -312,7 +326,7 @@ export function Close({ close, cta }: { close: Landing["close"]; cta: Cta }) {
         ))}
       </div>
       {close.optionalPricingLine.include && (
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-fg">
+        <p className="mt-6 max-w-measure text-lg leading-relaxed text-fg">
           {close.optionalPricingLine.text}
         </p>
       )}

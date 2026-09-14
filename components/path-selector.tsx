@@ -170,11 +170,11 @@ function PathPanel({
       className="border-t border-line bg-surface py-24"
     >
       <div className="mx-auto max-w-column px-6">
-        <h2 className="max-w-3xl font-display text-3xl font-bold leading-[1.12] tracking-tight md:text-4xl">
+        <h2 className="max-w-4xl font-display text-3xl font-bold leading-[1.12] tracking-tight md:text-4xl">
           {path.h2}
         </h2>
 
-        <div className="mt-8 max-w-3xl space-y-5">
+        <div className="mt-8 max-w-measure space-y-5">
           {path.body.map((para) => (
             <p key={para} className="text-lg leading-relaxed text-fg-2">
               {para}
@@ -183,7 +183,7 @@ function PathPanel({
         </div>
 
         {path.proof && (
-          <div className="mt-12 rounded-card border border-line bg-bg p-8">
+          <div className="mt-12 max-w-measure rounded-card border border-line bg-bg p-8">
             <Tag>{path.proof.heading}</Tag>
             <ul className="mt-5 space-y-4">
               {path.proof.items.map((item) => (
@@ -196,7 +196,7 @@ function PathPanel({
           </div>
         )}
 
-        <div className="mt-12 border-l-2 border-accent pl-8">
+        <div className="mt-12 max-w-measure border-l-2 border-accent pl-8">
           {path.caveat.heading && (
             <h3 className="font-display text-xl font-semibold tracking-tight">
               {path.caveat.heading}
