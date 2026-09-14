@@ -109,10 +109,24 @@ export function PathSelector({
                   tabIndex={active === null ? (i === 0 ? 0 : -1) : selected ? 0 : -1}
                   onClick={() => choose(opt.id)}
                   onKeyDown={(e) => onKeyDown(e, i)}
-                  className={`h-full w-full rounded-card border p-7 text-left transition-colors duration-fast ${
+                  /*
+                   * Hover lifts the card a step up the ink ladder, surface to raised,
+                   * which is the same move the how-it-works and use-case rows make, so
+                   * it reads as one behaviour across the page rather than a treatment
+                   * invented here.
+                   *
+                   * Hover and selected stay distinguishable: hover changes the ground,
+                   * selected changes the border to accent and the title with it. A
+                   * hover that borrowed the accent would read as already chosen.
+                   *
+                   * cursor-pointer is deliberate. A button element defaults to the
+                   * arrow cursor, and with nothing selected on load these three cards
+                   * carry no other signal that they do anything.
+                   */
+                  className={`group h-full w-full cursor-pointer rounded-card border p-7 text-left transition-colors duration-fast ${
                     selected
-                      ? "border-accent bg-surface"
-                      : "border-line bg-surface hover:border-line-strong"
+                      ? "border-accent bg-raised"
+                      : "border-line bg-surface hover:border-line-strong hover:bg-raised"
                   }`}
                 >
                   <span
@@ -122,7 +136,9 @@ export function PathSelector({
                   >
                     {opt.label}
                   </span>
-                  <span className="mt-3 block text-sm leading-relaxed text-fg-2">{opt.sub}</span>
+                  <span className="mt-3 block text-sm leading-relaxed text-fg-2 transition-colors duration-fast group-hover:text-fg">
+                    {opt.sub}
+                  </span>
                 </button>
               </Reveal>
             );
