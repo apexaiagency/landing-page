@@ -5,6 +5,7 @@ import { AnalyticsBoot } from "@/components/analytics-boot";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PathSelector } from "@/components/path-selector";
+import { Roadmap } from "@/components/roadmap";
 import {
   Hero,
   PositioningBand,
@@ -12,7 +13,6 @@ import {
   UseCases,
   Industries,
   Management,
-  Roadmap,
   Sustainability,
   Affiliation,
   Close,
