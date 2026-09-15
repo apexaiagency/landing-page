@@ -124,7 +124,19 @@ export function Roadmap({ roadmap }: { roadmap: Landing["roadmap"] }) {
               hidden={active !== i}
               className="rounded-card border border-line bg-bg p-8"
             >
-              <ul className="grid gap-5 md:grid-cols-2">
+              {/*
+                One column for every stage, deliberately.
+                
+                This was a two-column grid, which looked right for the stages holding
+                two and three items and wrong for the one holding a single item: that
+                bullet took half the width and left the other half empty. Deriving the
+                column count from the item count would have been worse, giving the three
+                stages three different layouts when the whole point of stepping between
+                them is that only the content changes.
+                
+                So: one column, capped at the measure, identical at every stage.
+              */}
+              <ul className="max-w-measure space-y-4">
                 {col.items.map((item) => (
                   <li
                     key={item}
