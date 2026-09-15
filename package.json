@@ -2,7 +2,7 @@
   "name": "offsite-landing",
   "version": "0.1.0",
   "private": true,
-  "description": "Public marketing site for Off-Site Desktops — MSP-only managed cloud desktops.",
+  "description": "Public marketing site for Offsite Labs: cloud computers that run themselves.",
   "type": "module",
   "engines": {
     "node": ">=20"
@@ -12,7 +12,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "check:claims": "node scripts/check-claims.mjs",
+    "prebuild": "node scripts/check-claims.mjs"
   },
   "dependencies": {
     "next": "^14.2.35",

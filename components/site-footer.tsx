@@ -1,9 +1,9 @@
-import type { Site } from "@/content";
+import type { Site, Cta } from "@/content";
 import { CtaButton } from "./cta-button";
 import { Logo } from "./logo";
 
-export function SiteFooter({ site }: { site: Site }) {
-  const { footer, ctas, brand } = site;
+export function SiteFooter({ site, cta }: { site: Site; cta: Cta }) {
+  const { footer, brand } = site;
   return (
     <footer className="border-t border-line">
       <div className="mx-auto max-w-column px-6 py-16">
@@ -13,10 +13,9 @@ export function SiteFooter({ site }: { site: Site }) {
             <p className="font-display text-xl font-semibold tracking-tight text-fg">
               {footer.ctaHeading}
             </p>
-            <p className="mt-2 text-sm text-fg-2">{brand.channelLine}</p>
-          </div>
+            </div>
           <div className="flex flex-wrap gap-3">
-            <CtaButton cta={ctas.pilot} position="footer" variant="primary" />
+            <CtaButton cta={cta} position="footer" variant="primary" />
           </div>
         </div>
 

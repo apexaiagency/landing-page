@@ -1,4 +1,4 @@
-# Deploy guide — Off-Site Desktops landing page
+# Deploy guide: Offsite Labs landing page
 
 This deploys the site, wires the pilot form to **Supabase** (stores leads) and **Resend**
 (emails you each lead), and connects your domain. All services used here are free to start.
@@ -22,7 +22,7 @@ Vercel deploys from Git. From inside `landing-page/`:
 ```bash
 git init
 git add .
-git commit -m "Off-Site Desktops landing page v1"
+git commit -m "Offsite Labs landing page v1"
 # create an empty repo on GitHub first (private is fine), then:
 git remote add origin git@github.com:YOURORG/offsite-landing.git
 git branch -M main

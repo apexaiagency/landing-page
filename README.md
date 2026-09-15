@@ -1,10 +1,10 @@
-# Off-Site Desktops — landing page
+# Offsite Labs landing page
 
-Public marketing site for **Off-Site Desktops**: a multi-tenant control plane for cloud
+Public marketing site for **Offsite Labs**: a control plane for cloud
 desktops, sold **exclusively through MSPs**. One audience, one page, one CTA — provision a
 pilot tenant.
 
-This app is fully self-contained and does **not** touch the rest of the `offsitelabs-AI`
+This app is fully self-contained and does **not** touch the rest of the `offsitelabs` platform
 monorepo (it lives outside the `packages/*` npm workspace and has its own dependencies).
 
 ## Stack

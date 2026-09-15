@@ -33,4 +33,4 @@ export function getSite(): Site {
 }
 
 export type { Site } from "./schema";
-export type { Fact, Cta, TenantRow } from "./schema";
+export type { Cta } from "./schema";
