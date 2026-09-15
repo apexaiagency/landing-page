@@ -134,6 +134,46 @@ export function HowItWorks({ howItWorks }: { howItWorks: Landing["howItWorks"] }
 }
 
 /**
+ * The two machine shapes, side by side so the difference is read rather than inferred.
+ *
+ * Each carries its caveat in the same panel, at the same size as the body. On the
+ * shared machine those limits decide whether it fits at all, and a reader finding them
+ * after buying is the bad outcome, so they are not small print.
+ */
+export function MachineTypes({ machineTypes }: { machineTypes: Landing["machineTypes"] }) {
+  return (
+    <SectionShell id="machines" className="border-t border-line py-24">
+      <Reveal
+        as="h2"
+        className="font-display text-3xl font-bold leading-[1.12] tracking-tight md:text-4xl"
+      >
+        {machineTypes.h2}
+      </Reveal>
+      <Reveal as="p" delay={80} className="mt-5 max-w-measure text-lg leading-relaxed text-fg-2">
+        {machineTypes.intro}
+      </Reveal>
+
+      <RuledGrid className="mt-12 md:grid-cols-2">
+        {machineTypes.items.map((item, i) => (
+          <Reveal
+            key={item.name}
+            delay={i * 80}
+            className="flex flex-col bg-surface p-8 transition-colors duration-base hover:bg-raised"
+          >
+            <Art name={i === 0 ? "person-laptop" : "people-pair"} className="mb-6 h-10 w-10" />
+            <h3 className="font-display text-xl font-semibold tracking-tight">{item.name}</h3>
+            <p className="mt-4 text-[15px] leading-relaxed text-fg-2">{item.body}</p>
+            <p className="mt-auto border-t border-line pt-5 text-[15px] leading-relaxed text-fg-2">
+              {item.caveat}
+            </p>
+          </Reveal>
+        ))}
+      </RuledGrid>
+    </SectionShell>
+  );
+}
+
+/**
  * A ruled LIST, not a card grid.
  *
  * Five items in three columns leaves a sixth cell empty, and five in two columns

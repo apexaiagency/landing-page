@@ -53,6 +53,7 @@ const METADATA_PATHS = [
   "affiliation.note",
   "login.note",
   "industries.note",
+  "machineTypes.note",
 ];
 
 /** Content paths whose whole job is to say a thing does NOT exist. */
@@ -63,6 +64,7 @@ const DENIAL_PATHS = [
   "paths.msp.caveat",
   "paths.solo.caveat",
   "management.caveat",
+  "machineTypes.items",
   "band",
 ];
 

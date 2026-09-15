@@ -10,6 +10,7 @@ import {
   Hero,
   PositioningBand,
   HowItWorks,
+  MachineTypes,
   UseCases,
   Industries,
   Management,
@@ -48,6 +49,7 @@ export default function Page() {
         <PositioningBand band={landing.band} />
         <PathSelector selector={landing.selector} paths={landing.paths} cta={cta} />
         <HowItWorks howItWorks={landing.howItWorks} />
+        <MachineTypes machineTypes={landing.machineTypes} />
         <UseCases useCases={landing.useCases} />
         <Industries industries={landing.industries} />
         <Management management={landing.management} />

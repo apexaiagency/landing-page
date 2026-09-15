@@ -74,6 +74,25 @@ export const LandingSchema = z.object({
       .array(z.object({ n: z.number().int(), title: z.string().min(1), body: z.string().min(1) }))
       .length(4),
   }),
+  /**
+   * The two machine shapes. Both are Current. The caveats are part of the offer here
+   * rather than a footnote, because the shared machine's limits decide whether it fits
+   * at all, and finding them out after buying is the bad outcome.
+   */
+  machineTypes: z.object({
+    h2: z.string().min(1),
+    intro: z.string().min(1),
+    items: z
+      .array(
+        z.object({
+          name: z.string().min(1),
+          body: z.string().min(1),
+          caveat: z.string().min(1),
+        })
+      )
+      .min(2),
+    note: z.string(),
+  }),
   useCases: z.object({
     h2: z.string().min(1),
     items: z.array(z.object({ title: z.string().min(1), body: z.string().min(1) })).length(5),
