@@ -22,9 +22,8 @@
   "band": {
     "heading": "Everyone is building AI. We build the thing you run it on.",
     "body": [
-      "There is no AI in this product. Nothing here is decided by a model. Building a machine, repairing it and tracking what it costs are ordinary code that does the same thing every time.",
-      "We went back to what people actually need, which is real compute they can reach, that somebody else keeps running.",
-      "It runs on AWS. Every customer gets their own AWS account, built with AWS services directly, and none of our code runs inside it."
+      "There is no AI in this product. Building a machine, repairing it and tracking its cost are ordinary code that does the same thing every time.",
+      "It runs on AWS. Every customer gets their own AWS account, and none of our code runs inside it."
     ]
   },
 
