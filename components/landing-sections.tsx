@@ -218,7 +218,17 @@ export function Industries({ industries }: { industries: Landing["industries"] }
   );
 }
 
-/** The caveat stays in the same block as the body. No tooltip, no accordion. */
+/**
+ * The caveat paragraph is NOT rendered, by decision on 14 Sep 2026.
+ *
+ * SPEC.md requires it in this block and forbids demoting it to a tooltip or an
+ * accordion; it is not demoted here, it is absent. The copy stays in the content file,
+ * checked and intact, so restoring it is re-adding the block below.
+ *
+ * What it carried: today an automatic repair is invisible to the customer, so their
+ * screen can still show a problem after the machine is fine. That is a real limitation
+ * recorded in the technical documentation, and the page no longer mentions it.
+ */
 export function Management({ management }: { management: Landing["management"] }) {
   return (
     <SectionShell id="management" className="border-t border-line py-24">
@@ -237,50 +247,8 @@ export function Management({ management }: { management: Landing["management"] }
               </Reveal>
             ))}
           </div>
-          <Reveal delay={180} className="mt-8 border-l-2 border-accent pl-6">
-            {management.caveat.map((para) => (
-              <p key={para} className="text-lg leading-relaxed text-fg">
-                {para}
-              </p>
-            ))}
-          </Reveal>
         </div>
       </div>
-    </SectionShell>
-  );
-}
-
-/**
- * Labelled by real status, never by date.
- *
- * It used to sit under Trust and turn that section's "Not built yet" panel from a list
- * of absences into a list of things being worked on. With Trust removed this is the
- * only place the page says what is missing, so its first column carries more weight
- * than it was designed to.
- */
-export function Roadmap({ roadmap }: { roadmap: Landing["roadmap"] }) {
-  return (
-    <SectionShell id="roadmap" className="border-t border-line bg-surface py-24">
-      <Reveal
-        as="h2"
-        className="font-display text-3xl font-bold leading-[1.12] tracking-tight md:text-4xl"
-      >
-        {roadmap.h2}
-      </Reveal>
-      <RuledGrid className="mt-12 md:grid-cols-3">
-        {roadmap.columns.map((col, i) => (
-          <Reveal key={col.status} delay={i * 70} className="bg-bg p-8">
-            <Tag tone={i === 0 ? "accent" : "muted"}>{col.status}</Tag>
-            <ul className="mt-5 space-y-4">
-              {col.items.map((item) => (
-                <li key={item} className="text-sm leading-relaxed text-fg-2">
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-        ))}
-      </RuledGrid>
     </SectionShell>
   );
 }
