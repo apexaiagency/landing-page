@@ -158,14 +158,26 @@ export function MachineTypes({ machineTypes }: { machineTypes: Landing["machineT
           <Reveal
             key={item.name}
             delay={i * 80}
-            className="flex flex-col bg-surface p-8 transition-colors duration-base hover:bg-raised"
+            className="bg-surface p-8 transition-colors duration-base hover:bg-raised"
           >
             <Art name={i === 0 ? "person-laptop" : "people-pair"} className="mb-6 h-10 w-10" />
             <h3 className="font-display text-xl font-semibold tracking-tight">{item.name}</h3>
             <p className="mt-4 text-[15px] leading-relaxed text-fg-2">{item.body}</p>
-            <p className="mt-auto border-t border-line pt-5 text-[15px] leading-relaxed text-fg-2">
-              {item.caveat}
-            </p>
+            {/*
+              No mt-auto here. Pushing the last block to the bottom of a stretched cell
+              left the shorter panel with a hole in its middle and put the two dividers
+              at different heights, which read as a mistake rather than as a pair.
+              Content now simply follows content, and the ruled grid keeps the outer
+              edges aligned.
+            */}
+            <ul className="mt-6 space-y-3 border-t border-line pt-6">
+              {item.points.map((point) => (
+                <li key={point} className="flex items-start gap-3 text-sm leading-relaxed text-fg-2">
+                  <span aria-hidden className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                  {point}
+                </li>
+              ))}
+            </ul>
           </Reveal>
         ))}
       </RuledGrid>

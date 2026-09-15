@@ -75,9 +75,9 @@ export const LandingSchema = z.object({
       .length(4),
   }),
   /**
-   * The two machine shapes. Both are Current. The caveats are part of the offer here
-   * rather than a footnote, because the shared machine's limits decide whether it fits
-   * at all, and finding them out after buying is the bad outcome.
+   * The two machine shapes. Both are Current. The shared machine's limits sit among
+   * its points rather than beneath them: they decide whether it fits at all, and a
+   * reader finding them out after buying is the bad outcome.
    */
   machineTypes: z.object({
     h2: z.string().min(1),
@@ -87,7 +87,12 @@ export const LandingSchema = z.object({
         z.object({
           name: z.string().min(1),
           body: z.string().min(1),
-          caveat: z.string().min(1),
+          /**
+           * Short points, and the limits live among them rather than under a rule of
+           * their own. They are the same size and weight as everything else in the
+           * panel, which is what keeps them out of small print.
+           */
+          points: z.array(z.string().min(1)).min(1),
         })
       )
       .min(2),

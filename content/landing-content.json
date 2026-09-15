@@ -111,20 +111,27 @@
 
   "machineTypes": {
     "h2": "Two shapes of machine.",
-    "intro": "Both are working today, and an account can run either or both.",
+    "intro": "Both working today. An account can run either or both.",
     "items": [
       {
         "name": "One person, one computer",
-        "body": "Their own machine with its own sign-in. They set the password themselves and nobody else ever sees it, including us. Turn it off, restart it, rename it, or transfer it to whoever picks up the work when they leave.",
-        "caveat": "It arrives as a blank Windows machine. You install what you need, the same as you would on any new computer."
+        "body": "Their own machine, their own sign-in. They set the password and nobody else ever sees it, including us.",
+        "points": [
+          "Turn off, restart, rename, or transfer to whoever picks up the work",
+          "Arrives as a blank Windows machine"
+        ]
       },
       {
         "name": "One computer, several people",
-        "body": "One machine several people use at the same time, with a limit you set and access granted per person. Useful where a piece of software only needs to live in one place.",
-        "caveat": "It arrives as a plain Windows machine, so anything you need is installed and then confirmed to work with several people using it at once. Check your software licence allows that. It is not connected to your office network, there are no shared drives, and it does not shut down completely when idle."
+        "body": "One machine several people use at once, with a limit you set and access granted per person.",
+        "points": [
+          "For software that only needs to live in one place",
+          "Check your licence covers several people at once",
+          "No office network, no shared drives, and it does not fully shut down when idle"
+        ]
       }
     ],
-    "note": "Two things were deliberately NOT written here. First, a concurrency number. The capability is a cap you set, and no maximum appears in either source document. The only 20 in them is the AWS Organizations account quota, which is unrelated and is itself marked Needs Confirmation. Second, a licensing benefit. Buying one licence and sharing the machine to avoid buying more is a claim about other vendors' terms, not about this product, and many licences are per device AND limit simultaneous users. The copy says the software only needs to live in one place, which is about where it is installed, and tells the reader to check their licence. Do not name any application here: constraints.neverSay forbids naming an application on a shared machine."
+    "note": "Two things deliberately absent. A concurrency number: the capability is a cap you set and neither source document states a maximum, and the only 20 in them is the unrelated AWS Organizations account quota, itself marked Needs Confirmation. And a licensing benefit: buy one licence and share the machine is a claim about other vendors' terms, not about this product, and many licences are per device AND cap simultaneous users. The copy says where the software lives and tells the reader to check their licence. Never name an application here, which constraints.neverSay forbids."
   },
 
   "useCases": {
