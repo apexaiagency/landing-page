@@ -22,7 +22,8 @@ export function SiteFooter({ site, cta }: { site: Site; cta: Cta }) {
         {/* Nav + brand */}
         <div className="mt-12 grid gap-8 sm:grid-cols-[1.5fr_1fr_1fr]">
           <div className="max-w-xs">
-            <Logo className="h-9 w-auto" />
+            {/* The footer has a column to itself, so the lockup stays at every width. */}
+            <Logo variant="lockup" className="h-9 w-auto" />
             <p className="mt-3 text-sm text-fg-2">{footer.tagline}</p>
           </div>
           {footer.columns.map((col) => (
@@ -33,8 +34,16 @@ export function SiteFooter({ site, cta }: { site: Site; cta: Cta }) {
               <ul className="mt-3 space-y-2">
                 {col.links.map((link) => (
                   <li key={link.label}>
+                    {/*
+                      Footer links are mostly in-page anchors, but the booking link is
+                      not, so an external one opens in a new tab like every other
+                      outbound link on the page.
+                    */}
                     <a
                       href={link.href}
+                      {...(/^https?:\/\//.test(link.href)
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {})}
                       className="text-sm text-fg-2 transition-colors hover:text-accent"
                     >
                       {link.label}

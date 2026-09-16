@@ -83,8 +83,6 @@ export const site: Site = {
   footer: {
     ctaHeading: "See an environment built from nothing.",
     tagline: "Cloud computers that run themselves. Built in Vancouver, British Columbia.",
-    // [FILL] this mailbox does not exist until mail is live on the new domain. See TODO.md.
-    contactEmail: "partners@offsitelabs.io",
     columns: [
       {
         title: "The page",
@@ -96,7 +94,15 @@ export const site: Site = {
       },
       {
         title: "Get in touch",
-        links: [{ label: "partners@offsitelabs.io", href: "mailto:partners@offsitelabs.io" }],
+        // The only way to reach us from the footer is the same booking page every call
+        // to action points at. The partners@ mailbox is gone from here: mail is not
+        // live on the domain, so it was an address nobody could have replied from.
+        links: [
+          {
+            label: "Book a walkthrough",
+            href: "https://calendar.app.google/KaRuBEod9pBg3GibA",
+          },
+        ],
       },
     ],
     legalLine: "Offsite Labs. Windows machines in the cloud, one customer at a time.",

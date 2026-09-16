@@ -18,8 +18,14 @@ export const LOGIN_PLACEHOLDER = "PLACEHOLDER_NOT_CONNECTED";
  */
 export function LoginButton({ login, className = "" }: { login: Landing["login"]; className?: string }) {
   const connected = login.href !== LOGIN_PLACEHOLDER;
+  /*
+   * Below the small breakpoint this is a plain text link with no border and no padding.
+   * The header at 375px has room for a wordmark and one button, and sign-in is the
+   * lesser of the two: giving it a box made both labels wrap and pushed the row off
+   * the screen. From sm up it is the bordered control it was.
+   */
   const base =
-    "inline-flex items-center justify-center rounded-control border px-5 py-2 text-sm font-medium transition-colors duration-fast";
+    "inline-flex min-h-11 items-center justify-center whitespace-nowrap px-1 text-[13px] font-medium transition-colors duration-fast sm:min-h-0 sm:rounded-control sm:border sm:px-5 sm:py-2 sm:text-sm";
 
   if (!connected) {
     return (
@@ -28,7 +34,7 @@ export function LoginButton({ login, className = "" }: { login: Landing["login"]
         disabled
         aria-disabled="true"
         title="Sign-in is not connected yet"
-        className={`${base} cursor-not-allowed border-line text-fg-3 ${className}`}
+        className={`${base} cursor-not-allowed text-fg-3 sm:border-line ${className}`}
       >
         {login.label}
       </button>
@@ -40,7 +46,7 @@ export function LoginButton({ login, className = "" }: { login: Landing["login"]
       href={login.href}
       target="_blank"
       rel="noreferrer"
-      className={`${base} border-line text-fg hover:border-line-strong ${className}`}
+      className={`${base} text-fg-2 hover:text-fg sm:border-line sm:text-fg sm:hover:border-line-strong ${className}`}
     >
       {login.label}
     </a>
