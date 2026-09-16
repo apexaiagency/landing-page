@@ -271,7 +271,7 @@ export function UseCases({ useCases }: { useCases: Landing["useCases"] }) {
     <SectionShell id="use-cases" className="border-t border-line py-24">
       <Reveal
         as="h2"
-        className="max-w-3xl font-display text-3xl font-bold leading-[1.12] tracking-tight md:text-4xl"
+        className="max-w-3xl whitespace-pre-line font-display text-3xl font-bold leading-[1.12] tracking-tight md:text-4xl"
       >
         {useCases.h2}
       </Reveal>
@@ -314,7 +314,7 @@ export function Industries({ industries }: { industries: Landing["industries"] }
     <SectionShell id="industries" className="border-t border-line py-24">
       <Reveal
         as="h2"
-        className="max-w-3xl font-display text-3xl font-bold leading-[1.12] tracking-tight md:text-4xl"
+        className="max-w-3xl whitespace-pre-line font-display text-3xl font-bold leading-[1.12] tracking-tight md:text-4xl"
       >
         {industries.h2}
       </Reveal>

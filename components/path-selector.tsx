@@ -200,7 +200,7 @@ function PathPanel({
       className="border-t border-line bg-surface py-24"
     >
       <div className="mx-auto max-w-column px-6">
-        <h2 className="max-w-4xl font-display text-3xl font-bold leading-[1.12] tracking-tight md:text-4xl">
+        <h2 className="max-w-4xl whitespace-pre-line font-display text-3xl font-bold leading-[1.12] tracking-tight md:text-4xl">
           {path.h2}
         </h2>
 
