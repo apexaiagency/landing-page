@@ -10,7 +10,8 @@
   },
 
   "hero": {
-    "h1": "Cloud computers. The renewed form of access to",
+    "h1Lead": "Cloud computers.",
+    "h1": "Renewed access to",
     "h1Cycle": [
       "Windows-only software.",
       "power without hardware.",
@@ -19,8 +20,12 @@
       "your desk."
     ],
     "body": [
-      "Offsite Labs gives your business real Windows machines running on AWS. We set them up, keep them running, and fix them when they break, so nobody on your side has to.",
-      "No hardware. No server. Nobody who has to know AWS."
+      "Offsite Labs is the control panel for cloud computers, ready to use in about half an hour.",
+      "You get real Windows machines running on AWS.",
+      "We build them, keep them running, and fix them when they break, before you've thought to submit a support ticket."
+    ],
+    "postCta": [
+      "Most cloud computer platforms are one building with a lock on every door. We give each customer their own building, so your data stays in [your] house."
     ],
     "cta": { "label": "Book a walkthrough", "href": "https://calendar.app.google/KaRuBEod9pBg3GibA" },
     "imageRule": "Any product shot must show the product as it is today: four locations, the real computers list, real screens. Never a mockup of something unbuilt."

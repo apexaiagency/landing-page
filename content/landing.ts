@@ -54,6 +54,11 @@ export const LandingSchema = z.object({
     cta: Cta,
   }),
   hero: z.object({
+    /**
+     * The product name, set apart from the sentence that follows it. Optional so the
+     * headline still renders as one run of text without it.
+     */
+    h1Lead: z.string().min(1).optional(),
     /** The fixed opening of the headline. The cycling word completes the sentence. */
     h1: z.string().min(1),
     /**
@@ -63,7 +68,18 @@ export const LandingSchema = z.object({
      * first. Keep them short: a long entry reflows the whole headline as it swaps.
      */
     h1Cycle: z.array(z.string().min(1)).min(2).optional(),
+    /**
+     * Paragraphs. A word wrapped in square brackets is underlined in the accent when
+     * rendered, so a single word can be stressed without putting markup in the content
+     * file or a second field beside it. `[your] house` renders "your" underlined.
+     */
     body: z.array(z.string().min(1)).min(1),
+    /**
+     * Paragraphs that sit BELOW the call to action rather than above it, for a point
+     * worth making to someone who has already decided to read on. Same bracket
+     * convention as `body`.
+     */
+    postCta: z.array(z.string().min(1)).optional(),
     cta: Cta,
     imageRule: z.string(),
   }),

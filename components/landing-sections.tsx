@@ -26,6 +26,32 @@ const USE_CASE_ART = [
   "people-pair",
 ];
 
+/**
+ * Renders a paragraph, underlining any word wrapped in square brackets.
+ *
+ * The convention exists so one word can be stressed from the content file without
+ * either putting HTML in the copy or adding a parallel field that would drift from the
+ * sentence it belongs to. Deliberately the only markup the content layer understands:
+ * anything more and the copy stops being copy.
+ */
+function Emphasised({ text }: { text: string }) {
+  const parts = text.split(/\[([^\]]+)\]/g);
+  return (
+    <>
+      {parts.map((part, i) =>
+        // Odd indices are the captured groups, so they are the bracketed words.
+        i % 2 === 1 ? (
+          <span key={i} className="underline decoration-accent decoration-2 underline-offset-4">
+            {part}
+          </span>
+        ) : (
+          part
+        )
+      )}
+    </>
+  );
+}
+
 function Art({ name, className = "h-10 w-10" }: { name: string; className?: string }) {
   // eslint-disable-next-line @next/next/no-img-element
   return <img src={`/art/${name}.svg`} alt="" aria-hidden className={`${className} object-contain`} />;
@@ -50,7 +76,7 @@ export function Hero({ hero, cta }: { hero: Landing["hero"]; cta: Cta }) {
           >
             <span id="hero-heading">
               {hero.h1Cycle ? (
-                <CyclingHeadline prefix={hero.h1} words={hero.h1Cycle} />
+                <CyclingHeadline lead={hero.h1Lead} prefix={hero.h1} words={hero.h1Cycle} />
               ) : (
                 hero.h1
               )}
@@ -59,13 +85,37 @@ export function Hero({ hero, cta }: { hero: Landing["hero"]; cta: Cta }) {
           <div className="mt-8 max-w-measure space-y-5">
             {hero.body.map((para, i) => (
               <Reveal key={para} as="p" delay={80 + i * 60} className="text-lg leading-relaxed text-fg-2">
-                {para}
+                <Emphasised text={para} />
               </Reveal>
             ))}
           </div>
           <Reveal delay={240} className="mt-10">
             <CtaButton cta={cta} position="hero" variant="primary" />
           </Reveal>
+
+          {/*
+            Below the button on purpose. The paragraphs above it are what the product is;
+            this is the argument for choosing it, and it reads better to someone who has
+            got as far as the button than as another thing to wade through before it.
+          */}
+          {hero.postCta && (
+            <Reveal delay={300} className="mt-10 flex max-w-measure gap-4 border-t border-line pt-8">
+              {/*
+                The bulb marks this as an aside rather than another claim in the stack
+                above. Drawn to match the rest of the set: same 96 box, same white
+                stroke at 4, same amber centre as the sun, so it reads as one family.
+                Decorative, so it carries no alt text: the paragraph says everything.
+              */}
+              <Art name="lightbulb" className="mt-1 h-6 w-6 shrink-0" />
+              <div className="space-y-4">
+                {hero.postCta.map((para) => (
+                  <p key={para} className="text-lg leading-relaxed text-fg-2">
+                    <Emphasised text={para} />
+                  </p>
+                ))}
+              </div>
+            </Reveal>
+          )}
         </div>
 
         <Reveal delay={160} duration={600} className="hidden justify-center md:col-span-5 md:flex">

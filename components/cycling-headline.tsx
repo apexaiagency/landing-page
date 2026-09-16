@@ -34,7 +34,15 @@ const TRAVEL = "0.28em";
  * it the headline reflows on every change and drags the paragraph below it up and down
  * for as long as the page is open.
  */
-export function CyclingHeadline({ prefix, words }: { prefix: string; words: string[] }) {
+export function CyclingHeadline({
+  lead,
+  prefix,
+  words,
+}: {
+  lead?: string;
+  prefix: string;
+  words: string[];
+}) {
   const restingIndex = Math.max(words.length - 1, 0);
   const resting = words[restingIndex] ?? "";
 
@@ -82,23 +90,59 @@ export function CyclingHeadline({ prefix, words }: { prefix: string; words: stri
 
   useEffect(() => {
     if (!animate || settled) return;
-    const id = setInterval(() => setIndex((i) => (i + 1) % words.length), INTERVAL_MS);
+    const id = setInterval(
+      () => setIndex((i) => (i + 1) % words.length),
+      INTERVAL_MS,
+    );
     return () => clearInterval(id);
   }, [animate, settled, words.length]);
 
-  const longest = words.reduce((a, b) => (b.length > a.length ? b : a), resting);
+  const longest = words.reduce(
+    (a, b) => (b.length > a.length ? b : a),
+    resting,
+  );
 
   return (
     <>
       {/* The sentence a screen reader gets: the resting ending, announced once. */}
       <span className="sr-only">
+        {lead ? `${lead} ` : ""}
         {prefix} {resting}
       </span>
 
       <span aria-hidden>
-        {prefix}{" "}
-        {animate ? (
-          /*
+        {lead && (
+          <>
+            {/*
+              A block, so the sentence always begins on the line below rather than
+              wrapping up beside the name. At most widths "The" fitted on the first line
+              and left the sentence starting mid-line, which read as a stray word after
+              the product name.
+            */}
+            <span className="hero-lead block">{lead}</span>
+          </>
+        )}
+        {/*
+          The sentence runs smaller than the product name above it. Two reasons, and
+          the second is the load-bearing one.
+          
+          Hierarchy: the name is what the hero is announcing, and the sentence explains
+          it, so they should not compete at the same size.
+          
+          Fit: at the full display size the longer endings wrap to two lines while short
+          ones take one, so the slot reserves two lines for all of them and a crossfade
+          between a one-line and a two-line ending reads as two phrases stacked on top
+          of each other. At this size every ending fits on one line and that disappears.
+        */}
+        {/*
+          A block of its own so it balances independently of the name above it. As an
+          inline run inside the heading it inherited the heading's balancing across
+          both, which left "to" orphaned on a line by itself at some widths.
+        */}
+        <span className="block text-balance text-[0.72em]">
+          {prefix}{" "}
+          {animate ? (
+            /*
              * A BLOCK, the width of its column, not an inline box sized to the longest
              * phrase. As an inline-block with nowrap it was as wide as the longest
              * ending set on one line, which at headline size overran the column and
@@ -107,54 +151,55 @@ export function CyclingHeadline({ prefix, words }: { prefix: string; words: stri
              * Being a block also puts the cycling phrase on its own line, which is
              * where it was already landing, so the sentence reads the same.
              */
-          <span ref={slotRef} className="relative block w-full">
-            {/*
+            <span ref={slotRef} className="relative block w-full">
+              {/*
               Reserves the HEIGHT of the longest ending, wrapped at this width, so the
               paragraph below never moves as the words change.
             */}
-            <span className="invisible block">{longest}</span>
-            {words.map((word, i) => {
-              const active = i === index;
-              // Where a word waits when it is not active: the one just gone has left
-              // upward, everything else sits below.
-              const parked = i === (index - 1 + words.length) % words.length;
-              return (
-                <span
-                  key={word}
-                  className="absolute inset-0 text-accent ease-move"
-                  style={{
-                    transitionProperty: "opacity, transform",
-                    transitionDuration: `${FADE_MS}ms`,
-                    opacity: active ? 1 : 0,
-                    transform: active
-                      ? "translateY(0)"
-                      : `translateY(${parked ? `-${TRAVEL}` : TRAVEL})`,
-                  }}
-                >
-                  {word}
-                </span>
-              );
-            })}
+              <span className="invisible block">{longest}</span>
+              {words.map((word, i) => {
+                const active = i === index;
+                // Where a word waits when it is not active: the one just gone has left
+                // upward, everything else sits below.
+                const parked = i === (index - 1 + words.length) % words.length;
+                return (
+                  <span
+                    key={word}
+                    className="absolute inset-0 text-accent ease-move"
+                    style={{
+                      transitionProperty: "opacity, transform",
+                      transitionDuration: `${FADE_MS}ms`,
+                      opacity: active ? 1 : 0,
+                      transform: active
+                        ? "translateY(0)"
+                        : `translateY(${parked ? `-${TRAVEL}` : TRAVEL})`,
+                    }}
+                  >
+                    {word}
+                  </span>
+                );
+              })}
 
-            {/*
+              {/*
               The emphasis on the resting word: a hairline that draws in underneath it
               once the rotation has stopped. A rule rather than a heavier weight or a
               brighter colour, because the word is already the only accent-coloured
               thing in the headline and there is nowhere brighter for it to go.
             */}
-            <span
-              className="absolute -bottom-1 left-0 h-px origin-left bg-accent transition-transform ease-move"
-              style={{
-                width: "100%",
-                transitionDuration: "900ms",
-                transitionDelay: settled ? `${FADE_MS}ms` : "0ms",
-                transform: `scaleX(${settled ? 1 : 0})`,
-              }}
-            />
-          </span>
-        ) : (
-          <span className="text-accent">{resting}</span>
-        )}
+              <span
+                className="absolute -bottom-1 left-0 h-px origin-left bg-accent transition-transform ease-move"
+                style={{
+                  width: "100%",
+                  transitionDuration: "900ms",
+                  transitionDelay: settled ? `${FADE_MS}ms` : "0ms",
+                  transform: `scaleX(${settled ? 1 : 0})`,
+                }}
+              />
+            </span>
+          ) : (
+            <span className="text-accent">{resting}</span>
+          )}
+        </span>
       </span>
     </>
   );
