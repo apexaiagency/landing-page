@@ -98,9 +98,21 @@ export function CyclingHeadline({ prefix, words }: { prefix: string; words: stri
       <span aria-hidden>
         {prefix}{" "}
         {animate ? (
-          <span ref={slotRef} className="relative inline-block align-bottom">
-            {/* Reserves the width of the longest ending so nothing reflows. */}
-            <span className="invisible whitespace-nowrap">{longest}</span>
+          /*
+             * A BLOCK, the width of its column, not an inline box sized to the longest
+             * phrase. As an inline-block with nowrap it was as wide as the longest
+             * ending set on one line, which at headline size overran the column and
+             * ran under the artwork beside it.
+             *
+             * Being a block also puts the cycling phrase on its own line, which is
+             * where it was already landing, so the sentence reads the same.
+             */
+          <span ref={slotRef} className="relative block w-full">
+            {/*
+              Reserves the HEIGHT of the longest ending, wrapped at this width, so the
+              paragraph below never moves as the words change.
+            */}
+            <span className="invisible block">{longest}</span>
             {words.map((word, i) => {
               const active = i === index;
               // Where a word waits when it is not active: the one just gone has left
@@ -109,7 +121,7 @@ export function CyclingHeadline({ prefix, words }: { prefix: string; words: stri
               return (
                 <span
                   key={word}
-                  className="absolute inset-0 whitespace-nowrap text-accent ease-move"
+                  className="absolute inset-0 text-accent ease-move"
                   style={{
                     transitionProperty: "opacity, transform",
                     transitionDuration: `${FADE_MS}ms`,
