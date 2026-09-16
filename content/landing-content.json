@@ -230,7 +230,8 @@
     "h2": "Your laptop stops needing to be fast.",
     "body": [
       "The work happens on the machine in the cloud. The thing on your desk is a screen, a keyboard and a connection. A five year old laptop reaches a four processor machine exactly as well as a new one does.",
-      "So the hardware refresh you had budgeted might not be a refresh. It might be nothing."
+      "So the hardware refresh you had budgeted might not be a refresh. It might be nothing.",
+      "It changes how someone starts, too. Nobody waits on a laptop being ordered, imaged and shipped. The machine is asked for and builds itself while the rest of the onboarding happens."
     ],
     "founderNote": {
       "heading": "Why we built it this way",

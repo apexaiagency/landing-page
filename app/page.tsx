@@ -5,7 +5,6 @@ import { AnalyticsBoot } from "@/components/analytics-boot";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PathSelector } from "@/components/path-selector";
-import { Roadmap } from "@/components/roadmap";
 import {
   Hero,
   PositioningBand,
@@ -13,7 +12,6 @@ import {
   MachineTypes,
   UseCases,
   Industries,
-  Management,
   Sustainability,
   Affiliation,
   Close,
@@ -52,7 +50,17 @@ export default function Page() {
         <MachineTypes machineTypes={landing.machineTypes} />
         <UseCases useCases={landing.useCases} />
         <Industries industries={landing.industries} />
-        <Management management={landing.management} />
+        {/*
+          Management is deliberately NOT rendered, by decision on 15 Sep 2026. SPEC.md
+          still describes it and the copy is still in landing-content.json, so restoring
+          it is re-adding this one line.
+
+          It carried the detail of the six-hourly check and the line "Most platforms in
+          this market sell you a better console. We do the management", which is second
+          in the documentation's ranked differentiators. The capability itself survives
+          in the hero, which still says the platform watches every machine every six
+          hours and repairs what it can before anybody files a ticket.
+        */}
         {/*
           Trust is deliberately NOT rendered, by decision on 14 Sep 2026. SPEC.md still
           describes it and landing-content.json still holds its copy, checked and ready,
@@ -61,7 +69,17 @@ export default function Page() {
           multi-factor authentication, certifications and service level agreement, and
           the roadmap below now carries the whole of that disclosure.
         */}
-        <Roadmap roadmap={landing.roadmap} />
+        {/*
+          The roadmap timeline is deliberately NOT rendered, by decision on 15 Sep 2026.
+          components/roadmap.tsx is kept intact and the copy is still in the content
+          file, so restoring it is an import and one line.
+
+          It was the last place the page named anything the product does not do. With
+          the trust section, the management caveat and now this gone, the page no longer
+          states that there is no multi-factor authentication, no password reset, no
+          readable audit log, no invoicing, no data export, and no certification, audit,
+          penetration test or service level agreement. Those absences are all still true.
+        */}
         <Sustainability sustainability={landing.sustainability} />
         <Affiliation affiliation={landing.affiliation} />
         <Close close={landing.close} cta={cta} />
