@@ -50,7 +50,7 @@ export function Hero({ hero, cta }: { hero: Landing["hero"]; cta: Cta }) {
           >
             <span id="hero-heading">
               {hero.h1Cycle ? (
-                <CyclingHeadline prefix={hero.h1} words={hero.h1Cycle} />
+                <CyclingHeadline lead={hero.h1Lead} prefix={hero.h1} words={hero.h1Cycle} />
               ) : (
                 hero.h1
               )}

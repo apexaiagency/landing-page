@@ -10,7 +10,8 @@
   },
 
   "hero": {
-    "h1": "Cloud computers. The renewed form of access to",
+    "h1Lead": "Cloud computers.",
+    "h1": "The renewed form of access to",
     "h1Cycle": [
       "Windows-only software.",
       "power without hardware.",

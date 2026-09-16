@@ -54,6 +54,11 @@ export const LandingSchema = z.object({
     cta: Cta,
   }),
   hero: z.object({
+    /**
+     * The product name, set apart from the sentence that follows it. Optional so the
+     * headline still renders as one run of text without it.
+     */
+    h1Lead: z.string().min(1).optional(),
     /** The fixed opening of the headline. The cycling word completes the sentence. */
     h1: z.string().min(1),
     /**

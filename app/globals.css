@@ -57,6 +57,23 @@
     color: #fff;
   }
 
+  /*
+   * The product name at the top of the hero, lit rather than glowing.
+   *
+   * Two shadows, both wide and both faint: a warm white core that lifts the letterforms
+   * off the near-black ground, and an amber bloom well below the threshold where it
+   * reads as neon. The brand brief rules out decoration, so the test here is whether
+   * you would notice it was gone rather than whether you notice it is there.
+   *
+   * Amber is the accent and belongs to the cycling word, so the name stays white and
+   * borrows only the warmth. Two amber elements in one headline would compete.
+   */
+  .hero-lead {
+    text-shadow:
+      0 0 28px rgba(247, 246, 244, 0.16),
+      0 0 64px rgba(245, 166, 35, 0.12);
+  }
+
   /* DM Sans sets fairly tight already; display sizes only need a light pull. */
   .font-display {
     letter-spacing: -0.02em;
