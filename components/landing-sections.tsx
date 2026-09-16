@@ -99,18 +99,22 @@ export function Hero({ hero, cta }: { hero: Landing["hero"]; cta: Cta }) {
             got as far as the button than as another thing to wade through before it.
           */}
           {hero.postCta && (
-            <div className="mt-10 max-w-measure space-y-4 border-t border-line pt-8">
-              {hero.postCta.map((para, i) => (
-                <Reveal
-                  key={para}
-                  as="p"
-                  delay={300 + i * 60}
-                  className="text-lg leading-relaxed text-fg-2"
-                >
-                  <Emphasised text={para} />
-                </Reveal>
-              ))}
-            </div>
+            <Reveal delay={300} className="mt-10 flex max-w-measure gap-4 border-t border-line pt-8">
+              {/*
+                The bulb marks this as an aside rather than another claim in the stack
+                above. Drawn to match the rest of the set: same 96 box, same white
+                stroke at 4, same amber centre as the sun, so it reads as one family.
+                Decorative, so it carries no alt text: the paragraph says everything.
+              */}
+              <Art name="lightbulb" className="mt-1 h-6 w-6 shrink-0" />
+              <div className="space-y-4">
+                {hero.postCta.map((para) => (
+                  <p key={para} className="text-lg leading-relaxed text-fg-2">
+                    <Emphasised text={para} />
+                  </p>
+                ))}
+              </div>
+            </Reveal>
           )}
         </div>
 
