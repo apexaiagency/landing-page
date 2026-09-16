@@ -29,17 +29,26 @@ const config: Config = {
           DEFAULT: "#F7F6F4",
           2: "#EEEAE4",
           rule: "#D8D4CC",
+          // Text on paper. Same warm bias as the dark ramp, read the other way up.
+          ink: "#2B2723",
+          "ink-2": "#5A554E",
         },
         // Hairlines
         line: {
-          DEFAULT: "#2E2E2E",
-          soft: "#2E2E2E",
-          strong: "#6B6B6B",
+          DEFAULT: "#302C28",
+          soft: "#302C28",
+          strong: "#6B645C",
         },
-        // Text
+        /*
+         * Text ramp. The greys carry a slight warm bias toward the accent rather than
+         * sitting on pure neutral, so they read as chosen rather than inherited, and
+         * fg-3 is lifted until it clears WCAG AA on every surface it lands on:
+         * 5.16:1 on surface, 5.76:1 on bg, 4.54:1 on raised. It was 3.27:1 and failing,
+         * and it carries every eyebrow, caveat and label on the page.
+         */
         fg: "#F7F6F4",
-        "fg-2": "#9B9B9B",
-        "fg-3": "#6B6B6B",
+        "fg-2": "#A8A29A",
+        "fg-3": "#918B83",
         // The single accent
         accent: {
           DEFAULT: "#F5A623",
@@ -59,6 +68,9 @@ const config: Config = {
       },
       maxWidth: {
         column: "72rem",
+        // Running text sits near 65 characters, where the eye returns to the next line
+        // without hunting. Wider than this and long paragraphs lose their place.
+        measure: "65ch",
       },
       borderRadius: {
         card: "0.75rem", // 12px panels — the Figma design's rounded-xl

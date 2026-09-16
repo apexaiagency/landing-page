@@ -1,8 +1,8 @@
 > **Superseded — 11 September 2026.**
 >
 > This review was written on 2026-09-07 against the monorepo. It has been overtaken by two
-> documents dated **10 September 2026**: *offsiteLABS Product and Marketing Documentation* v1.0
-> and *offsiteLABS Technical Product Documentation* v1.0. Those are now the source of truth for
+> documents dated **10 September 2026**: Offsite Labs v1.0 Product and Marketing Documentation v1.0
+> and Offsite Labs v1.0 Technical Product Documentation v1.0. Those are now the source of truth for
 > every claim on this page.
 >
 > What changed since this review:
