@@ -60,7 +60,6 @@ const FormSchema = z.object({
 const FooterSchema = z.object({
   ctaHeading: z.string().min(1),
   tagline: z.string(),
-  contactEmail: z.string().email(),
   columns: z.array(
     z.object({
       title: z.string(),
