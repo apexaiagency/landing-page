@@ -113,7 +113,13 @@ export function CyclingHeadline({
       <span aria-hidden>
         {lead && (
           <>
-            <span className="hero-lead">{lead}</span>{" "}
+            {/*
+              A block, so the sentence always begins on the line below rather than
+              wrapping up beside the name. At most widths "The" fitted on the first line
+              and left the sentence starting mid-line, which read as a stray word after
+              the product name.
+            */}
+            <span className="hero-lead block">{lead}</span>
           </>
         )}
         {/*
@@ -128,7 +134,12 @@ export function CyclingHeadline({
           between a one-line and a two-line ending reads as two phrases stacked on top
           of each other. At this size every ending fits on one line and that disappears.
         */}
-        <span className="text-[0.72em]">
+        {/*
+          A block of its own so it balances independently of the name above it. As an
+          inline run inside the heading it inherited the heading's balancing across
+          both, which left "to" orphaned on a line by itself at some widths.
+        */}
+        <span className="block text-balance text-[0.72em]">
           {prefix}{" "}
           {animate ? (
             /*
