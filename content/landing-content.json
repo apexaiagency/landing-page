@@ -6,7 +6,7 @@
     "date": "2026-09-14",
     "note": "Every string here traces to a Current capability in the Offsite Labs v1.0 technical and marketing documentation. Do not add copy to this file without checking it the same way.",
     "voice": "Plain and blunt. Short sentences. No buzzwords, no hedging, no em dashes.",
-    "cta": { "label": "Book a walkthrough", "href": "/walkthrough" }
+    "cta": { "label": "Book a walkthrough", "href": "https://calendar.app.google/KaRuBEod9pBg3GibA" }
   },
 
   "hero": {
@@ -15,7 +15,7 @@
       "Offsite Labs gives your business real Windows machines running on AWS. The platform builds them, watches every one of them every six hours, and repairs what it can before anybody files a ticket.",
       "No hardware. No server. Nobody who has to know AWS."
     ],
-    "cta": { "label": "Book a walkthrough", "href": "/walkthrough" },
+    "cta": { "label": "Book a walkthrough", "href": "https://calendar.app.google/KaRuBEod9pBg3GibA" },
     "imageRule": "Any product shot must show the product as it is today: four locations, the real computers list, real screens. Never a mockup of something unbuilt."
   },
 
@@ -264,7 +264,7 @@
     "body": [
       "We will build a brand new environment from nothing while you watch, and go through what it costs for your situation."
     ],
-    "cta": { "label": "Book a walkthrough", "href": "/walkthrough" },
+    "cta": { "label": "Book a walkthrough", "href": "https://calendar.app.google/KaRuBEod9pBg3GibA" },
     "optionalPricingLine": {
       "include": true,
       "text": "Pricing is flat and monthly, per machine. No hourly metering and no usage bill that moves.",
