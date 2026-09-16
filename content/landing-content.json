@@ -106,7 +106,7 @@
   },
 
   "howItWorks": {
-    "h2": "How it works",
+    "h2": "How it works.",
     "steps": [
       { "n": 1, "title": "Ask for a computer.", "body": "That is the whole of your part." },
       { "n": 2, "title": "The platform builds your environment.", "body": "A new cloud account, a private network inside it, an encryption key and a directory that belong only to you, then the machine. In order, with retries. About twenty to forty minutes, and nobody watches it." },
