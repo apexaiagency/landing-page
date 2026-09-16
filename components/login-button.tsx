@@ -38,6 +38,8 @@ export function LoginButton({ login, className = "" }: { login: Landing["login"]
   return (
     <a
       href={login.href}
+      target="_blank"
+      rel="noreferrer"
       className={`${base} border-line text-fg hover:border-line-strong ${className}`}
     >
       {login.label}
