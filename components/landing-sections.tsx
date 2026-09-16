@@ -271,7 +271,18 @@ export function UseCases({ useCases }: { useCases: Landing["useCases"] }) {
     <SectionShell id="use-cases" className="border-t border-line py-24">
       <Reveal
         as="h2"
-        className="max-w-3xl whitespace-pre-line font-display text-3xl font-bold leading-[1.12] tracking-tight md:text-4xl"
+        /*
+         * Two departures from the other section headings, both so each sentence can hold
+         * its own line.
+         *
+         * No max-width: at this size the first sentence is wider than the 3xl cap the
+         * others use, so the cap was forcing the very wrap the newline exists to avoid.
+         *
+         * The larger size waits for lg rather than md. The first sentence needs 786px at
+         * 36px and only 655px at 30px, so between those breakpoints the type was growing
+         * before the room for it existed.
+         */
+        className="whitespace-pre-line font-display text-3xl font-bold leading-[1.12] tracking-tight lg:text-4xl"
       >
         {useCases.h2}
       </Reveal>
