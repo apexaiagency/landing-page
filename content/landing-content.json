@@ -22,7 +22,7 @@
     "body": [
       "Offsite Labs is the control panel for cloud computers, ready to use in about half an hour.",
       "You get real Windows machines running on AWS.",
-      "We build them, keep them running, and fix them when they break, before you've thought to submit a support ticket."
+      "We build them, keep them running, and fix them when they break. All before you've thought to submit a support ticket."
     ],
     "postCta": [
       "Most cloud computer platforms are one building with a lock on every door. We give each customer their own building, so your data stays in [your] house."
@@ -34,7 +34,7 @@
   "band": {
     "heading": "Everyone is building on top of AI.\nSomebody has to build the computer.",
     "body": [
-      "There is no AI in this product. Building a machine, repairing it and tracking its cost are ordinary code that does the same thing every time.",
+      "There is no AI in this product. We use ordinary code to build the machines, repair them, and work out what they cost. It does the same thing every time.",
       "It runs on AWS. Every customer gets their own AWS account, and none of our code runs inside it."
     ]
   },
@@ -106,7 +106,7 @@
   },
 
   "howItWorks": {
-    "h2": "How it works",
+    "h2": "How it works.",
     "steps": [
       { "n": 1, "title": "Ask for a computer.", "body": "That is the whole of your part." },
       { "n": 2, "title": "The platform builds your environment.", "body": "A new cloud account, a private network inside it, an encryption key and a directory that belong only to you, then the machine. In order, with retries. About twenty to forty minutes, and nobody watches it." },
