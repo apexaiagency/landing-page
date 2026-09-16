@@ -54,7 +54,15 @@ export const LandingSchema = z.object({
     cta: Cta,
   }),
   hero: z.object({
+    /** The fixed opening of the headline. The cycling word completes the sentence. */
     h1: z.string().min(1),
+    /**
+     * Words the headline cycles through, each finishing the sentence `h1` opens. Every
+     * entry has to read as a complete ending on its own, because a screen reader is
+     * given exactly one of them and a reader with reduced motion only ever sees the
+     * first. Keep them short: a long entry reflows the whole headline as it swaps.
+     */
+    h1Cycle: z.array(z.string().min(1)).min(2).optional(),
     body: z.array(z.string().min(1)).min(1),
     cta: Cta,
     imageRule: z.string(),
