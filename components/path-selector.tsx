@@ -54,7 +54,10 @@ export function PathSelector({
 
   function choose(id: PathId, { scroll = true } = {}) {
     setActive(id);
-    track({ name: "cta_click", props: { position: `path-${id}`, intent: "pilot" } });
+    track({
+      name: "cta_click",
+      props: { position: `path-${id}`, intent: "pilot" },
+    });
 
     const url = new URL(window.location.href);
     url.searchParams.set("for", id);
@@ -62,7 +65,10 @@ export function PathSelector({
 
     if (scroll) {
       requestAnimationFrame(() => {
-        panelsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+        panelsRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
       });
     }
   }
@@ -70,8 +76,10 @@ export function PathSelector({
   function onKeyDown(e: React.KeyboardEvent, index: number) {
     const last = IDS.length - 1;
     let next: number | null = null;
-    if (e.key === "ArrowRight" || e.key === "ArrowDown") next = index === last ? 0 : index + 1;
-    else if (e.key === "ArrowLeft" || e.key === "ArrowUp") next = index === 0 ? last : index - 1;
+    if (e.key === "ArrowRight" || e.key === "ArrowDown")
+      next = index === last ? 0 : index + 1;
+    else if (e.key === "ArrowLeft" || e.key === "ArrowUp")
+      next = index === 0 ? last : index - 1;
     else if (e.key === "Home") next = 0;
     else if (e.key === "End") next = last;
     if (next === null) return;
@@ -92,7 +100,11 @@ export function PathSelector({
           {selector.heading}
         </Reveal>
 
-        <div role="tablist" aria-label={selector.heading} className="mt-12 grid gap-4 md:grid-cols-3">
+        <div
+          role="tablist"
+          aria-label={selector.heading}
+          className="mt-12 grid gap-4 md:grid-cols-3"
+        >
           {selector.options.map((opt, i) => {
             const selected = active === opt.id;
             return (
@@ -106,7 +118,9 @@ export function PathSelector({
                   id={`tab-${opt.id}`}
                   aria-selected={selected}
                   aria-controls={`panel-${opt.id}`}
-                  tabIndex={active === null ? (i === 0 ? 0 : -1) : selected ? 0 : -1}
+                  tabIndex={
+                    active === null ? (i === 0 ? 0 : -1) : selected ? 0 : -1
+                  }
                   onClick={() => choose(opt.id)}
                   onKeyDown={(e) => onKeyDown(e, i)}
                   /*
@@ -203,8 +217,14 @@ function PathPanel({
             <Tag>{path.proof.heading}</Tag>
             <ul className="mt-5 space-y-4">
               {path.proof.items.map((item) => (
-                <li key={item} className="flex items-start gap-3 leading-relaxed text-fg-2">
-                  <span aria-hidden className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                <li
+                  key={item}
+                  className="flex items-start gap-3 leading-relaxed text-fg-2"
+                >
+                  <span
+                    aria-hidden
+                    className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                  />
                   {item}
                 </li>
               ))}
@@ -212,34 +232,46 @@ function PathPanel({
           </div>
         )}
 
-        <div className="mt-12 max-w-measure border-l-2 border-accent pl-8">
-          {path.caveat.heading && (
-            <h3 className="font-display text-xl font-semibold tracking-tight">
-              {path.caveat.heading}
-            </h3>
-          )}
-          {path.caveat.intro && (
-            <p className="mt-4 text-lg leading-relaxed text-fg-2">{path.caveat.intro}</p>
-          )}
-          {path.caveat.body?.map((para) => (
-            <p key={para} className="mt-4 text-lg leading-relaxed text-fg-2">
-              {para}
-            </p>
-          ))}
-          {path.caveat.items && (
-            <ul className="mt-5 space-y-3">
-              {path.caveat.items.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-lg leading-relaxed text-fg">
-                  <span aria-hidden className="mt-3 h-px w-3 shrink-0 bg-fg-3" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          )}
-          {path.caveat.outro && (
-            <p className="mt-5 text-lg leading-relaxed text-fg-2">{path.caveat.outro}</p>
-          )}
-        </div>
+        {path.caveat && (
+          <div className="mt-12 max-w-measure border-l-2 border-accent pl-8">
+            {path.caveat.heading && (
+              <h3 className="font-display text-xl font-semibold tracking-tight">
+                {path.caveat.heading}
+              </h3>
+            )}
+            {path.caveat.intro && (
+              <p className="mt-4 text-lg leading-relaxed text-fg-2">
+                {path.caveat.intro}
+              </p>
+            )}
+            {path.caveat.body?.map((para) => (
+              <p key={para} className="mt-4 text-lg leading-relaxed text-fg-2">
+                {para}
+              </p>
+            ))}
+            {path.caveat.items && (
+              <ul className="mt-5 space-y-3">
+                {path.caveat.items.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-3 text-lg leading-relaxed text-fg"
+                  >
+                    <span
+                      aria-hidden
+                      className="mt-3 h-px w-3 shrink-0 bg-fg-3"
+                    />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            )}
+            {path.caveat.outro && (
+              <p className="mt-5 text-lg leading-relaxed text-fg-2">
+                {path.caveat.outro}
+              </p>
+            )}
+          </div>
+        )}
 
         <div className="mt-12">
           <CtaButton cta={cta} position={`path-${id}`} variant="primary" />

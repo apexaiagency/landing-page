@@ -34,7 +34,13 @@ const Path = z.object({
   proof: z
     .object({ heading: z.string().min(1), items: z.array(z.string().min(1)).min(1) })
     .optional(),
-  caveat: Caveat,
+  /**
+   * Optional since 15 Sep 2026, when the provider path's caveat was removed. SPEC.md
+   * still lists a caveat block as part of every path, so a path arriving without one
+   * is a decision rather than an oversight, and the renderer draws nothing in its
+   * place rather than an empty rule.
+   */
+  caveat: Caveat.optional(),
 });
 
 export const LandingSchema = z.object({

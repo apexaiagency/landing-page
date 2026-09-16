@@ -53,12 +53,6 @@
           "Microsoft's own Azure Virtual Desktop guidance recommends a separate tenant and subscription per customer for commercial delivery.",
           "Citrix's own partner documentation states that its partner console does not automatically enforce scopes."
         ]
-      },
-      "caveat": {
-        "heading": "Where we are straight with you",
-        "body": [
-          "The provider screens are being built right now. Today, adding a client and switching between clients happen through our API, which means we sit alongside you for your first few. That works for a first partner. It does not scale, and we are not going to pretend it does."
-        ]
       }
     },
 
