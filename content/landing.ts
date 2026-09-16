@@ -74,6 +74,12 @@ export const LandingSchema = z.object({
      * file or a second field beside it. `[your] house` renders "your" underlined.
      */
     body: z.array(z.string().min(1)).min(1),
+    /**
+     * Paragraphs that sit BELOW the call to action rather than above it, for a point
+     * worth making to someone who has already decided to read on. Same bracket
+     * convention as `body`.
+     */
+    postCta: z.array(z.string().min(1)).optional(),
     cta: Cta,
     imageRule: z.string(),
   }),

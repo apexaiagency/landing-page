@@ -92,6 +92,26 @@ export function Hero({ hero, cta }: { hero: Landing["hero"]; cta: Cta }) {
           <Reveal delay={240} className="mt-10">
             <CtaButton cta={cta} position="hero" variant="primary" />
           </Reveal>
+
+          {/*
+            Below the button on purpose. The paragraphs above it are what the product is;
+            this is the argument for choosing it, and it reads better to someone who has
+            got as far as the button than as another thing to wade through before it.
+          */}
+          {hero.postCta && (
+            <div className="mt-10 max-w-measure space-y-4 border-t border-line pt-8">
+              {hero.postCta.map((para, i) => (
+                <Reveal
+                  key={para}
+                  as="p"
+                  delay={300 + i * 60}
+                  className="text-lg leading-relaxed text-fg-2"
+                >
+                  <Emphasised text={para} />
+                </Reveal>
+              ))}
+            </div>
+          )}
         </div>
 
         <Reveal delay={160} duration={600} className="hidden justify-center md:col-span-5 md:flex">
