@@ -26,6 +26,32 @@ const USE_CASE_ART = [
   "people-pair",
 ];
 
+/**
+ * Renders a paragraph, underlining any word wrapped in square brackets.
+ *
+ * The convention exists so one word can be stressed from the content file without
+ * either putting HTML in the copy or adding a parallel field that would drift from the
+ * sentence it belongs to. Deliberately the only markup the content layer understands:
+ * anything more and the copy stops being copy.
+ */
+function Emphasised({ text }: { text: string }) {
+  const parts = text.split(/\[([^\]]+)\]/g);
+  return (
+    <>
+      {parts.map((part, i) =>
+        // Odd indices are the captured groups, so they are the bracketed words.
+        i % 2 === 1 ? (
+          <span key={i} className="underline decoration-accent decoration-2 underline-offset-4">
+            {part}
+          </span>
+        ) : (
+          part
+        )
+      )}
+    </>
+  );
+}
+
 function Art({ name, className = "h-10 w-10" }: { name: string; className?: string }) {
   // eslint-disable-next-line @next/next/no-img-element
   return <img src={`/art/${name}.svg`} alt="" aria-hidden className={`${className} object-contain`} />;
@@ -59,7 +85,7 @@ export function Hero({ hero, cta }: { hero: Landing["hero"]; cta: Cta }) {
           <div className="mt-8 max-w-measure space-y-5">
             {hero.body.map((para, i) => (
               <Reveal key={para} as="p" delay={80 + i * 60} className="text-lg leading-relaxed text-fg-2">
-                {para}
+                <Emphasised text={para} />
               </Reveal>
             ))}
           </div>

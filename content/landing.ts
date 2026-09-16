@@ -68,6 +68,11 @@ export const LandingSchema = z.object({
      * first. Keep them short: a long entry reflows the whole headline as it swaps.
      */
     h1Cycle: z.array(z.string().min(1)).min(2).optional(),
+    /**
+     * Paragraphs. A word wrapped in square brackets is underlined in the accent when
+     * rendered, so a single word can be stressed without putting markup in the content
+     * file or a second field beside it. `[your] house` renders "your" underlined.
+     */
     body: z.array(z.string().min(1)).min(1),
     cta: Cta,
     imageRule: z.string(),
