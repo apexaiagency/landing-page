@@ -165,7 +165,13 @@ export function CyclingHeadline({
                 return (
                   <span
                     key={word}
-                    className="absolute inset-0 text-accent ease-move"
+                    /*
+                     * left-0 top-0 with max-w-full rather than inset-0: the span shrinks
+                     * to its own text instead of filling the slot, which is what lets the
+                     * rule below match the width of the word rather than the column.
+                     * max-w-full keeps a long ending wrapping inside the slot.
+                     */
+                    className="absolute left-0 top-0 max-w-full text-accent ease-move"
                     style={{
                       transitionProperty: "opacity, transform",
                       transitionDuration: `${FADE_MS}ms`,
@@ -176,25 +182,30 @@ export function CyclingHeadline({
                     }}
                   >
                     {word}
+                    {/*
+                      The emphasis on the resting word, drawn in once the rotation stops.
+                      It lives INSIDE this span so it is the width of the word. As a
+                      sibling of the stack it took the slot's width and ran the rule the
+                      whole way across the column.
+
+                      A rule rather than a heavier weight or a brighter colour: the word
+                      is already the only accent-coloured thing in the headline, so there
+                      is nowhere brighter for it to go.
+                    */}
+                    {i === restingIndex && (
+                      <span
+                        aria-hidden
+                        className="absolute -bottom-1 left-0 h-px w-full origin-left bg-accent transition-transform ease-move"
+                        style={{
+                          transitionDuration: "900ms",
+                          transitionDelay: settled ? `${FADE_MS}ms` : "0ms",
+                          transform: `scaleX(${settled ? 1 : 0})`,
+                        }}
+                      />
+                    )}
                   </span>
                 );
               })}
-
-              {/*
-              The emphasis on the resting word: a hairline that draws in underneath it
-              once the rotation has stopped. A rule rather than a heavier weight or a
-              brighter colour, because the word is already the only accent-coloured
-              thing in the headline and there is nowhere brighter for it to go.
-            */}
-              <span
-                className="absolute -bottom-1 left-0 h-px origin-left bg-accent transition-transform ease-move"
-                style={{
-                  width: "100%",
-                  transitionDuration: "900ms",
-                  transitionDelay: settled ? `${FADE_MS}ms` : "0ms",
-                  transform: `scaleX(${settled ? 1 : 0})`,
-                }}
-              />
             </span>
           ) : (
             <span className="text-accent">{resting}</span>
