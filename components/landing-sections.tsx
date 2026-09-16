@@ -270,41 +270,6 @@ export function Industries({ industries }: { industries: Landing["industries"] }
   );
 }
 
-/**
- * The caveat paragraph is NOT rendered, by decision on 14 Sep 2026.
- *
- * SPEC.md requires it in this block and forbids demoting it to a tooltip or an
- * accordion; it is not demoted here, it is absent. The copy stays in the content file,
- * checked and intact, so restoring it is re-adding the block below.
- *
- * What it carried: today an automatic repair is invisible to the customer, so their
- * screen can still show a problem after the machine is fine. That is a real limitation
- * recorded in the technical documentation, and the page no longer mentions it.
- */
-export function Management({ management }: { management: Landing["management"] }) {
-  return (
-    <SectionShell id="management" className="border-t border-line py-24">
-      <div className="grid gap-12 md:grid-cols-12">
-        <Reveal
-          as="h2"
-          className="font-display text-3xl font-bold leading-[1.12] tracking-tight md:col-span-5 md:text-4xl"
-        >
-          {management.h2}
-        </Reveal>
-        <div className="md:col-span-7">
-          <div className="max-w-measure space-y-5">
-            {management.body.map((para, i) => (
-              <Reveal key={para} as="p" delay={60 + i * 60} className="text-lg leading-relaxed text-fg-2">
-                {para}
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </div>
-    </SectionShell>
-  );
-}
-
 export function Sustainability({
   sustainability,
 }: {
