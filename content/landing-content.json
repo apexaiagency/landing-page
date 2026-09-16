@@ -51,7 +51,7 @@
 
   "paths": {
     "msp": {
-      "h2": "Your clients are separated by an account boundary. Not by our code.",
+      "h2": "Your clients are separated by an account boundary.\nNot by our code.",
       "body": [
         "Every platform in this market hands you the same choice. Put all your clients in one cloud account and separate them with software rules, which is quick to buy and permanently risky. Or give each client their own account, which is genuinely safe and takes an engineer several hours per client.",
         "Almost everyone picks the first one, because the second does not scale by hand.",
@@ -141,7 +141,7 @@
   },
 
   "useCases": {
-    "h2": "It is a full Windows computer with internet access. If it runs on Windows, it runs here.",
+    "h2": "It is a full Windows computer with internet access.\nIf it runs on Windows, it runs here.",
     "items": [
       { "title": "Software that never left Windows", "body": "The practice management system, the accounting package, the design tool that only ever shipped one way." },
       { "title": "Contractors and remote staff", "body": "The work sits on a machine you control instead of a personal laptop you never see." },

@@ -52,7 +52,7 @@ export function SectionHeading({
       <Reveal
         as="h2"
         delay={60}
-        className="font-display text-3xl font-bold leading-[1.12] tracking-tight md:text-4xl"
+        className="whitespace-pre-line font-display text-3xl font-bold leading-[1.12] tracking-tight md:text-4xl"
       >
         {heading}
       </Reveal>
