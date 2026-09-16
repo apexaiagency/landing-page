@@ -20,7 +20,7 @@
   },
 
   "band": {
-    "heading": "Everyone is building AI. Somebody has to build the computer.",
+    "heading": "Everyone is building on top of AI.\nSomebody has to build the computer.",
     "body": [
       "There is no AI in this product. Building a machine, repairing it and tracking its cost are ordinary code that does the same thing every time.",
       "It runs on AWS. Every customer gets their own AWS account, and none of our code runs inside it."

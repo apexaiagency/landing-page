@@ -74,13 +74,25 @@ export function PositioningBand({ band }: { band: Landing["band"] }) {
   return (
     <section className="border-y border-line bg-surface py-14">
       <div className="mx-auto grid max-w-column gap-8 px-6 md:grid-cols-12 md:items-start">
+        {/*
+          whitespace-pre-line so the newline in the content file is honoured. The break
+          after "AI" is part of the line rather than something left to wrapping: it
+          separates the observation from the answer, and without it the two halves run
+          together at whatever width the column happens to be.
+        */}
         <Reveal
           as="h2"
-          className="font-display text-xl font-semibold leading-snug tracking-tight md:col-span-5 md:text-2xl"
+          /*
+           * The break after "AI" only pays off if each half then fits on one line.
+           * At the 5/7 split the heading column is 293px at around 800px wide, which
+           * wrapped both halves and made four ragged lines. It takes half the row until
+           * lg, and the larger size waits for lg too.
+           */
+          className="whitespace-pre-line font-display text-xl font-semibold leading-snug tracking-tight md:col-span-6 lg:col-span-5 lg:text-2xl"
         >
           {band.heading}
         </Reveal>
-        <div className="max-w-measure space-y-4 md:col-span-7">
+        <div className="max-w-measure space-y-4 md:col-span-6 lg:col-span-7">
           {band.body.map((para, i) => (
             <Reveal key={para} as="p" delay={60 + i * 60} className="leading-relaxed text-fg-2">
               {para}
