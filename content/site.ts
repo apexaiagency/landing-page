@@ -10,7 +10,7 @@ export const site: Site = {
   meta: {
     title: "Offsite Labs — cloud computers that run themselves",
     description:
-      "Real Windows machines in the cloud. The platform builds them, watches every one every six hours, and repairs what it can before anybody files a ticket. No hardware, no server, nobody who has to know AWS.",
+      "Real Windows machines in the cloud, running on AWS. We set them up, keep them running, and fix them when they break. No hardware, no server, nobody who has to know AWS.",
     url: "https://www.offsitelabs.io",
     ogImage: "/og.png",
     keywords: [

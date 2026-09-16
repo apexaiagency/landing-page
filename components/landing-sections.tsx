@@ -5,6 +5,7 @@ import { Reveal } from "./reveal";
 import { CtaButton } from "./cta-button";
 import { Constellation } from "./constellation";
 import { BuildSheet } from "./build-sheet";
+import { CyclingHeadline } from "./cycling-headline";
 
 /**
  * Illustrations from the 14 Sep Figma Make export, mapped to sections here rather than
@@ -47,7 +48,13 @@ export function Hero({ hero, cta }: { hero: Landing["hero"]; cta: Cta }) {
             as="h1"
             className="font-display text-[clamp(2.4rem,5.5vw,4.2rem)] font-bold leading-[1.08] tracking-tight"
           >
-            <span id="hero-heading">{hero.h1}</span>
+            <span id="hero-heading">
+              {hero.h1Cycle ? (
+                <CyclingHeadline prefix={hero.h1} words={hero.h1Cycle} />
+              ) : (
+                hero.h1
+              )}
+            </span>
           </Reveal>
           <div className="mt-8 max-w-measure space-y-5">
             {hero.body.map((para, i) => (
